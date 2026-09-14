@@ -4,12 +4,12 @@ API 662 / 667 / 810을 welded plate heat exchanger 기준으로 읽고 정리한
 
 ## Local
 
-Open `site/index.html` in a browser, or:
+Open `docs/index.html` in a browser, or:
 
 ```bash
-python3 -m http.server 8000 --directory site
+python3 -m http.server 8000 --directory docs
 ```
 
 ## Render
 
-Static site. Publish path is `site`.
+Static site. Publish path is `docs`.
