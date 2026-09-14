@@ -12,4 +12,4 @@ python3 -m http.server 8000 --directory docs
 
 ## Render
 
-Static site. Publish path is `docs`.
+Static site. Publish path is `build`. Build copies `docs/` → `build/`.

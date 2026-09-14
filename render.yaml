@@ -3,8 +3,8 @@ services:
     name: w-phex
     runtime: static
     plan: free
-    buildCommand: echo "static site"
-    staticPublishPath: docs
+    buildCommand: mkdir -p build && cp -R docs/. build/
+    staticPublishPath: build
     headers:
       - path: /*
         name: X-Content-Type-Options
