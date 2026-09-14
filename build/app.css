@@ -183,8 +183,8 @@ footer {
 .note {
   background: var(--panel);
   border: 1px solid var(--line);
-  padding: 16px;
-  margin: 16px 0 28px;
+  padding: 14px 16px;
+  margin: 8px 0;
 }
 
 .note p:last-child {

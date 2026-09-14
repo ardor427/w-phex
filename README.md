@@ -12,4 +12,11 @@ python3 -m http.server 8000 --directory docs
 
 ## Render
 
-Static site. Publish path is `build`. Build copies `docs/` → `build/`.
+Dashboard settings that match this repo:
+
+- **Build Command:** `mkdir -p build && cp -R docs/. build/`
+- **Publish Directory:** `build`
+
+The first deploy failed because the dashboard had an empty build command and looked for `build/`, which did not exist yet. `build/` is now in git as a copy of `docs/`, so an empty build command still works. If you change `docs/`, either run the copy command or keep the Build Command above so Render recreates `build/`.
+
+GitHub Pages serves `docs/` from `main`: https://ardor427.github.io/w-phex/
