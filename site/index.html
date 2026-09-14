@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>W-PHEX — Welded Plate Heat Exchanger 코드 정리</title>
+    <link rel="stylesheet" href="./app.css" />
+  </head>
+  <body>
+    <header class="top">
+      <p class="kicker">Study notes · not a substitute for the standards</p>
+      <h1>W-PHEX</h1>
+      <p class="lede">
+        API 662 (2002), API 667 (2022), API 810 (2025 / Errata 1)을
+        welded plate heat exchanger 기준으로 읽고 정리한 노트입니다.
+        원문 검색·챗봇·API 키는 없습니다.
+      </p>
+      <p class="headline">
+        신규 용접형 plate-block은 API 810. 개스킷·세미용접 plate-and-frame은
+        API 667. API 662:2002는 세 형식을 한 권에 묶은 구판입니다.
+      </p>
+    </header>
+
+    <nav class="tabs">
+      <button data-tab="overview" class="active">세 코드</button>
+      <button data-tab="types">용접 형식</button>
+      <button data-tab="compare">조항 비교</button>
+      <button data-tab="weld">용접·검사</button>
+      <button data-tab="select">코드 선정</button>
+    </nav>
+
+    <main>
+      <section id="overview" class="panel active">
+        <h2>한눈에</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="badge legacy">2002 · 통합 구판</div>
+            <h3>API 662</h3>
+            <p>2nd Ed., April 2002. ISO 15547:2000과 동일. 제목은 Plate Heat Exchangers for General Refinery Services.</p>
+            <p>Gasketed, semi-welded, fully welded plate pack을 프레임으로 구속하는 형식까지 한 문서에 담았습니다. Plate-block 구조는 정의하지 않습니다.</p>
+            <p>Sour/H2S, hydrogen, HTHS 전용 장이 거의 없습니다. 신규 발주에 그대로 걸기에는 빈 칸이 많습니다.</p>
+          </article>
+          <article class="card">
+            <div class="badge current">2022 · P&amp;F 현행</div>
+            <h3>API 667</h3>
+            <p>1st Ed., March 2022. 구 API 662-1. 제목은 Plate-and-Frame Heat Exchangers.</p>
+            <p>Gasketed와 semi-welded P&amp;F만 적용합니다. Fully welded P&amp;F, welded plate-block, brazed plate, plate-in-shell은 명시 제외입니다.</p>
+            <p>세미용접 pair는 레이저 용접이 기본입니다. 판은 개별 또는 pair 단위로 교체하고, 프레임은 20% 추가 판 여유를 둡니다.</p>
+          </article>
+          <article class="card">
+            <div class="badge current">2025 · plate-block 현행</div>
+            <h3>API 810</h3>
+            <p>1st Ed., October 2025, Errata 1 July 2026. 제목은 Welded Plate-block Heat Exchangers.</p>
+            <p>용접 plate pack + 볼트 체결 removable panel. Compabloc / K°Bloc류가 여기에 해당합니다.</p>
+            <p>P&amp;F(세미용접 포함)는 667로 보냅니다. 원통 shell 안의 block, panel로 기계 세정할 수 없는 구조도 제외입니다. HTHS는 Section 12와 API 941입니다.</p>
+          </article>
+        </div>
+
+        <h2>계보</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>연도</th>
+                <th>문서</th>
+                <th>용접형 취급</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1995</td>
+                <td>API 662 1st</td>
+                <td>판형 열교환기 사양의 출발점.</td>
+              </tr>
+              <tr>
+                <td>2002</td>
+                <td>API 662 2nd / ISO 15547</td>
+                <td>Gasketed + semi-welded + fully welded pack in frame을 한 권에 수록. Plate-block은 없음.</td>
+              </tr>
+              <tr>
+                <td>2011–21</td>
+                <td>API 662-1</td>
+                <td>P&amp;F로 축소된 뒤 667로 이관.</td>
+              </tr>
+              <tr>
+                <td>2022</td>
+                <td>API 667 1st</td>
+                <td>Gasketed·semi-welded만. Fully welded P&amp;F와 plate-block을 명시 제외.</td>
+              </tr>
+              <tr>
+                <td>2025–26</td>
+                <td>API 810 1st + E1</td>
+                <td>Welded plate pack + bolted cover. Semi-welded P&amp;F는 667로 보냄.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Scope 매트릭스</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>형식</th>
+                <th>662:2002</th>
+                <th>667:2022</th>
+                <th>810:2025</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gasketed P&amp;F</td>
+                <td>포함</td>
+                <td>포함 (주 대상)</td>
+                <td>제외 → 667</td>
+              </tr>
+              <tr>
+                <td>Semi-welded P&amp;F</td>
+                <td>포함</td>
+                <td>포함 (레이저 pair)</td>
+                <td>제외 → 667</td>
+              </tr>
+              <tr>
+                <td>Fully welded pack in frame</td>
+                <td>포함</td>
+                <td>명시 제외</td>
+                <td>해당 없음</td>
+              </tr>
+              <tr>
+                <td>Welded plate-block + removable panel</td>
+                <td>미정의</td>
+                <td>명시 제외</td>
+                <td>포함 (주 대상)</td>
+              </tr>
+              <tr>
+                <td>Plate-block in cylindrical shell</td>
+                <td>미정의</td>
+                <td>제외</td>
+                <td>명시 제외</td>
+              </tr>
+              <tr>
+                <td>Brazed / plate-fin</td>
+                <td>미포함</td>
+                <td>제외</td>
+                <td>제외</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="types" class="panel">
+        <h2>용접형 PHE는 한 종류가 아닙니다</h2>
+        <p>
+          세 코드가 같은 “plate HX”를 다루지만, 용접 위치와 압력경계가 다릅니다.
+          발주 전에 장비 스케치로 형식을 확정한 뒤 코드를 걸어야 합니다.
+        </p>
+        <div class="types">
+          <article class="type">
+            <div class="badge">API 662 · 667</div>
+            <h3>Semi-welded plate-and-frame</h3>
+            <p>인접 두 판을 pair로 용접하고, pair 사이는 개스킷으로 밀봉합니다. 한쪽 유체는 용접 챔버, 반대쪽은 개스킷 챔버입니다.</p>
+            <p>압력은 프레임·타이볼트·커버가 받습니다. 판 pair 단위로 교체할 수 있습니다. 한쪽만 공격적인 유체(암모니아 등)에 맞습니다.</p>
+          </article>
+          <article class="type">
+            <div class="badge">API 662 only</div>
+            <h3>Fully welded pack in a frame</h3>
+            <p>개스킷을 전부 용접으로 대체한 plate pack을 프레임으로 구속합니다. 662 Scope에만 명시되어 있고, 667은 fully welded P&amp;F를 제외합니다.</p>
+            <p>현재 전용 API가 없습니다. 662 인용은 레거시 해석용입니다.</p>
+          </article>
+          <article class="type">
+            <div class="badge">API 810</div>
+            <h3>Welded plate-block</h3>
+            <p>전열판 pack을 용접하고, 모서리 column + 고정 head + 볼트 panel로 압력을 유지합니다. 유체 간 밀봉은 판 용접, 외부 누설 밀봉은 panel gasket입니다.</p>
+            <p>Panel을 열어 기계 세정합니다. 고온·고압, 양측 탄화수소, H2/HTHS에 맞습니다.</p>
+          </article>
+          <article class="type">
+            <div class="badge">세 코드 제외</div>
+            <h3>Plate-in-shell / block in shell</h3>
+            <p>원통 shell 안의 welded plate-block, 또는 전 공정측을 panel로 기계 세정할 수 없는 구조입니다. 667·810 모두 명시 제외입니다.</p>
+            <p>Brazed plate, plate-fin은 별도 규격(구 662-2 / ISO 15547-2)입니다.</p>
+          </article>
+        </div>
+        <h2>용어를 코드에 맞춰 읽기</h2>
+        <ul class="select-list">
+          <li>667의 plate-and-frame = gasketed 또는 semi-welded plate pack + supporting frame.</li>
+          <li>810의 welded plate-block = 용접 plate pack + panels + fixed heads + columns.</li>
+          <li>810의 plate pack = 전열판 + column liner + head liner의 용접 조립체.</li>
+          <li>662의 fully welded plate pack = 개스킷을 용접으로 대체한 pack. 프레임은 그대로입니다.</li>
+        </ul>
+      </section>
+
+      <section id="compare" class="panel">
+        <h2>압력경계·구조</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>항목</th>
+                <th>662:2002</th>
+                <th>667 (semi-welded)</th>
+                <th>810 (plate-block)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>압력 유지</td>
+                <td>Frame + tie bolts + covers</td>
+                <td>동일. 20% 추가 판 설치 여유</td>
+                <td>Panels + columns + fixed heads. Tie-bolt 프레임 없음</td>
+              </tr>
+              <tr>
+                <td>판 교체</td>
+                <td>개스킷: 개별 / 세미용접: pair</td>
+                <td>동일. 다른 판을 빼지 않고 교체</td>
+                <td>판 개별 교체 불가. Panel 개방으로 유로 접근</td>
+              </tr>
+              <tr>
+                <td>최소 판 두께 (press 전)</td>
+                <td>개스킷 판 0.5 mm</td>
+                <td>0.5 mm</td>
+                <td>0.8 mm</td>
+              </tr>
+              <tr>
+                <td>설계 압력</td>
+                <td>차압 설계 금지</td>
+                <td>한쪽 설계압 + 반대쪽 대기/진공</td>
+                <td>667과 동일</td>
+              </tr>
+              <tr>
+                <td>부식여유</td>
+                <td>노즐만. 판은 0</td>
+                <td>노즐·cover 최소 3 mm (CS). 판은 0</td>
+                <td>내식재/라이너 없으면 습윤면 전부. 판은 0</td>
+              </tr>
+              <tr>
+                <td>개스킷 역할</td>
+                <td>판 홈 탄성 개스킷 + 포트 이중 개스킷/대기 벤트</td>
+                <td>동일. 세미용접은 멀티피스 end/port 개스킷 허용</td>
+                <td>Panel gasket (흑연, PTFE 등). 판 사이 개스킷 없음</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>노즐·배관 하중</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>항목</th>
+                <th>662</th>
+                <th>667</th>
+                <th>810</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>연결 형식</td>
+                <td>Studded 또는 flanged</td>
+                <td>Studded 또는 flanged. WN 기본. Slip-on은 cyclic/sour 금지</td>
+                <td>Panel에 용접 flange. Studded는 구매자 합의. Set-in 기본</td>
+              </tr>
+              <tr>
+                <td>Slip-on / fillet set-in 금지</td>
+                <td>명시가 약함</td>
+                <td>Cyclic, sour, wet H2S</td>
+                <td>P&gt;2100 kPa, T&gt;204 °C, CA&gt;3 mm, H2, sour, cyclic, vacuum, T&lt;−50 °C, Class 150 초과, PWHT</td>
+              </tr>
+              <tr>
+                <td>허용 하중표</td>
+                <td>Standard + Severe. 식 분모 5. Cl.150/300/600</td>
+                <td>Fixed cover만. 식 분모 2.5. Cl.150/300</td>
+                <td>Nozzle–panel. 식 분모 2.5. Cl.150/300/600</td>
+              </tr>
+              <tr>
+                <td>Movable cover 노즐</td>
+                <td>유지보수를 위해 fixed cover 권장</td>
+                <td>허용 하중은 별도 합의</td>
+                <td>해당 없음 (panel 고정)</td>
+              </tr>
+              <tr>
+                <td>금지 호칭</td>
+                <td>DN 32 / 65 / 90 / 125</td>
+                <td>동일</td>
+                <td>동일</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>재료·특수 운전</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>항목</th>
+                <th>662</th>
+                <th>667</th>
+                <th>810</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sour / wet H2S</td>
+                <td>거의 없음</td>
+                <td>NACE MR0175 / MR0103, SP0472. Liner 뒤 CS 적용 여부는 구매자 지정</td>
+                <td>667 수준 + HIC 등 추가 지정. Loose liner는 모재 보호로 보지 않음</td>
+              </tr>
+              <tr>
+                <td>Hydrogen / HTHS</td>
+                <td>없음</td>
+                <td>없음</td>
+                <td>Hydrogen service 지정. Section 12: API 941, 전용입 용접, CS PWHT, DMW 금지, 100% 체적검사</td>
+              </tr>
+              <tr>
+                <td>Cyclic</td>
+                <td>Annex: ASME VIII-2 fatigue 권고</td>
+                <td>구매자가 지정. 변동량·주기 제출</td>
+                <td>동일. Fatigue 해석이 필요하면 라이너 노즐 사용 금지</td>
+              </tr>
+              <tr>
+                <td>주강</td>
+                <td>미언급</td>
+                <td>미언급</td>
+                <td>Casting 원칙 금지</td>
+              </tr>
+              <tr>
+                <td>볼트</td>
+                <td>Tie bolt ≥16 mm</td>
+                <td>동일</td>
+                <td>Panel bolt ≥19 mm. 최소 TS 75 ksi. ASME PCC-1 washer</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Fouling</h2>
+        <p>
+          세 코드 모두 shell-and-tube의 fouling resistance를 쓰지 않고 % margin을 씁니다.
+          662 Annex는 최소 10%(crude 25%), wall shear ≥50 Pa를 권고합니다.
+          810 Table A.1은 유체별 margin·전단응력이 더 구체적이고, 양측 15%면 overall 25%를 권고합니다.
+          667도 같은 철학입니다.
+        </p>
+      </section>
+
+      <section id="weld" class="panel">
+        <h2>판 용접이 갈리는 지점</h2>
+        <p>
+          Semi-welded P&amp;F의 판 용접은 일부 압력코드에서 압력유지 용접으로 보지 않을 수 있습니다.
+          Plate-block의 판 용접은 pack 누설 경로 자체이므로 810이 훨씬 촘촘합니다.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <h3>662 용접</h3>
+            <p>압력용접은 압력설계코드, 구조용접은 구조용접코드입니다. 판 pair / fully welded pack 용접 절차·NDE는 구매자 임의입니다. Light box, PT, He leak는 지정할 때만입니다.</p>
+          </article>
+          <article class="card">
+            <h3>667 세미용접</h3>
+            <p>Plate pair는 laser weld가 기본이고, 합의 시에만 예외입니다. 용접 후 개스킷 안착면 육안·스패터 제거. Vacuum / gas leak / eddy current는 구매자 지정입니다. Annex: 압력유지 용접 여부와 무관하게 코드 자격으로 시공합니다.</p>
+          </article>
+          <article class="card">
+            <h3>810 plate-block</h3>
+            <p>전열판, pack–liner, liner–liner, panel/nozzle liner, 리프팅 러그 용접을 압력코드로 자격 부여합니다. Oxyacetylene 금지. Channel plug 수리는 사전 승인. H2 서비스는 밀폐 공간 벤트 홀이 필요합니다.</p>
+          </article>
+        </div>
+
+        <h2>필수 검사 (현행 코드)</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>검사</th>
+                <th>667 semi-welded</th>
+                <th>810 plate-block</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>성형 후 전열판</td>
+                <td>구매자 지정 (light box, PT, He 등)</td>
+                <td>전 판 vacuum 또는 PT (용접 전)</td>
+              </tr>
+              <tr>
+                <td>판–판 용접</td>
+                <td>leak/ECT 등 구매자 지정</td>
+                <td>PT 또는 submerged bubble 또는 50–100 kPa soap bubble</td>
+              </tr>
+              <tr>
+                <td>Liner 용접</td>
+                <td>PT</td>
+                <td>pack–column/head liner, head–column, nozzle/panel liner 전부 PT</td>
+              </tr>
+              <tr>
+                <td>맞대기 용접</td>
+                <td>접근 가능한 joint마다 최소 1 spot RT. Porosity는 전 RT 기준</td>
+                <td>동일. Nozzle–flange 맞대기는 코드가 요구하지 않으면 면제</td>
+              </tr>
+              <tr>
+                <td>Sour CS 용접</td>
+                <td>습윤측 WFMT. Hardness ≤225 HBW(합의 전). NACE 기준</td>
+                <td>접근 가능 내면 WFMT. Hardness 합격치는 구매자 지정</td>
+              </tr>
+              <tr>
+                <td>Interstream leak</td>
+                <td>세미용접 챔버 leak test 가능</td>
+                <td>구매자 지정 He 등. 기본 허용 1×10⁻⁸ kPa·m³/s @ 100 kPa ΔP</td>
+              </tr>
+              <tr>
+                <td>HTHS 추가</td>
+                <td>해당 없음</td>
+                <td>맞대기 100% 체적검사(PWHT 후), PMI 필수, baseline UT 옵션</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>수압시험</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>항목</th>
+                <th>662</th>
+                <th>667</th>
+                <th>810</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>가압 방식</td>
+                <td>Hot / cold 각각, 반대쪽 무압</td>
+                <td>각각 + 양측 동시 가압</td>
+                <td>667과 동일</td>
+              </tr>
+              <tr>
+                <td>유지 시간</td>
+                <td>누설 확인에 충분, 최소 30 min</td>
+                <td>안정화 후 최소 30 min</td>
+                <td>동일</td>
+              </tr>
+              <tr>
+                <td>수온</td>
+                <td>MDMT+17 °C, 상한 49 °C</td>
+                <td>최소 7 °C</td>
+                <td>최소 7 °C</td>
+              </tr>
+              <tr>
+                <td>Cl⁻ 한도 (ASS)</td>
+                <td>30 mg/kg</td>
+                <td>50 mg/kg</td>
+                <td>50 mg/kg (재질 불문 시험수)</td>
+              </tr>
+              <tr>
+                <td>공압 대체</td>
+                <td>없음</td>
+                <td>세미용접 용접측 dry-out 회피 시, 안전절차 합의 후 가능</td>
+                <td>수압 후 panel 재조립 시 100–170 kPa soap 공압 누설시험 필수</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>810에만 있는 제작 공차</h2>
+        <p>
+          Panel 개스킷면 평탄도: 변 길이 1 m 초과 0.8 mm, 이하 0.6 mm.
+          표면조도 Ra 3.2–6.3 μm. 최종 가공은 PWHT 이후.
+          Column/head liner 개스킷면에는 이 평탄도를 적용하지 않습니다.
+          세정 접근 여부는 구매자가 스트림별로 지정합니다.
+        </p>
+      </section>
+
+      <section id="select" class="panel">
+        <h2>발주 시 어떤 코드를 걸 것인가</h2>
+        <p>
+          장비 스케치(판 사이 개스킷 유무, 커버가 프레임인지 panel인지)로 코드를 고릅니다.
+          공정 조건만으로 662/667/810을 고르면 형식과 어긋납니다.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>현장 조건</th>
+                <th>추천 코드</th>
+                <th>이유</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>양측 개스킷 P&amp;F, 저·중압, 잦은 분해 세정</td>
+                <td>API 667</td>
+                <td>현행 P&amp;F. 판 개별 교체, 20% 증설, 탄성 개스킷 관리</td>
+              </tr>
+              <tr>
+                <td>한쪽만 용접 pair (암모니아, 누설 민감 유체)</td>
+                <td>API 667</td>
+                <td>Semi-welded가 667 Scope. 레이저 pair + 반대쪽 개스킷</td>
+              </tr>
+              <tr>
+                <td>양측 용접, 볼트 panel, 기계 세정 가능 (Compabloc류)</td>
+                <td>API 810</td>
+                <td>현행 plate-block. 고온고압·H2/HTHS·sour 조항이 있음</td>
+              </tr>
+              <tr>
+                <td>HTHS (H2 pp &gt;350 kPa abs, T&gt;204 °C)</td>
+                <td>API 810 + API 941</td>
+                <td>667/662에 HTHS 장이 없음</td>
+              </tr>
+              <tr>
+                <td>Fully welded pack + 프레임, 또는 plate-in-shell</td>
+                <td>코드 공백</td>
+                <td>667·810 제외. 압력코드 + 구매자 사양으로 메움</td>
+              </tr>
+              <tr>
+                <td>기존 662 사양 / 예비품 호환</td>
+                <td>레거시 인용</td>
+                <td>신규는 667 또는 810. 662는 세미용접 NDE·sour·HTHS가 빈약</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>810을 걸 때 구매자가 찍을 항목</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>지정 항목</th>
+                <th>왜 중요한가</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>기계 세정 대상 스트림</td>
+                <td>Scope가 removable panel로 세정 가능한 측에 묶입니다</td>
+              </tr>
+              <tr>
+                <td>Hydrogen / HTHS 여부</td>
+                <td>Section 12, API 941 재료, 전용입·PWHT·DMW 금지</td>
+              </tr>
+              <tr>
+                <td>Sour 또는 wet H2S, liner 뒤 CS 적용 여부</td>
+                <td>Loose liner는 모재 보호로 보지 않습니다</td>
+              </tr>
+              <tr>
+                <td>Cyclic 여부 및 사이클 정의</td>
+                <td>라이너 노즐·fatigue 해석 범위</td>
+              </tr>
+              <tr>
+                <td>Panel gasket 내면 구속, weld overlay vs liner</td>
+                <td>고온 누설·보수용이성</td>
+              </tr>
+              <tr>
+                <td>Interstream He leak test</td>
+                <td>판 용접 품질의 실질 합격 기준</td>
+              </tr>
+              <tr>
+                <td>PMI 범위</td>
+                <td>HTHS에서는 사실상 필수</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>667 세미용접 vs 810 plate-block</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>667 semi-welded가 유리한 경우</h3>
+            <p>한쪽만 위험 유체. 면적 증설(20%)이 필요. 판 pair 단위 교체. 설계압·온도가 P&amp;F 개스킷 한계 안. 배관 하중이 작고 fixed cover 노즐로 처리 가능.</p>
+          </article>
+          <article class="card">
+            <h3>810 plate-block이 유리한 경우</h3>
+            <p>양측 누설 불허 또는 탄성 개스킷 수명 부족. 고온·Class 300 이상. H2/HTHS. Panel 개방 세정. 노즐 하중을 panel에서 받음 (Class 600 표가 있음).</p>
+          </article>
+        </div>
+
+        <h2>실무 공백</h2>
+        <p>
+          Fully welded plate-and-frame과 plate-in-shell은 세 문서 어디에도 현행 전용 요구가 없습니다.
+          해당 형식을 쓰면 압력설계코드에 더해, 판 용접·NDE는 810, 프레임이면 667을 선택 인용할지 구매 사양에 명시하는 것이 안전합니다.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        이 페이지는 라이선스된 사본을 읽고 정리한 학습 노트입니다. 규격 원문을 대체하지 않습니다.
+        인용·수치는 발주 전에 API 662 2nd Ed. (2002), API 667 1st Ed. (2022), API 810 1st Ed. + Errata 1 (2025/2026) 원문으로 확인하십시오.
+      </p>
+    </footer>
+    <script src="./app.js"></script>
+  </body>
+</html>

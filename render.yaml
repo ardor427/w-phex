@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: w-phex
+    runtime: static
+    plan: free
+    buildCommand: echo "static site"
+    staticPublishPath: site
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

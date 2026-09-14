@@ -1,0 +1,187 @@
+:root {
+  --bg: #12151b;
+  --panel: #1b2028;
+  --ink: #efe8dc;
+  --muted: #9a927f;
+  --line: #2c3340;
+  --brass: #c4a35a;
+  --steel: #7ea0b8;
+  --ok: #8fbf8f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+}
+
+body {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.top {
+  display: grid;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--brass);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.lede,
+footer p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.headline {
+  margin: 8px 0 0;
+  font-size: 18px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.tabs button {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  cursor: pointer;
+  font: 13px/1 ui-sans-serif, system-ui, sans-serif;
+}
+
+.tabs button.active {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+.panel p {
+  color: var(--ink);
+}
+
+.cards,
+.types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 12px 0 28px;
+}
+
+.card,
+.type {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 16px;
+}
+
+.card h3,
+.type h3,
+h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+h2 {
+  margin-top: 28px;
+}
+
+.badge {
+  display: inline-block;
+  font: 11px/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 8px;
+}
+
+.badge.current {
+  color: var(--ok);
+}
+
+.badge.legacy {
+  color: var(--brass);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  margin: 12px 0 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--brass);
+  font-weight: 600;
+}
+
+.select-list {
+  padding-left: 18px;
+}
+
+.select-list li {
+  margin: 8px 0;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 32px;
+  }
+}

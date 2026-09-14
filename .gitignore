@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+chroma_db/
+ingest_stats.json
+*.egg-info/
+.pytest_cache/
+app/
+ingest.py
+requirements.txt
+.env.example
