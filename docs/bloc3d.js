@@ -5,8 +5,10 @@ import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.j
 
 const PART_NAMES = {
   pack: "Plate pack — 용접 전열판 다발",
-  column: "Column / girder — 모서리 기둥",
-  comb: "Comb / liner — 판 끝 이빨",
+  column: "Column / girder — 탄소강 모서리 기둥",
+  comb: "Comb — 판 끝과 맞물리는 이빨",
+  liner: "Column liner — column 안쪽 합금판",
+  headLiner: "Head liner — head 안쪽 합금판",
   head: "Head — 상·하부 고정 덮개",
   panel: "Panel — 볼트 덮개 (탄소강)",
   gasket: "Panel gasket — 외부 밀봉 4장",
@@ -163,8 +165,10 @@ export async function initBloc3D(host) {
   controls.enableDamping = true;
   controls.target.set(0, 0.56, 0);
   controls.maxDistance = 6;
-  controls.minDistance = 0.8;
+  controls.minDistance = 0.28;
   controls.update();
+  const camHome = camera.position.clone();
+  const targetHome = controls.target.clone();
 
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -202,19 +206,26 @@ export async function initBloc3D(host) {
     ss: mat({ color: 0xcfd6dc, metalness: 0.72, roughness: 0.28 }),
     ssPlate: mat({ color: 0xc8d0d6, metalness: 0.58, roughness: 0.34, map: chevronMap() }),
     gasket: mat({ color: 0x1a1a1a, metalness: 0.04, roughness: 0.78 }),
-    comb: mat({ color: 0xb8c3b0, metalness: 0.55, roughness: 0.35 }),
+    comb: mat({ color: 0xc9c09a, metalness: 0.52, roughness: 0.34 }),
+    liner: mat({ color: 0xe7eef4, metalness: 0.7, roughness: 0.24 }),
     baffle: mat({ color: 0xa8b3bc, metalness: 0.55, roughness: 0.38 }),
     bolt: mat({ color: 0x3f464d, metalness: 0.45, roughness: 0.4 }),
   };
 
-  const PACK = 0.52;
+  const PACK = 0.5;
   const PACK_H = 0.9;
+  const TOOTH = 0.028;
+  const SLOT = 0.022;
+  const COMB_T = 0.009;
+  const LINER_T = 0.014;
   const COL = 0.1;
   const HEAD_T = 0.082;
   const PANEL_T = 0.056;
   const y0 = HEAD_T;
   const yMid = y0 + PACK_H / 2;
-  const outer = PACK + COL * 2;
+  const packOuter = PACK / 2 + TOOTH;
+  const colInner = packOuter + COMB_T + LINER_T;
+  const outer = (colInner + COL) * 2;
 
   const root = new THREE.Group();
   scene.add(root);
@@ -233,62 +244,112 @@ export async function initBloc3D(host) {
     [-1, 1],
     [-1, -1],
   ];
+
+  const headLinerBot = box(PACK + TOOTH * 1.4, 0.008, PACK + TOOTH * 1.4, mats.liner, "headLiner", 0);
+  headLinerBot.position.y = HEAD_T + 0.004;
+  root.add(headLinerBot);
+  const headLinerTop = box(PACK + TOOTH * 1.4, 0.008, PACK + TOOTH * 1.4, mats.liner, "headLiner", 0);
+  headLinerTop.position.y = y0 + PACK_H - 0.004;
+  root.add(headLinerTop);
+
+  moving.columns = [];
+  moving.liners = [];
   colPos.forEach(([sx, sz]) => {
-    const col = box(COL, PACK_H, COL, mats.frame, "column", 0.008);
-    col.position.set(sx * (PACK / 2 + COL / 2), yMid, sz * (PACK / 2 + COL / 2));
-    root.add(col);
-    const fx = box(COL * 0.92, PACK_H, 0.02, mats.frame, "column", 0.003);
-    fx.position.set(sx * (PACK / 2 + 0.01), yMid, sz * (PACK / 2 + COL / 2));
-    root.add(fx);
-    const fz = box(0.02, PACK_H, COL * 0.92, mats.frame, "column", 0.003);
-    fz.position.set(sx * (PACK / 2 + COL / 2), yMid, sz * (PACK / 2 + 0.01));
-    root.add(fz);
+    const dir = new THREE.Vector3(sx, 0, sz).normalize();
+    const colG = new THREE.Group();
+    colG.position.set(sx * (colInner + COL / 2), yMid, sz * (colInner + COL / 2));
+    colG.userData.home = colG.position.clone();
+    colG.userData.dir = dir;
+    colG.add(box(COL, PACK_H, COL, mats.frame, "column", 0.008));
+    root.add(colG);
+    moving.columns.push(colG);
+
+    const linG = new THREE.Group();
+    linG.position.set(sx * colInner, yMid, sz * colInner);
+    linG.userData.home = linG.position.clone();
+    linG.userData.dir = dir;
+    const legX = box(LINER_T, PACK_H, COL * 0.92, mats.liner, "liner", 0.002);
+    legX.position.set(-sx * (LINER_T / 2), 0, sz * (COL / 2));
+    const legZ = box(COL * 0.92, PACK_H, LINER_T, mats.liner, "liner", 0.002);
+    legZ.position.set(sx * (COL / 2), 0, -sz * (LINER_T / 2));
+    linG.add(legX, legZ);
+    root.add(linG);
+    moving.liners.push(linG);
   });
 
   const packGroup = new THREE.Group();
   packGroup.position.y = yMid;
-  const nPlate = 80;
+  const nPlate = 36;
   const plateT = PACK_H / nPlate;
-  const plates = new THREE.InstancedMesh(new THREE.BoxGeometry(PACK, plateT * 0.82, PACK), mats.ssPlate, nPlate);
-  plates.castShadow = true;
-  plates.userData.part = "pack";
+  const evenGeom = new THREE.BoxGeometry(PACK + TOOTH * 2, plateT * 0.78, PACK - SLOT * 2);
+  const oddGeom = new THREE.BoxGeometry(PACK - SLOT * 2, plateT * 0.78, PACK + TOOTH * 2);
+  const evenN = Math.ceil(nPlate / 2);
+  const oddN = Math.floor(nPlate / 2);
+  const evenPlates = new THREE.InstancedMesh(evenGeom, mats.ssPlate, evenN);
+  const oddPlates = new THREE.InstancedMesh(oddGeom, mats.ssPlate, oddN);
+  evenPlates.castShadow = true;
+  oddPlates.castShadow = true;
+  evenPlates.userData.part = "pack";
+  oddPlates.userData.part = "pack";
   const dummy = new THREE.Object3D();
+  let ie = 0;
+  let io = 0;
   for (let i = 0; i < nPlate; i++) {
     dummy.position.set(0, -PACK_H / 2 + plateT * (i + 0.5), 0);
     dummy.updateMatrix();
-    plates.setMatrixAt(i, dummy.matrix);
-    plates.setColorAt(i, new THREE.Color(i % 2 ? 0xdbe1e6 : 0xb7c0c8));
+    if (i % 2 === 0) {
+      evenPlates.setMatrixAt(ie, dummy.matrix);
+      evenPlates.setColorAt(ie, new THREE.Color(0xdbe1e6));
+      ie += 1;
+    } else {
+      oddPlates.setMatrixAt(io, dummy.matrix);
+      oddPlates.setColorAt(io, new THREE.Color(0xb7c0c8));
+      io += 1;
+    }
   }
-  if (plates.instanceColor) plates.instanceColor.needsUpdate = true;
-  packGroup.add(plates);
+  if (evenPlates.instanceColor) evenPlates.instanceColor.needsUpdate = true;
+  if (oddPlates.instanceColor) oddPlates.instanceColor.needsUpdate = true;
+  packGroup.add(evenPlates, oddPlates);
+
+  const combFingers = new THREE.InstancedMesh(
+    new THREE.BoxGeometry(TOOTH * 1.15, plateT * 0.74, SLOT + TOOTH * 0.35),
+    mats.comb,
+    nPlate * 8,
+  );
+  combFingers.castShadow = true;
+  combFingers.userData.part = "comb";
+  const combDummy = new THREE.Object3D();
+  let ti = 0;
+  const fingerAlong = PACK / 2 + TOOTH * 0.25;
+  const fingerOut = PACK / 2 + TOOTH * 0.72;
+  for (let i = 0; i < nPlate; i++) {
+    const y = -PACK_H / 2 + plateT * (i + 0.5);
+    colPos.forEach(([sx, sz]) => {
+      combDummy.position.set(0, y, 0);
+      combDummy.rotation.set(0, 0, 0);
+      if (i % 2 === 0) {
+        combDummy.position.set(sx * fingerAlong, y, sz * fingerOut);
+        combDummy.rotation.y = 0;
+      } else {
+        combDummy.position.set(sx * fingerOut, y, sz * fingerAlong);
+        combDummy.rotation.y = Math.PI / 2;
+      }
+      combDummy.updateMatrix();
+      combFingers.setMatrixAt(ti++, combDummy.matrix);
+    });
+  }
+  combFingers.count = ti;
+  packGroup.add(combFingers);
+
+  colPos.forEach(([sx, sz]) => {
+    const spineX = box(COMB_T, PACK_H * 0.995, 0.014, mats.comb, "comb", 0);
+    spineX.position.set(sx * (packOuter + COMB_T / 2), 0, sz * (PACK / 2 + TOOTH * 0.15));
+    const spineZ = box(0.014, PACK_H * 0.995, COMB_T, mats.comb, "comb", 0);
+    spineZ.position.set(sx * (PACK / 2 + TOOTH * 0.15), 0, sz * (packOuter + COMB_T / 2));
+    packGroup.add(spineX, spineZ);
+  });
   root.add(packGroup);
   moving.pack = packGroup;
-
-  const toothG = new THREE.BoxGeometry(0.011, 0.011, 0.02);
-  const nTooth = 52;
-  const combs = new THREE.InstancedMesh(toothG, mats.comb, nTooth * 8);
-  combs.userData.part = "comb";
-  combs.castShadow = true;
-  let ti = 0;
-  const combDummy = new THREE.Object3D();
-  colPos.forEach(([sx, sz]) => {
-    for (const axis of ["x", "z"]) {
-      for (let t = 0; t < nTooth; t++) {
-        const y = y0 + (t + 0.5) * (PACK_H / nTooth);
-        combDummy.rotation.set(0, 0, 0);
-        if (axis === "x") {
-          combDummy.position.set(sx * (PACK / 2 + 0.007), y, sz * (PACK / 2 - 0.035));
-        } else {
-          combDummy.rotation.y = Math.PI / 2;
-          combDummy.position.set(sx * (PACK / 2 - 0.035), y, sz * (PACK / 2 + 0.007));
-        }
-        combDummy.updateMatrix();
-        combs.setMatrixAt(ti++, combDummy.matrix);
-      }
-    }
-  });
-  combs.count = ti;
-  root.add(combs);
 
   function makeBaffles(axis) {
     const g = new THREE.Group();
@@ -320,7 +381,7 @@ export async function initBloc3D(host) {
 
   function makePanel(normal, nozzles) {
     const g = new THREE.Group();
-    const w = PACK + COL * 1.62;
+    const w = outer - COL * 0.32;
     const h = PACK_H + HEAD_T * 1.15;
     const body = box(w, h, PANEL_T, mats.panel, "panel", 0.005);
     body.position.z = PANEL_T / 2;
@@ -395,7 +456,7 @@ export async function initBloc3D(host) {
   let cutaway = false;
 
   function applyPose() {
-    const d = explode * 0.48;
+    const d = explode * 0.5;
     moving.panels.forEach((p) => {
       const n = p.userData.normal;
       p.position.copy(p.userData.home).addScaledVector(n, d);
@@ -404,6 +465,12 @@ export async function initBloc3D(host) {
     moving.baffles.forEach((g, i) => {
       const dir = i < 2 ? new THREE.Vector3(0, 0, i === 0 ? 1 : -1) : new THREE.Vector3(i === 2 ? 1 : -1, 0, 0);
       g.position.copy(dir.multiplyScalar(d * 0.38));
+    });
+    moving.columns.forEach((g) => {
+      g.position.copy(g.userData.home).addScaledVector(g.userData.dir, explode * 0.34);
+    });
+    moving.liners.forEach((g) => {
+      g.position.copy(g.userData.home).addScaledVector(g.userData.dir, explode * 0.15);
     });
     const planes = cutaway ? [clipPlane] : [];
     clipPlane.constant = 0.04;
@@ -442,12 +509,23 @@ export async function initBloc3D(host) {
       if (mode === "assembled") {
         explode = 0;
         cutaway = false;
+        camera.position.copy(camHome);
+        controls.target.copy(targetHome);
       } else if (mode === "exploded") {
         explode = 1;
         cutaway = false;
+        camera.position.copy(camHome);
+        controls.target.copy(targetHome);
       } else if (mode === "cutaway") {
         cutaway = true;
-        explode = 0.18;
+        explode = 0.22;
+        camera.position.copy(camHome);
+        controls.target.copy(targetHome);
+      } else if (mode === "corner") {
+        cutaway = false;
+        explode = 0.72;
+        camera.position.set(1.02, 0.7, 0.68);
+        controls.target.set(0.3, yMid, 0.26);
       }
       if (explodeInput) explodeInput.value = String(Math.round(explode * 100));
       applyPose();

@@ -756,8 +756,8 @@
       <section>
         <h2>3D 실기 형상</h2>
         <p>
-          CP50급 용접 plate-block을 실제 기기 비율로 만든 모델입니다. 탄소강 panel·볼트 테두리·WN 플랜지·스테인리스 pack·모서리 comb를 넣었습니다.
-          벤더 CAD가 아니라 학습용 재구성입니다. 드래그로 돌리고, 분해·단면으로 속을 보십시오.
+          CP50급 용접 plate-block을 실제 기기 비율로 만든 모델입니다. 탄소강 panel·볼트 테두리·WN 플랜지·스테인리스 pack·comb 이빨·column liner를 넣었습니다.
+          벤더 CAD가 아니라 학습용 재구성입니다. 드래그로 돌리고, 분해·모서리로 comb와 liner를 보십시오.
         </p>
         <div class="viewer3d">
           <div id="bloc-3d" class="viewer3d-stage"></div>
@@ -765,11 +765,12 @@
             <button type="button" data-bloc="assembled">조립</button>
             <button type="button" data-bloc="exploded">분해</button>
             <button type="button" data-bloc="cutaway">단면</button>
+            <button type="button" data-bloc="corner">모서리</button>
             <label class="viewer3d-range">분해 <input id="bloc-explode" type="range" min="0" max="100" value="0" /></label>
             <span id="bloc-part" class="viewer3d-part">부품을 클릭하십시오</span>
           </div>
         </div>
-        <p class="muted">마우스 드래그 회전 · 휠 확대 · 우클릭 이동. 은색 다발이 pack, 모서리 이빨이 comb, 파란 회색 덮개가 panel입니다.</p>
+        <p class="muted">마우스 드래그 회전 · 휠 확대 · 우클릭 이동. 분해하면 탄소강 column이 벌어지며 판 끝 comb와 column liner가 보입니다. 모서리는 그 접합을 가깝게 봅니다.</p>
       </section>
 
       <section id="axes">
@@ -1034,6 +1035,6 @@
         2017 HEX 교육. 도면·스캔만 있는 파일은 숫자를 넣지 않았습니다.
       </p>
     </footer>
-    <script src="./app.js?v=10"></script>
+    <script src="./app.js?v=13"></script>
   </body>
 </html>
