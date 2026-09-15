@@ -1,5 +1,6 @@
 const tabs = document.querySelectorAll(".tabs button");
 const panels = document.querySelectorAll(".panel");
+let viewerPromise;
 
 function activateTab(id) {
   const button = document.querySelector(`.tabs button[data-tab="${id}"]`);
@@ -16,6 +17,7 @@ tabs.forEach((button) => {
     activateTab(button.dataset.tab);
     if (button.dataset.tab === "anatomy") {
       history.replaceState(null, "", "#anatomy");
+      mountBloc3D();
     } else {
       history.replaceState(null, "", location.pathname);
     }
@@ -42,9 +44,25 @@ const anatomyIds = new Set([
 const hash = location.hash.replace("#", "");
 if (anatomyIds.has(hash)) {
   activateTab("anatomy");
+  mountBloc3D();
   if (hash !== "anatomy") {
     requestAnimationFrame(() => {
       document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  }
+}
+
+function mountBloc3D() {
+  const el = document.getElementById("bloc-3d");
+  if (!el) return;
+  if (!viewerPromise) {
+    viewerPromise = import("./bloc3d.js?v=10")
+      .then((mod) => mod.initBloc3D(el))
+      .catch((err) => {
+        console.error(err);
+        el.textContent = "3D를 불러오지 못했습니다. 네트워크에서 three.js CDN을 허용하는지 확인하십시오.";
+      });
+  } else {
+    viewerPromise.then((api) => api?.resize?.());
   }
 }
