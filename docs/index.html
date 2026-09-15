@@ -11,12 +11,12 @@
       <p class="kicker">Study notes · not a substitute for the standards</p>
       <h1>W-PHEX</h1>
       <p class="lede">
-        API 662 (2002), API 667 (2022), API 810 (2025 / Errata 1)을 welded plate
-        heat exchanger 기준으로 읽고 정리한 노트입니다. 원문 검색·챗봇·API 키는 없습니다.
+        API 662 / 667 / 810에 Compabloc·K°Bloc·LHEBloc 카탈로그, IOM, 발주처 DEP,
+        교육자료를 더해 welded plate HEX 실무 노트로 정리했습니다. 원문 검색·챗봇은 없습니다.
       </p>
       <p class="headline">
         신규 용접형 plate-block은 API 810. 개스킷·세미용접 plate-and-frame은 API 667.
-        API 662:2002는 세 형식을 한 권에 묶은 구판입니다.
+        벤더 숫자는 카탈로그 당시 값이며 코드가 아닙니다.
       </p>
     </header>
 
@@ -25,6 +25,9 @@
       <button data-tab="diff">전체 차이</button>
       <button data-tab="d810">810 설계</button>
       <button data-tab="vs">667 vs 810</button>
+      <button data-tab="vendors">제품 지도</button>
+      <button data-tab="select">형식 선정</button>
+      <button data-tab="ops">설치·운전</button>
       <button data-tab="notes">알아둘 점</button>
     </nav>
 
@@ -376,12 +379,249 @@
         </div>
       </section>
 
+      <section id="vendors" class="panel">
+        <h2>제품 지도 — 같은 810 문법, 다른 용접 학교</h2>
+        <p>
+          현장에서 Compabloc / K°Bloc / GEABloc / LHEBloc이라고 부르는 기기는 모두
+          <strong>용접 plate pack + 4면 removable panel</strong>입니다. API 810이 이 형식을 코드로 받았습니다.
+          판 패턴·column liner·용접 방법·개스킷은 벤더가 다릅니다. 카탈로그 압력·온도는 모델·연도에 따라 바뀌므로 코드 한도가 아닙니다.
+        </p>
+
+        <h3>Bloc 계보</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>제품</th><th>계보</th><th>실무에서 기억할 점</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alfa Laval Compabloc</td>
+                <td>1992년 전후 상용. 한국 프로젝트는 종종 France 제작 + 국내 에이전트 문서</td>
+                <td>소형은 TIG(CP15/20), 대형은 레이저(CPL 등). 패스 안은 교차류, 배플로 전체는 향류. 판 사이 개스킷 없음, panel gasket 4장.</td>
+              </tr>
+              <tr>
+                <td>GEABloc → Kelvion K°Bloc</td>
+                <td>2014–15 GEA HEX 매각 후 Kelvion. 같은 comb/liner 문법</td>
+                <td>판 pack을 예압한 뒤 TIG. Column liner·comb를 두꺼운 한 장으로 두고 overlapping RSEW를 피한다고 주장. Chevron과 double dimple.</td>
+              </tr>
+              <tr>
+                <td>LHEBloc</td>
+                <td>한국 LHE. 2008 자체 판. G-Bloc / C-Bloc은 각각 다른 계보를 라이선스·공급한 자리</td>
+                <td>열팽창으로 column 용접이 깨지는 문제를 원형 lining + 빈 공간, 파형 lining으로 푼다고 특허화. 배플 처짐에 추가 지지.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>카탈로그 운전 창 (참고값)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>항목</th><th>Compabloc (2011 세미나)</th><th>LHEBloc</th><th>K°Bloc 사이즈 예</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>설계온도</td><td>약 −100 ~ 380 °C</td><td>−50 ~ 350 °C</td><td>panel gasket이 먼저 한계 (흑연 camprofile ~350 °C, Gylon ~270 °C)</td></tr>
+              <tr><td>설계압력</td><td>FV ~ 38 barg, 차압도 그 창</td><td>FV ~ 35 bar</td><td>모델·코드 계산. BT20~BT120</td></tr>
+              <tr><td>전열면</td><td>세미나 당시 최대 ~840 m²/기</td><td>0.62 ~ 320 m²/set</td><td>판당 0.061(BT20) ~ 1.72 m²(BT120), 최대 ~500장</td></tr>
+              <tr><td>판 두께</td><td>카탈로그·도면. 810 최소는 0.8 mm</td><td>자체 금형</td><td>0.8 mm (BT20–50), 1.0–1.2 mm (BT75–120)</td></tr>
+              <tr><td>접근온도</td><td>향류로 수 °C까지. 세미나는 5 °C 전후 사례</td><td>close approach를 장점로 내세움</td><td>동일 문법</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Alfa 세미나는 양측 설계압 차이가 최소 2 bar라고 적습니다. 제어·누설시험·운전 안정용 벤더 조건이지 API 810 조항은 아닙니다. datasheet에 남기십시오.</p>
+
+        <h3>구조 — 810을 열어보면</h3>
+        <div class="cards">
+          <article class="card">
+            <h3>습윤부</h3>
+            <p>전열판 + comb/liner + baffle + (옵션) panel/nozzle liner. 보통 SS/합금/Ti. 탄소강 프레임에 공정이 닿지 않게 하는 것이 기본입니다.</p>
+          </article>
+          <article class="card">
+            <h3>프레임</h3>
+            <p>column + top/bottom head + 4 panel. 탄소강 도장이 흔합니다. 노즐은 panel에 붙습니다. 패널 러그는 패널만 들어 올립니다. 본체 인양은 별도 러그.</p>
+          </article>
+          <article class="card">
+            <h3>유로</h3>
+            <p>한 패스는 교차류, 배플로 패스를 쌓아 전체는 향류. 온도교차·응축·회수에 S&amp;T 직렬보다 유리한 이유입니다. 배플이 꺾이면 바이패스 — 810이 청정 ΔP의 2배로 배플을 잡는 것과 같은 문제입니다.</p>
+          </article>
+          <article class="card">
+            <h3>판 패턴</h3>
+            <p>Chevron(고 θ, ΔP 큼, 세정 쉬운 hydrojet). Double dimple / wide gap(저 θ, 고체·섬유, 양측 갭). LHE P&amp;F는 L/H 두 골. 벤더가 “C-type plate”라고 하면 Compabloc 계열 골이지 667 개스킷 판이 아닙니다.</p>
+          </article>
+        </div>
+
+        <h3>용접 학교 — 벤더가 서로를 공격하는 지점</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>이슈</th><th>한 쪽 주장</th><th>설계자가 사양에 쓸 말</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>판–판 용접</td><td>레이저 맞대기 vs 예압 TIG. 열입력·피로·pack 진동</td><td>용접 방법, 예압 여부, NDE, 접근 가능 여부를 810 언어로 요구</td></tr>
+              <tr><td>Column 접합</td><td>3 mm comb/liner 일체 vs 얇은 wing + RSEW 겹침. 틈새부식</td><td>liner 두께, 겹침 용접 금지, 810의 liner 접촉폭·PT</td></tr>
+              <tr><td>열팽창</td><td>LHE: 원형 lining + 빈 공간, 파형 lining으로 용접점 응력 ~25% 감소</td><td>startup ΔT/ramp를 IOM과 같이 걸 것. 특허 문장은 쓰지 말 것</td></tr>
+              <tr><td>주강 head</td><td>GEA/Kelvion: 상대 head가 주강·다공질이라고 비판</td><td>810은 주강 원칙 금지. 그대로 쓰면 됨</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>같은 공장의 다른 용접형 — 810이 아님</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>형식</th><th>LHE 카탈로그 창 (참고)</th><th>코드</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Gasketed / semi-welded / fully welded P&amp;F</td><td>저·중압, 판 교체, 섬유는 시리즈마다 다름</td><td>개스킷·세미용접 → 667. Fully welded in frame → 코드 공백</td></tr>
+              <tr><td>Plate-and-shell</td><td>−50 ~ 500 °C, FV ~ 60 bar, 0.3 ~ 1500 m². 개방형/완전용접</td><td>810 제외 (원통 shell). 압력코드 + 구매 사양</td></tr>
+              <tr><td>Spiral</td><td>−50 ~ 400 °C, ~20 bar, 5 ~ 600 m². 단일 유로 자정</td><td>별도 형식. 고 fouling·섬유·진공 응축</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          LHE 적용표의 취지: 고점도·입자·섬유는 spiral 또는 wide-gap, 고압·고온·엘라스토머 불가은 bloc/plate-shell,
+          잦은 분해는 gasketed P&amp;F. “용접형”이라고 한 장에 묶지 마십시오.
+        </p>
+      </section>
+
+      <section id="select" class="panel">
+        <h2>형식 선정 — S&amp;T Rf를 판형에 넣지 말 것</h2>
+        <p>
+          컴팩트 HEX의 U가 높을수록 같은 fouling resistance가 % 과잉면적을 비정상적으로 키웁니다.
+          Kelvion 예시: U<sub>clean</sub> 2000인 S&amp;T에 Rf 0.0001 m²K/W → 약 20% margin.
+          U<sub>clean</sub> 6000인 bloc에 같은 Rf → 약 60% margin. 유속이 떨어져 오히려 때립니다.
+        </p>
+
+        <h3>언제 bloc(810) / 언제 다른 것</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>조건</th><th>방향</th><th>근거</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>탄소강, 온도교차 없음, S&amp;T 1기면 끝나는 쉬운 duty</td><td>S&amp;T 유지</td><td>Alfa 2011 세미나. CAPEX가 안 뒤집힘</td></tr>
+              <tr><td>S&amp;T 여러 개를 직렬, SS 이상, 응축+온도교차, 액-액 회수</td><td>plate-block</td><td>면적·무게·approach. ADU/VDU 예열, lean/rich amine, debutanizer feed/bottoms</td></tr>
+              <tr><td>한쪽만 위험 유체, 20% 증설, 자주 연다</td><td>667 P&amp;F (세미용접 포함)</td><td>판 교체. 개스킷 T/P 안</td></tr>
+              <tr><td>초청정, 극저온~고온, 수백 bar, 1–3 °C approach</td><td>PCHE</td><td>채널이 작아 더러운 유체 금지. 기계 세정 불가. 스트레이너 필수</td></tr>
+              <tr><td>다류 극저온, 알루미늄, 열지 못함</td><td>Brazed Al plate-fin</td><td>ISO 15547-2 / DEP 31.21.01.34. 810 제외</td></tr>
+              <tr><td>냉각수 없이 대기 방열</td><td>Air-cooled (ACHX)</td><td>API 661 계열. 헤더 fouling이 크면 plug/cover 형식</td></tr>
+              <tr><td>슬러리·장섬유·진공 대용량 응축</td><td>Spiral 또는 plate-shell 검토</td><td>bloc dimple은 짧은 섬유까지. 5 mm 섬유는 LHE표에서 bloc 비권장</td></tr>
+              <tr><td>HTHS, H2, 양측 누설 불허</td><td>810 + 941. P&amp;F 개스킷은 보통 탈락</td><td>코드 탭</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Fouling은 % margin + 벽면전단</h3>
+        <p>
+          Shell DEP 31.22.00.31(관형)도 Rf 표에서 % fouling margin으로 옮겼고,
+          P&amp;F DEP 31.21.01.32(2010)는 ISO 15547-1 위에 유체별 % + 최소 shear + 청정 ΔP + ΔP margin을 얹습니다.
+          API 667/810 Annex와 같은 철학입니다. 발주처 DEP가 있으면 그 표가 우선입니다.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>유체 (DEP 2010 P&amp;F 예시)</th><th>면적 margin</th><th>최소 shear</th><th>ΔP margin</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Demin / steam</td><td>5%</td><td>—</td><td>10%</td></tr>
+              <tr><td>CTW, clear seawater, clean process, lube</td><td>10–15%</td><td>50 Pa</td><td>20–25%</td></tr>
+              <tr><td>Dirty seawater, crude, dirty process, amine/sulfinol</td><td>15–20%</td><td>75 Pa</td><td>25–30%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="select-list">
+          <li>양쪽이 모두 15%를 넘으면 overall 25% (DEP·810 권고와 같음). margin은 U<sub>clean</sub>에 걸고 면적에 이중으로 걸지 않습니다.</li>
+          <li>허용 ΔP는 청정 기준. 펌프·배관 수력은 fouled ΔP.</li>
+          <li>포트 ΔP는 전체의 20%를 넘지 말라는 owner 조항이 있습니다. P&amp;F에서 포트를 작게 쓰면 여기서 깨집니다.</li>
+          <li>K°Bloc HTRI CTW 사례: 0.45 m/s에서도 벽면전단 ~60 Pa, S&amp;T 1.8 m/s ~15 Pa. 유속만 비교하지 마십시오.</li>
+          <li>왁싱은 margin 표 밖. 발주처와 별도 합의 (DEP 주석, Kelvion도 정지하 원유는 단기만 허용).</li>
+        </ul>
+
+        <h3>열계산에서 자주 엇갈리는 것</h3>
+        <ul class="select-list">
+          <li>Bloc은 패스 단위 교차류입니다. HTRI/벤더 프로그램 없이 S&amp;T F-factor만 넣으면 approach를 과대평가합니다.</li>
+          <li>NTU가 큰 회수는 향류 패스를 쌓습니다. Hisaka/LHE: 출구온도가 안 정해지면 NTU-ε, 정해지면 LMTD.</li>
+          <li>High θ (H, chevron 급) = 높은 U, 높은 ΔP. Low θ (L, dimple/wide) = 반대. 한 기기 안에서 thermal length를 맞춥니다.</li>
+          <li>LHE: 성형 깊이가 클수록 같은 ΔP에서 벽면전단이 커집니다. 810 dimple 5 mm 갭은 고체용이지 고θ가 아닙니다.</li>
+        </ul>
+
+        <h3>Owner 사양이 코드를 조이는 예 (Shell DEP 31.21.01.32)</h3>
+        <ul class="select-list">
+          <li>형식(개스킷/세미/완전용접)은 Principal이 고릅니다. 제작자에게 맡기지 않습니다.</li>
+          <li>Very toxic는 fully welded P&amp;F. Rich amine/sulfinol은 세미용접 가능, rich는 용접 pair 안, 포트 개스킷은 TFE-P 계열.</li>
+          <li>Rich/lean solvent: 50% duty 프레임 2기 + 미설치 spare pack + 장래 spare 프레임 plot.</li>
+          <li>각 스트림 입구 strainer. 추가 ΔP를 수력에 넣음.</li>
+          <li>다단(multi-pass)은 Principal 승인 없이 금지.</li>
+          <li>개스킷 판 최소 0.6 mm (667의 0.5 mm보다 큼). Tie bolt ≥19 mm. 노즐은 고정커버, 나사 금지, 최소 DN 40. ERW 노즐넥 금지.</li>
+          <li>이것은 2010 ISO 15547-1 overlay입니다. 신규 P&amp;F는 667 + 해당 발주처 DEP를 같이 읽으십시오.</li>
+        </ul>
+      </section>
+
+      <section id="ops" class="panel">
+        <h2>설치·운전·세정 — IOM에서 실제로 깨지는 것</h2>
+        <p>
+          코드는 기기를 맞게 사고, IOM은 기기를 안 깨게 돌립니다. 아래는 Compabloc 영문 IOM,
+          Kelvion K°Bloc 운전지침, Pertamina Balikpapan RDMP(IKAN) 개정, GEA Ecoflex 개스킷 P&amp;F 매뉴얼의 공통항입니다.
+        </p>
+
+        <h3>배치</h3>
+        <ul class="select-list">
+          <li>Panel 4면을 열 공간을 outline에 넣습니다. 밸브는 패널을 막지 않는 spool 뒤. 810 Scope(기계 세정)와 정면 충돌하는 지점입니다.</li>
+          <li>패널 전용 인양 러그로 본체를 들지 않습니다. Compabloc IOM이 명시합니다.</li>
+          <li>누설 시 오염이 문제면 containment / drip. P&amp;F는 shroud·tray가 코드 옵션, bloc은 spray 전제가 다릅니다.</li>
+          <li>패널 볼트 토크는 단열 전에, 그리고 수송·장기 보관 후에 다시. 2–3개월 정지 후 재기동 전에도.</li>
+        </ul>
+
+        <h3>기동·정지 — 벤더가 숫자를 찍어 둔 곳</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>항목</th><th>Compabloc IOM</th><th>K°Bloc / Balikpapan 개정</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>충액</td><td>일반적으로 냉측 먼저. 점진적</td><td>양측 10% 유량으로 충액·벤트. 빈 기기에 펌프 금지. 가능하면 하부 노즐로 채움</td></tr>
+              <tr><td>승온</td><td>통상 60 °C/h 초과 금지</td><td>10분마다 유량 10%p. 금속 승온 &lt; 5 K/min. 초과하면 유량을 줄임</td></tr>
+              <tr><td>입구 ΔT</td><td>설계 창 안</td><td>Thot,in − Tcold,in &lt; 200 K</td></tr>
+              <tr><td>압력</td><td>수격 금지. 설계압 초과 금지</td><td>≤ 0.5 bar/min. 밸브 급개폐·진동 금지</td></tr>
+              <tr><td>정지</td><td>보통 열측 먼저 닫음. 급냉보다 자연냉각</td><td>설계 P/T를 운전 한도로 본다. 장기 정지는 배수</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          두 IOM의 승온 한도는 다릅니다. 사양에는 “해당 제작사 IOM 또는 더 엄격한 쪽”을 쓰십시오.
+          LHE가 column 용접 파손을 열팽창 문제로 보는 것과 같은 물리입니다.
+        </p>
+
+        <h3>세정</h3>
+        <ul class="select-list">
+          <li>화학세정(CIP)이 먼저입니다. 열지 않고 ΔP가 설정값에 닿으면 돌립니다. 미루면 유로가 막혀 회복이 안 됩니다.</li>
+          <li><strong>염산은 쓰지 않습니다</strong> (Compabloc IOM). 세제·재질·때 양립은 제작사 확인.</li>
+          <li>화학 후 철저히 수세·배수. 기계 세정은 패널을 열고 hydro-blast / cleaning bar를 약 45°로.</li>
+          <li>Chevron은 jetting에 유리, dimple/wide-gap은 고체용. 810은 기계 세정 스트림을 구매자가 지정합니다.</li>
+          <li>원유 정체: Kelvion은 수시간 단기는 왁스·부식 모두 크게 보지 않음. 중장기 정지는 세정·플러시·배수.</li>
+        </ul>
+
+        <h3>개스킷 P&amp;F (Ecoflex류) — bloc과 다른 실패</h3>
+        <ul class="select-list">
+          <li>개스킷은 소모품입니다. 설계 T/P를 넘기면 즉시 수명 종료. 접착식/클립식 혼재를 사양에 명시.</li>
+          <li>기동 전 타이볼트·판 정렬 확인. 프레임 치수를 틀리면 누설 또는 판 변형.</li>
+          <li>Bloc의 panel gasket(흑연/PTFE/camprofile)과 P&amp;F 탄성 개스킷을 같은 예비품 코드로 묶지 마십시오.</li>
+        </ul>
+
+        <h3>프로젝트에서 본 것</h3>
+        <ul class="select-list">
+          <li>Pertamina RU V Balikpapan RDMP: Kelvion K°Bloc IOM을 프로젝트 개정으로 승온·ΔT·정체 원유 규칙을 못 박음 (IKAN, as-built 2022).</li>
+          <li>국내 평가(P2-4PE, 2011): 용접 plate HEX 제작사가 적고, 본 제작·문서는 해외, 국내법만 로컬. 기술 질의 대응은 강점, 문서 경로는 단점.</li>
+          <li>도면만 있는 패키지(DHP RPLC 등)는 운전 규칙을 주지 않습니다. IOM이 계약 문서인지 확인하십시오.</li>
+        </ul>
+      </section>
+
       <section id="notes" class="panel">
         <h2>알아두면 좋은 것들</h2>
 
         <h3>사양·발주</h3>
         <ul class="select-list">
-          <li>장비 스케치를 보고 코드를 겁니다. Compabloc류에 667을 걸거나, 개스킷 P&amp;F에 810을 걸면 Scope 위반입니다.</li>
+          <li>장비 스케치를 보고 코드를 겁니다. Compabloc류에 667을 걸거나, 개스킷 P&amp;F에 810을 걸면 Scope 위반입니다. 제품 지도 탭의 계보를 먼저 보십시오.</li>
           <li>662:2002는 예비품·기존 ITT 호환용입니다. 신규는 667 또는 810.</li>
           <li>API는 압력용기 코드가 아닙니다. ASME VIII / EN 13445를 따로 지정하고, API는 그 위의 supplemental입니다.</li>
           <li>810 직렬 unit은 블록마다 설계온도·재질을 다르게 쓰지 않는 것이 기본입니다. 핫엔드만 Cr-Mo, 콜드엔드만 CS로 나누려면 구매자가 명시해야 합니다.</li>
@@ -390,8 +630,8 @@
 
         <h3>열설계·운전</h3>
         <ul class="select-list">
-          <li>S&amp;T fouling factor를 그대로 넣으면 과설계·저유속이 됩니다. % margin과 wall shear를 쓰십시오.</li>
-          <li>P&amp;F는 포트 압력강하가 전체의 상당 부분을 먹습니다. 667은 포트 ΔP와 유속을 제안서에 넣으라고 합니다.</li>
+          <li>S&amp;T fouling factor를 그대로 넣으면 과설계·저유속이 됩니다. % margin과 wall shear를 쓰십시오. 형식 선정 탭.</li>
+          <li>P&amp;F는 포트 압력강하가 전체의 상당 부분을 먹습니다. 667은 포트 ΔP와 유속을 제안서에 넣으라고 합니다. Owner DEP는 포트 ΔP ≤ 20%를 자주 겁니다.</li>
           <li>Chevron 각 정의가 vendor마다 다릅니다. 667/810은 “흐름 수직선 기준”입니다. HTRI/제작사 각도와 혼동하지 마십시오.</li>
           <li>입자 크기가 gap의 50%를 넘으면 strainer가 필요합니다 (662 Annex 권고, 이후 코드도 같은 취지).</li>
           <li>다단 667은 drain hole이 있어도 잔액이 남습니다. 유해 유체면 플러시 절차를 사양에 넣으십시오.</li>
@@ -402,12 +642,19 @@
           <li>Loose liner는 sour 면제 티켓이 아닙니다. 810 Annex는 모재에도 sour 요구를 적용하라고 합니다.</li>
           <li>HTHS에서 설계온도 ≠ 재료선정 온도일 수 있습니다. 금속 온도가 유체 설계온도보다 낮다고 주장하려면 계측·IOW가 필요합니다.</li>
           <li>810은 주강을 원칙 금지합니다. 노즐·커버에 주조품이 들어오면 막으십시오.</li>
-          <li>판이 얇아서 부식여유를 못 줍니다. 재질을 한 단계 올리는 것이 CA 3 mm보다 맞습니다.</li>
+          <li>판이 얇아서 부식여유를 못 줍니다. 재질을 한 단계 올리는 것이 CA 3 mm보다 맞습니다. LHE 예: 50 °C에서 합금에 따라 Cl⁻ 수십~수천 ppm, Ti 해수는 ~130 °C — 카탈로그이지 코드가 아닙니다.</li>
+        </ul>
+
+        <h3>인접 형식</h3>
+        <ul class="select-list">
+          <li>PCHE는 청정·고압·근접온도용입니다. 더러운 유체에 넣으면 채널이 막히고 열 수 없습니다.</li>
+          <li>Brazed aluminium plate-fin은 극저온 다류. 현장 기계세정이 안 됩니다.</li>
+          <li>ACHX는 냉각수가 없을 때. 공정측 헤더 fouling이 크면 plug형 헤더를 검토합니다.</li>
         </ul>
 
         <h3>제작·검사에서 자주 빠지는 것</h3>
         <ul class="select-list">
-          <li>810에서 수압 후 panel을 다시 열면 개스킷을 갈고 100–170 kPa soap 공압이 필수입니다. 현장 설치 후 재조립에도 해당될 수 있습니다.</li>
+          <li>810에서 수압 후 panel을 다시 열면 개스킷을 갈고 100–170 kPa soap 공압이 필수입니다. 현장 설치 후 재조립에도 해당될 수 있습니다. 기동 전 토크는 설치·운전 탭.</li>
           <li>세미용접 667의 용접 챔버는 수압 뒤 건조가 어렵습니다. 공압 대체를 사전에 합의하지 않으면 납기가 막힙니다.</li>
           <li>시험수 Cl⁻는 662가 30 ppm, 667/810은 50 ppm입니다. 구 사양을 그대로 복사하면 불일치입니다.</li>
           <li>수소 서비스에서 liner가 만든 밀폐 공간은 6 mm 벤트가 필요합니다. 빼면 운전 중 압력 축적·균열 위험이 있습니다.</li>
@@ -430,8 +677,14 @@
 
     <footer>
       <p>
-        학습 노트이며 규격 원문을 대체하지 않습니다. 발주 전 API 662 2nd Ed. (2002),
-        API 667 1st Ed. (2022), API 810 1st Ed. + Errata 1 (2025/2026)으로 확인하십시오.
+        학습 노트이며 규격·카탈로그·IOM 원문을 대체하지 않습니다. 발주 전 API 662/667/810과
+        해당 제작사 IOM, 발주처 DEP를 확인하십시오. 벤더 압력·온도·면적은 모델 세대에 따라 바뀝니다.
+      </p>
+      <p>
+        추가로 읽은 자료: Alfa Laval Compabloc 세미나·IOM·소개, Kelvion K°Bloc / GEABloc 비교·용접,
+        LHE PHE·welded·이론, Hisaka 교육, GEA Ecoflex IOM, IKAN K°Bloc IOM (Balikpapan RDMP),
+        Shell DEP 31.21.01.32 / 31.21.01.11 / 31.21.01.30 / 31.21.01.33 / 31.21.01.34 / 20.21.00.31 / 31.21.70.31,
+        2017 HEX 교육. 도면·스캔만 있는 파일은 숫자를 넣지 않았습니다.
       </p>
     </footer>
     <script src="./app.js"></script>

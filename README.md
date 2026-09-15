@@ -12,11 +12,15 @@ python3 -m http.server 8000 --directory docs
 
 ## Render
 
-Dashboard settings that match this repo:
+Do **not** copy `docs/` into `build/`. Render often runs the build from a subdirectory, so that command fails with `cannot stat 'docs/.'`.
 
-- **Build Command:** `mkdir -p build && cp -R docs/. build/`
-- **Publish Directory:** `build`
+Set these three fields and save:
 
-The first deploy failed because the dashboard had an empty build command and looked for `build/`, which did not exist yet. `build/` is now in git as a copy of `docs/`, so an empty build command still works. If you change `docs/`, either run the copy command or keep the Build Command above so Render recreates `build/`.
+- **Root Directory:** empty (clear it if it is `docs` or `build`)
+- **Build Command:** `true`
+- **Publish Directory:** `docs`
 
-GitHub Pages serves `docs/` from `main`: https://ardor427.github.io/w-phex/
+If Root Directory is already `docs` and you want to leave it: Build Command `true`, Publish Directory `.`
+
+Live: https://w-phex.onrender.com  
+GitHub Pages: https://ardor427.github.io/w-phex/

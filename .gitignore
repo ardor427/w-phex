@@ -11,3 +11,4 @@ app/
 ingest.py
 requirements.txt
 .env.example
+_extract/

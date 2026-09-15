@@ -57,6 +57,10 @@ footer p {
   margin: 0;
 }
 
+footer p {
+  margin: 0 0 8px;
+}
+
 .headline {
   margin: 8px 0 0;
   font-size: 18px;
