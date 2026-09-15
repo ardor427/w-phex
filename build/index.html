@@ -29,7 +29,7 @@
       <button data-tab="select">형식 선정</button>
       <button data-tab="ops">설치·운전</button>
       <button data-tab="notes">알아둘 점</button>
-      <a href="./structure.html">구조</a>
+      <button data-tab="anatomy">구조</button>
     </nav>
 
     <main>
@@ -385,7 +385,7 @@
         <p>
           현장에서 Compabloc / K°Bloc / GEABloc / LHEBloc이라고 부르는 기기는 모두
           <strong>용접 plate pack + 4면 removable panel</strong>입니다. API 810이 이 형식을 코드로 받았습니다.
-          부품 이름과 하중 경로는 <a href="./structure.html">구조 페이지</a>에서 분해합니다.
+          부품 이름과 하중 경로는 구조 탭에서 분해합니다.
           판 패턴·column liner·용접 방법·개스킷은 벤더가 다릅니다. 카탈로그 압력·온도는 모델·연도에 따라 바뀌므로 코드 한도가 아닙니다.
         </p>
 
@@ -674,6 +674,403 @@
           <li>667 pair 용접은 일부 압력코드에서 압력유지 용접으로 보지 않을 수 있습니다. Annex는 그래도 코드 자격으로 시공하라고 합니다.</li>
           <li>810의 판 용접은 pack 누설 경로 자체이므로 압력코드 자격·NDE가 기본입니다. 같은 “판 용접”이어도 법적 지위가 다릅니다.</li>
         </ul>
+      </section>
+      <section id="anatomy" class="panel">
+        <h2>구조 — welded plate-block을 분해해서 보기</h2>
+        <p>
+          부품 이름은 벤더마다 다릅니다. 같은 물건을 Alfa는 girder, Kelvion은 column,
+          도면 불어는 longeron이라고 부릅니다. 유체와 유체 사이는 판 용접, 유체와 대기 사이는 panel gasket 네 장입니다.
+        </p>
+        <p class="toc">
+      <a href="#outside">밖에서 안</a>
+      <a href="#names">이름표</a>
+      <a href="#axes">두 회로</a>
+      <a href="#plate">전열판</a>
+      <a href="#pack">Pack 용접</a>
+      <a href="#column">Column / girder</a>
+      <a href="#comb">Comb / liner / wing</a>
+      <a href="#head">Head</a>
+      <a href="#panel">Panel</a>
+      <a href="#baffle">Baffle</a>
+      <a href="#nozzle">노즐·벤트</a>
+      <a href="#loads">하중 경로</a>
+      <a href="#open">열었을 때</a>
+    </p>
+        <section>
+        <h2>이 기계가 한 문장으로 뭔가</h2>
+        <p>
+          정사각형(또는 직사각형) 전열판을 수백 장 겹쳐, <strong>한 장은 가로 두 변, 다음 장은 세로 두 변</strong>을
+          용접합니다. 그러면 판 사이에 서로 통하지 않는 두 개의 챔버가 생깁니다.
+          그 용접 다발을 네 모서리 column과 위·아래 head로 감싸고, 네 면에 노즐 달린 panel을 볼트로 닫습니다.
+          판과 판 사이에는 개스킷이 없습니다. 개스킷은 panel 둘레에만 있습니다.
+        </p>
+        <p>
+          Plate-and-frame(667)은 타이볼트가 개스킷 판다발을 눌러 압력을 담습니다.
+          이 형식(810)은 용접이 유체 간 경계를 만들고, 볼트는 용기 덮개(panel)만 조입니다.
+        </p>
+      </section>
+
+      <section id="outside">
+        <h2>밖에서 안으로 — 분해 순서</h2>
+        <ol class="outside-in">
+          <li><strong>Support / foot.</strong> 바닥 네 귀. 수평 기기면 별도의 saddle. 인양은 head 러그. Panel 러그는 panel만.</li>
+          <li><strong>Four panels.</strong> 탄소강 덮개. 노즐, 벤트/드레인, 이름판이 여기 붙습니다. 안쪽은 도장 또는 합금 liner.</li>
+          <li><strong>Four panel gaskets.</strong> 기기 전체에서 공정 개스킷은 사실상 이 네 장입니다.</li>
+          <li><strong>Baffle cage.</strong> 열린 면에서 보이는 가로막. 패스 수를 만듭니다. 빼도 pack은 남습니다.</li>
+          <li><strong>Plate pack.</strong> 전열의 전부. 열 수 없습니다. 채널이 네 면으로 열려 있습니다.</li>
+          <li><strong>Comb / column liner / wings.</strong> Pack 모서리를 column에 밀봉·지지하는 이빨 또는 접힌 날개.</li>
+          <li><strong>Four columns (girders).</strong> 수직 네 기둥. 볼트 하중과 압력을 받습니다.</li>
+          <li><strong>Top and bottom heads.</strong> 위·아래 두꺼운 판. End plate 및 (Alfa) PTFE sheet와 만납니다.</li>
+        </ol>
+      </section>
+
+      <section id="names">
+        <h2>이름표 — 같은 부품, 다른 단어</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>이 페이지</th><th>Alfa Laval Compabloc</th><th>Kelvion K°Bloc / GEABloc</th><th>LHEBloc / 도면</th><th>API 810이 가리키는 것</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Plate pack</td><td>platepack, cœur d'échange</td><td>plate pack</td><td>heat transfer plate pack</td><td>welded plate pack (판+liner의 용접 조립체)</td></tr>
+              <tr><td>Column</td><td>girder, longeron</td><td>column</td><td>column, longeron</td><td>column</td></tr>
+              <tr><td>Comb / liner</td><td>girder lining, languette, wing에 해당하는 모서리</td><td>comb liner + column liner</td><td>column lining, screen lining</td><td>column liner</td></tr>
+              <tr><td>Head</td><td>upper / lower head, fond</td><td>top / bottom head</td><td>machined head, fond usiné</td><td>fixed head</td></tr>
+              <tr><td>Panel</td><td>panel</td><td>panel</td><td>panel</td><td>removable panel</td></tr>
+              <tr><td>Baffle</td><td>baffle, chicane, stamped / reinforced</td><td>baffle plate + bracket</td><td>stamped baffle N passes</td><td>baffle (cage에 일체, panel·pack에 밀봉)</td></tr>
+              <tr><td>Panel gasket</td><td>gasket (4 only)</td><td>gasket</td><td>panel gasket</td><td>panel gasket</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted">발주 사양에 벤더 은어만 쓰면 검수자가 column liner와 panel liner를 헷갈립니다. 810 이름과 벤더 이름을 나란히 쓰십시오.</p>
+      </section>
+
+      <section>
+        <h2>한 눈에 보는 골격</h2>
+        <figure class="schema">
+          <svg viewBox="0 0 920 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Welded plate-block exploded schematic">
+            <style>
+              .lbl { font: 12px Arial, Helvetica, sans-serif; fill: #9a927f; }
+              .t { font: 13px Arial, Helvetica, sans-serif; fill: #efe8dc; }
+              .dim { fill: none; stroke: #c4a35a; stroke-width: 1.4; }
+              .steel { fill: #2a3340; stroke: #7ea0b8; stroke-width: 1.2; }
+              .pack { fill: #243044; stroke: #c4a35a; stroke-width: 1.2; }
+              .hot { fill: #5a3a32; stroke: #c47a5a; }
+              .cold { fill: #2a3d48; stroke: #7ea0b8; }
+              .comb { fill: #3d4a3a; stroke: #8fbf8f; stroke-width: 1.2; }
+            </style>
+            <text x="20" y="28" class="t">위에서 본 단면 — 네 column이 pack을 물고, 네 panel이 회로를 닫는다</text>
+
+            <!-- columns -->
+            <rect class="steel" x="210" y="70" width="36" height="280" />
+            <rect class="steel" x="574" y="70" width="36" height="280" />
+            <rect class="steel" x="210" y="70" width="400" height="28" />
+            <rect class="steel" x="210" y="322" width="400" height="28" />
+            <text x="140" y="90" class="lbl">top head</text>
+            <text x="125" y="345" class="lbl">bottom head</text>
+            <text x="168" y="220" class="lbl">column</text>
+            <text x="618" y="220" class="lbl">column</text>
+
+            <!-- pack -->
+            <rect class="pack" x="268" y="118" width="284" height="184" />
+            <g stroke="#c4a35a" stroke-width="0.7" opacity="0.7">
+              <path d="M280 130 l260 0" />
+              <path d="M280 148 l260 0" />
+              <path d="M280 166 l260 0" />
+              <path d="M280 184 l260 0" />
+              <path d="M280 202 l260 0" />
+              <path d="M280 220 l260 0" />
+              <path d="M280 238 l260 0" />
+              <path d="M280 256 l260 0" />
+              <path d="M280 274 l260 0" />
+            </g>
+            <text x="355" y="215" class="t">plate pack</text>
+
+            <!-- combs -->
+            <rect class="comb" x="248" y="118" width="18" height="184" />
+            <rect class="comb" x="554" y="118" width="18" height="184" />
+            <text x="168" y="160" class="lbl">comb</text>
+            <text x="168" y="176" class="lbl">/ liner</text>
+
+            <!-- baffles on A and B faces -->
+            <rect class="hot" x="280" y="140" width="260" height="8" />
+            <rect class="hot" x="280" y="188" width="260" height="8" />
+            <rect class="hot" x="280" y="236" width="260" height="8" />
+            <text x="330" y="136" class="lbl">baffle (회로 A, 이 면)</text>
+
+            <!-- panels left right -->
+            <rect class="steel" x="70" y="100" width="70" height="220" />
+            <circle cx="105" cy="150" r="16" fill="#1b2028" stroke="#c4a35a" />
+            <circle cx="105" cy="270" r="16" fill="#1b2028" stroke="#c4a35a" />
+            <text x="78" y="92" class="lbl">panel B</text>
+            <text x="86" y="154" class="lbl">N</text>
+            <text x="86" y="274" class="lbl">N</text>
+
+            <rect class="steel" x="680" y="100" width="70" height="220" />
+            <circle cx="715" cy="150" r="16" fill="#1b2028" stroke="#7ea0b8" />
+            <circle cx="715" cy="270" r="16" fill="#1b2028" stroke="#7ea0b8" />
+            <text x="688" y="92" class="lbl">panel A</text>
+
+            <path d="M140 210 H248" stroke="#8fbf8f" stroke-dasharray="4 3" />
+            <path d="M572 210 H680" stroke="#8fbf8f" stroke-dasharray="4 3" />
+            <text x="760" y="200" class="lbl">panel gasket</text>
+            <text x="760" y="216" class="lbl">이 면에만</text>
+
+            <text x="20" y="430" class="lbl">회로 A: 마주 보는 두 panel (앞·뒤). 판의 가로 변 용접이 A 채널을 만든다.</text>
+            <text x="20" y="450" class="lbl">회로 B: 나머지 두 panel (좌·우). 다음 판의 세로 변 용접이 B 채널을 만든다. 두 회로는 pack 안에서 만나지 않는다.</text>
+            <text x="20" y="478" class="lbl">노즐 하중은 panel → 볼트 → column/head로 간다. Pack 용접은 유체 간 경계만 담당한다.</text>
+            <text x="20" y="506" class="caption">학습용 모식도. 제작사 분해도와 축·비율이 다릅니다.</text>
+          </svg>
+        </figure>
+      </section>
+
+      <section id="axes">
+        <h2>좌표계 — 네 면, 두 유체, Aa·Ab·Ba·Bb</h2>
+        <p>
+          Pack을 큐브로 보면 네 옆면이 모두 열려 있습니다. 용접이 면을 번갈아 막기 때문입니다.
+          Compabloc 블록 조립도에서는 채널을 <strong>Aa / Ab / Ba / Bb</strong>로 표시합니다.
+        </p>
+        <ul class="select-list">
+          <li><strong>첫 글자</strong> A 또는 B = 어느 공정측 유체인가. 인접 채널은 반드시 다른 유체입니다.</li>
+          <li><strong>둘째 글자</strong> a 또는 b = 그 유체가 나가는 두 반대면. A는 앞·뒤, B는 좌·우처럼 직교합니다.</li>
+          <li>한 패스 안에서 A는 B의 채널을 <em>가로질러</em> 흐릅니다 (교차류). 배플이 면을 가로막으면 유체가 위 또는 아래로 다음 패스에 들어가, 기기 전체는 향류에 가까워집니다.</li>
+          <li>그래서 노즐은 “A 입구 panel 아래, A 출구 panel 위”처럼 같은 회로의 반대면·반대 높이에 붙는 경우가 많습니다. 다패스면 입·출구가 같은 panel에 오기도 합니다.</li>
+        </ul>
+        <p>
+          코너 용접(도면의 weld b, 판팩 용접 a / a')이 두 회로가 모서리에서 섞이지 않게 막습니다.
+          여기가 새면 교차오염입니다. Panel gasket이 새면 외부 누설입니다. 실패 모드가 다릅니다.
+        </p>
+      </section>
+
+      <section id="plate">
+        <h2>전열판 한 장</h2>
+        <p>
+          한 장은 정사각에 가깝고, 프레스로 골을 넣습니다. 810 최소 공칭 두께는 press 전 0.8 mm.
+          부식여유는 판에 더하지 않습니다. Kelvion 카탈로그 예: BT20–50은 0.8 mm, BT75는 1.0 mm, BT120은 1.0–1.2 mm.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>특징</th><th>하는 일</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Chevron 골</td><td>고 θ. 난류·ΔP·벽면전단이 큼. Hydro-blast로 닦기 쉬움. 성형 깊이 예 5 mm.</td></tr>
+              <tr><td>Double dimple / wide gap</td><td>저 θ. 양측 클리어 갭(예 5 mm)으로 고체·짧은 섬유. ΔP 작음.</td></tr>
+              <tr><td>모서리</td><td>용접 및 comb 이빨이 맞물리는 자리. 접어 wing을 만드는 학교와, 자르고 comb를 대는 학교가 갈립니다.</td></tr>
+              <tr><td>접촉점</td><td>골이 맞닿는 금속 접촉이 판을 압력에서 지탱합니다. 예압이 부족하면 운전 중 판이 떠서 피로합니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          판 패턴이 “C-type”이면 Compabloc 계열 골이지, 667 개스킷 판의 C 모델이 아닙니다.
+          성형 후 전 판을 vacuum 또는 PT 하는 것이 810의 출발점입니다. 개스킷 홈이 없으므로 기밀은 오직 용접입니다.
+        </p>
+      </section>
+
+      <section id="pack">
+        <h2>Plate pack — 두 챔버를 만드는 용접</h2>
+        <div class="note">
+          <p>
+            <strong>한 장 걸러 용접 방향이 90° 돕니다.</strong>
+            홀수 번째 판은 긴 변 두 곳을 이웃과 용접하고, 짝수 번째 판은 짧은 변 두 곳을 용접합니다.
+            Kelvion 표현: 각 판을 두 길이방향 변과 코너에서 용접해 압력에 견디는 분리 챔버 두 개를 만든다.
+          </p>
+        </div>
+        <ul class="select-list">
+          <li><strong>Cassette / pair.</strong> 두 장을 먼저 용접한 뒤 카세트를 쌓는 제작도 있습니다. 그 다음 카세트 사이를 다시 용접해 두 번째 회로를 닫습니다.</li>
+          <li><strong>1차 용접 vs 2차 용접.</strong> 한쪽 회로를 닫은 뒤 pack을 압축(pre-tension)하고 반대 회로를 용접하는 학교가 있습니다. Kelvion은 이 예압이 금속 접촉을 유지해 진동·피로를 줄인다고 합니다. 레이저 맞대기만 하고 예압을 못 하면 pack이 아코디언처럼 움직인다는 것이 상대를 공격하는 논리입니다.</li>
+          <li><strong>아코디언.</strong> Compabloc IOM: 양 회로를 동시에 비우거나 극단적으로 걸면 pack이 아코디언처럼 숨 쉬며 피로합니다. 차압 설계를 금지하는 810과 같은 물리입니다. 한쪽만 설계압, 반대는 대기일 수 있습니다.</li>
+          <li><strong>NDE.</strong> 판–판은 PT 또는 bubble. Pack의 모든 용접은 나중에 접근 가능해야 합니다. 채널을 플러그로 막아 버리는 수리는 사전 승인.</li>
+          <li><strong>용접 방법.</strong> 소형 Compabloc CP15/20은 TIG, 대형 CPL/CPK/CPX는 레이저. Kelvion은 판–판 자동 TIG + 예압. GEA 비교자료는 자사를 lap(여유 살 있음), 상대를 butt(여유 살 없음)로 그리기도 합니다. 사양에는 방법보다 예압·겹침 여부·NDE·접근성을 적으십시오.</li>
+        </ul>
+        <p>
+          Pack 자체는 압력용기의 “코어”이지 아직 완전한 외압 경계가 아닙니다.
+          네 면이 열려 있으므로, 그 면을 닫는 것이 panel이고, 모서리를 닫는 것이 column+comb입니다.
+        </p>
+      </section>
+
+      <section id="column">
+        <h2>Column / girder — 네 모서리 기둥</h2>
+        <p>
+          Pack의 네 세로 모서리에 붙는 두꺼운 부재입니다. 겉에서 보면 기기의 네 귀퉁이입니다.
+          Panel 볼트가 여기(그리고 head)에 들어갑니다. 타이볼트 프레임이 없는 이유입니다.
+        </p>
+        <ul class="select-list">
+          <li><strong>역할.</strong> (1) pack을 길이 방향으로 묶는다. (2) panel 볼트 하중을 받는다. (3) 노즐이 panel에 가하는 힘·모멘트를 head와 나눠 가진다. (4) liner를 통해 공정 유체와 탄소강 골조를 가른다.</li>
+          <li><strong>재질.</strong> 골조 column/head/panel은 탄소강 도장이 흔하고, 유체에 닿는 면만 합금 liner. 전부 합금으로 깎은 기기도 있습니다. CPX50 150장 실기기 예: column·head가 SA-240 316L 통짜, column 공칭 두께 90 mm / 가공 후 79.5 mm, 길이 약 1.02 m, head 공칭 80 mm. 0.8 mm 판 옆에 80–90 mm 기둥이 서는 것이 이 형식의 스케일입니다.</li>
+          <li><strong>가공.</strong> Pack 접촉면은 평탄·직진이 생명입니다. Comb가 들어갈 홈, panel gasket이 앉는 자리, 볼트 피스가 여기 깎입니다. 810은 gasket면 평탄도·Ra·PWHT 후 최종 가공을 말합니다.</li>
+          <li><strong>Alfa 분해 시 주의.</strong> Panel을 풀 때 먼저 girder 쪽 너트를 풀어 girder가 휘지 않게 합니다. Column은 “그냥 기둥”이 아니라 볼트 플랜지 역할을 겸합니다.</li>
+          <li><strong>주강.</strong> 810은 주강 원칙 금지. Kelvion/GEA는 상대 head가 주강·다공질이라고 공격합니다. 입찰 때 head/column 재질·성형 방법을 명시하십시오.</li>
+        </ul>
+      </section>
+
+      <section id="comb">
+        <h2>Comb, column liner, wing — 모서리를 닫는 세 학교</h2>
+        <p>
+          Pack의 판 끝은 톱니입니다. 골 마루와 골 바닥이 교차하므로, 매끈한 막대만 대면 골 따라 새는 길이방향 누설 경로가 남습니다.
+          그 이빨을 메우는 부품이 comb입니다. 벤더 싸움이 가장 구체적인 지점입니다.
+        </p>
+
+        <h3>1. Comb + column liner (Kelvion / GEABloc이 자사라고 그리는 것)</h3>
+        <ul class="select-list">
+          <li><strong>Comb.</strong> 판 끝 프로파일에 맞춘 두꺼운 빗. 레이저 절단으로 이빨 간극을 줄입니다. 카탈로그는 1.2–3 mm, 강조점은 3 mm 한 장.</li>
+          <li><strong>Column liner.</strong> Column 안쪽을 덮는 합금 판. Comb와 liner를 서로 밀봉 용접해 틈새 포켓을 없앱니다.</li>
+          <li><strong>용접.</strong> 판–판은 자동 TIG, pack–comb/liner는 수동 TIG. 겹쳐 지나가며 두 번 녹이는 overlapping weld를 피한다고 합니다. 모든 시임이 열면 보인다고 합니다 (100% inspectability).</li>
+          <li>이빨이 pack을 예압 상태에서 물면, 운전 중 판이 column에서 떠지 않습니다.</li>
+        </ul>
+
+        <h3>2. Wing + 얇은 liner + RSEW (상대를 이렇게 그립니다)</h3>
+        <ul class="select-list">
+          <li>판 코너를 접어 <strong>wing</strong>을 만듭니다. 접는 순간 잔류응력이 들어갑니다.</li>
+          <li>Wing끼리 맞댄 뒤 저항 심 용접(RSEW)으로 얇은 column liner(0.8–1.2 mm, 종종 2장)에 붙입니다.</li>
+          <li>이미 있는 용접 위에 다시 RSEW가 지나갑니다 (weld-over-weld). Wing과 liner 사이 갭은 틈새부식 후보입니다.</li>
+          <li>접힌 날개가 pack을 압축하는 것을 방해한다는 것이 Kelvion의 공격입니다.</li>
+        </ul>
+
+        <h3>3. LHE — 열팽창을 위한 빈 공간</h3>
+        <ul class="select-list">
+          <li>Column lining을 각진 상자 대신 <strong>원형에 가깝게</strong> 두고, lining 뒤에 빈 공간을 둡니다. 열로 pack이 늘어날 때 용접이 찢어지지 않게 하려는 특허입니다.</li>
+          <li>Top/bottom lining에 파형을 넣어 column lining 용접점의 응력 집중을 줄입니다 (자사 주장 약 25%).</li>
+          <li>Screen lining이 움직이는 영상으로 “고정 용접만으로는 부족하다”를 보여 줍니다. 기동 승온 한도와 같은 물리입니다.</li>
+        </ul>
+
+        <div class="note">
+          <p>
+            <strong>사양에 쓸 언어.</strong> “Comb를 써라”가 아니라:
+            column liner 최소 두께(810: max(1 mm, 판 두께)), 개스킷 접촉폭 ≥9 mm,
+            겹침 저항용접 여부, pack 예압 후 2차 용접 여부, 열면 모든 pack 모서리 용접이 보이는지,
+            lining 뒤 포켓을 sour/H2에서 어떻게 볼지.
+          </p>
+        </div>
+        <p>
+          810에서 loose liner는 모재의 sour 면제가 아닙니다. Comb 뒤 탄소강 column이 있으면
+          그 강을 wet H2S 범위에 넣을지를 구매자가 찍습니다.
+        </p>
+      </section>
+
+      <section id="head">
+        <h2>Top / bottom head, end plate, PTFE sheet</h2>
+        <ul class="select-list">
+          <li><strong>Head.</strong> Pack의 위·아래를 덮는 두꺼운 고정 덮개. 인양 러그가 보통 여기 있습니다. 볼트가 column과 함께 사각형 틀을 만듭니다.</li>
+          <li><strong>End plate.</strong> Pack의 맨 위·맨 아래 전열판 또는 그보다 두꺼운 마감 판. 공정이 위·아래로 새지 않게 합니다. 옆면 네 곳만 열리게 하는 뚜껑입니다.</li>
+          <li><strong>PTFE sheet (Compabloc, 2004-10 이후).</strong> 탄소강 head와 합금 end plate 사이에 시트 두 장. 갈바닉·틈새 부식을 막고, CS와 SS가 미끄러지며 긁히는 것을 줄입니다. Head까지 합금이면 이 시트가 없을 수 있습니다.</li>
+          <li><strong>파형 lining (LHE).</strong> Head liner를 평판이 아니라 물결로 두어 column lining 용접 응력을 분산.</li>
+        </ul>
+        <p>
+          Head는 “열리지 않는 panel”입니다. 세정 접근은 네 옆면만. 위아래로 유체가 나가야 하면 그것은 nozzle이 아니라
+          옆면 패스가 위 head 근처에서 꺾이는 것입니다.
+        </p>
+      </section>
+
+      <section id="panel">
+        <h2>Panel — 유일한 볼트 덮개</h2>
+        <p>
+          네 장의 덮개가 네 회로 면을 닫습니다. 810의 정비 단위가 판이 아니라 panel인 이유입니다.
+          Compabloc IOM 문장: 기기에 들어가는 개스킷은 exploded view의 panel gasket 네 장뿐이다.
+        </p>
+        <ul class="select-list">
+          <li><strong>본판.</strong> 대개 탄소강. 노즐이 여기 용접됩니다 (set-in flange). 스티프너로 압력을 받게 하지 않는 것이 810 기본입니다.</li>
+          <li><strong>Liner.</strong> 공정이 탄소강을 보면 안 될 때. Pack과 같은 합금, 개스킷 외주까지 덮고 plug weld. 최소 max(1 mm, 판 두께), 개스킷 접촉폭 ≥9 mm.</li>
+          <li><strong>안쪽 도장.</strong> Liner가 없으면 내면에도 외부와 같은 primer. 유체가 도장과 안 맞으면 lined 또는 내면 미도장.</li>
+          <li><strong>Gasket.</strong> 흑연, PTFE(Gylon 등), camprofile, 아라미드/NBR. 외주가 구속되어야 분출하지 않습니다. 멀티피스는 interlock. 수압 후 패널을 다시 열면 개스킷을 갈고 100–170 kPa soap 공압 (810).</li>
+          <li><strong>볼트.</strong> ≥19 mm, TS ≥75 ksi, PCC-1 washer, 피치는 VIII-2, 코너 대각 포함. Jackscrew 또는 주위 ≥5 mm로 패널이 떨어질 틈.</li>
+          <li><strong>Push-off / 나사 구멍.</strong> Kelvion은 패널에 push-off bolt용 나사 구멍을 둡니다. 개스킷에 붙은 패널을 망치로 떼지 말라는 뜻입니다.</li>
+          <li><strong>인양 러그.</strong> 패널 전용. 본체를 이 러그로 들면 IOM 위반입니다. 노즐로 들어 올리는 것도 금지.</li>
+          <li><strong>열 규칙 (K°Bloc).</strong> 동시에 마주 보는 두 면까지만. 네 면을 한꺼번에 열면 pack·baffle이 지지를 잃습니다. 패널에 위치 표시를 하고 제자리에 되돌립니다.</li>
+          <li><strong>평탄도.</strong> 변 &gt;1 m → 0.8 mm, ≤1 m → 0.6 mm. Ra 3.2–6.3 μm. PWHT 후 최종 가공. Column/head liner 개스킷면에는 이 평탄도를 그대로 적용하지 않는다는 주석이 있습니다.</li>
+        </ul>
+        <p>
+          노즐 하중표의 분모가 2.5인 이유: 하중 작용점이 nozzle–panel 교점이고, panel이 얇은 덮개이기 때문입니다.
+          축력은 당김과 미는 방향 모두. 컴팩트하다고 S&amp;T처럼 배관을 붙이면 panel이 먼저 굽고 gasket이 셉니다.
+        </p>
+      </section>
+
+      <section id="baffle">
+        <h2>Baffle — 교차류를 향류로 쌓는 가로막</h2>
+        <p>
+          Panel을 열면 pack 면에 가로로 꽂힌 판이 보입니다. 그것이 baffle입니다.
+          없으면 그 면은 한 패스 교차류로 끝나 온도교차에 약합니다. 있으면 유체가 지그재그로 여러 번 pack을 가로지릅니다.
+        </p>
+        <ul class="select-list">
+          <li><strong>Stamped baffle.</strong> 얇게 찍어 만든 막. 각 회로에 패스 수만큼 있습니다. 실기기 예: Side A 5-pass, Side B 5-pass, SA-240 316L. 패스 수는 열설계가 정합니다. 좌우 회로의 패스 수가 다를 수 있습니다.</li>
+          <li><strong>Cage / bracket / ladder.</strong> 두 세로 빔(upright)에 baffle을 스폿 용접한 사다리. Compabloc은 통째로 빼기 어려우면 한 장씩 끼우라고 합니다. 운전 후 pack이 조금 휘기 때문입니다.</li>
+          <li><strong>밀봉.</strong> Baffle 끝은 pack 골과 panel 쪽에 맞닿아야 바이패스가 없습니다. Compabloc: 각 baffle에 Vitex PTFE 개스킷, girder lining의 삼각 홈에 PTFE cord. 홈의 기름을 닦고 넣습니다. 810: baffle은 cage에 일체, panel과 pack에 밀봉, 설계 ΔP ≥ 2 × clean allowable ΔP.</li>
+          <li><strong>차압 한계.</strong> 일반 stamped baffle이 견디는 차압은 Compabloc IOM이 2–3 bar로 말합니다. 수격·고점도면 reinforced: 세로 튜브가 baffle을 받쳐 cage를 단단하게 합니다.</li>
+          <li><strong>LHE.</strong> 상대 기기는 baffle이 굽고 미끄러져 U가 떨어지고 ΔP가 오른다고 하며, 추가 지지로 푼다고 합니다. 막힌 뒤 차압이 배플 설계를 넘으면 성능이 아니라 구조가 먼저 갑니다.</li>
+          <li><strong>점검.</strong> 세정만이면 baffle cage를 굳이 빼지 않습니다. Cage에 가려진 pack 용접을 보려면 뺍니다. 힘으로 빼면 pack을 찢습니다.</li>
+        </ul>
+      </section>
+
+      <section id="nozzle">
+        <h2>노즐, 벤트, 드레인, 이름판</h2>
+        <ul class="select-list">
+          <li>노즐은 panel에 붙습니다. Studded는 합의. Slip-on / 부분용입 set-in은 고압·고온·H2·sour·cyclic·진공·저온·Cl.150 초과·PWHT에서 금지 (810).</li>
+          <li>소형 Compabloc(CP15–40): 노즐을 가능한 한 위·아래에 두어 노즐 자체가 벤트/드레인이 됩니다. 자가 배기·배수.</li>
+          <li>대형(CP50–120): panel에 1" 또는 2" 플랜지 벤트/드레인을 따로 둡니다. 차단 밸브를 달고, 가스가 나오는 회수 서비스는 벤트를 상시 개방하라고 IOM이 말합니다. 연결하지 않으면 보증 제외 문구까지 있습니다.</li>
+          <li>배관은 panel을 빼는 데 방해되지 않게 spool. 노즐로 기기를 들지 않음.</li>
+          <li>이름판은 보통 panel. 설계 P/T, 회로 표시, PED 카테고리. 운전은 이름판이 IOM보다 우선하는 한도입니다.</li>
+        </ul>
+      </section>
+
+      <section id="loads">
+        <h2>하중이 실제로 지나가는 길</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>하중</th><th>경로</th><th>깨지는 곳</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>유체 간 차압</td><td>판 골의 금속 접촉 + 판–판 용접</td><td>용접 균열, 교차오염. 차압만 보고 설계하면 한쪽 전압에서 pack이 아코디언</td></tr>
+              <tr><td>한쪽 만충 설계압</td><td>판 + liner + column/head + panel 볼트</td><td>810이 요구하는 설계. 정지·블라인드에서 발생</td></tr>
+              <tr><td>외부 누설 방향</td><td>pack 가장자리 → comb/liner → panel gasket → panel</td><td>gasket 분출, liner 뒤 포켓, comb 틈새부식</td></tr>
+              <tr><td>볼트 예압</td><td>nut → washer → panel → gasket → column/head 자리</td><td>평탄도 불량, 단기인장 응력으로 영구변형, 토크 이완(수송·장기정지)</td></tr>
+              <tr><td>배관 노즐 하중</td><td>flange → panel → 볼트군 → column/head</td><td>panel 굽힘, gasket 누설. Pack 용접이 이 하중을 받도록 설계하지 말 것</td></tr>
+              <tr><td>배플 차압</td><td>baffle → cage → pack 면 / panel</td><td>배플 휨, 바이패스, 810의 2×ΔP 규칙</td></tr>
+              <tr><td>열팽창</td><td>pack vs column 차등 신장</td><td>모서리 용접 파손. LHE 빈 공간, IOM 승온 한도 (60 °C/h 또는 5 K/min 등)</td></tr>
+              <tr><td>자중·인양</td><td>head 러그 → column</td><td>panel 러그·노즐로 들면 덮개 변형</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          공유 부품(panel, column, 외부 볼트)의 설계온도는 양쪽 중 가혹한 값입니다. 볼트 크리프와 gasket 선정이 여기서 갈립니다.
+        </p>
+      </section>
+
+      <section id="open">
+        <h2>Panel을 열면 보이는 것</h2>
+        <p>세정 또는 용접 점검 때문에 마주 보는 한 쌍을 열었다고 가정합니다.</p>
+        <ol class="outside-in">
+          <li>가장 앞: 떨어진 panel. 내면 도장 또는 liner, 노즐 보어, gasket 자리의 조흔.</li>
+          <li>테두리: column 두 개와 head 두 개가 만드는 창틀. Gasket이 앉던 가공면.</li>
+          <li>창 안 앞쪽: baffle들. 가로막이 pack 골을 가로지릅니다. PTFE 끈이 girder 삼각 홈에 남아 있을 수 있습니다.</li>
+          <li>그 뒤: 전열판의 <strong>열린 채널</strong>. Chevron이면 V골이 보이고, dimple이면 점 패턴입니다. 여기로 hydro-blast를 약 45°로 넣습니다.</li>
+          <li>창의 좌우 세로 모서리: comb 이빨 또는 wing이 판 끝과 맞물린 용접선. 810이 “접근 가능해야 한다”고 한 바로 그 선입니다.</li>
+          <li>빼지 말아야 할 것: pack 자체. 판을 한 장 꺼내는 기계가 아닙니다. 채널이 막혀 플러그를 박는 순간 그 경로는 영구 손실입니다.</li>
+        </ol>
+        <p>
+          반대쪽 panel은 아직 닫혀 있으므로 그 회로는 아직 압력 경계입니다.
+          네 면을 동시에 열면 pack은 네 column에만 물린 채 서 있고, baffle cage는 지지를 잃습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2>P&amp;F와 한 줄로 대조</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th></th><th>Plate-and-frame (667)</th><th>Plate-block (이 페이지)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>전열면 밀봉</td><td>개스킷 또는 pair 용접</td><td>모든 판 사이 용접</td></tr>
+              <tr><td>압력 골조</td><td>cover + tie bolt</td><td>4 column + 2 head + 4 panel 볼트</td></tr>
+              <tr><td>외부 누설 개스킷</td><td>판 수 × 포트 개스킷</td><td>panel gasket 4</td></tr>
+              <tr><td>열어 보는 단위</td><td>판 / pair</td><td>panel 면 (채널은 보이나 판은 안 빠짐)</td></tr>
+              <tr><td>증설</td><td>프레임 20% 여유</td><td>없음. 병렬 block</td></tr>
+              <tr><td>Carrying bar</td><td>있음</td><td>없음</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
       </section>
     </main>
 
