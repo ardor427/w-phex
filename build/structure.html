@@ -67,8 +67,8 @@
           판과 판 사이에는 개스킷이 없습니다. 개스킷은 panel 둘레에만 있습니다.
         </p>
         <p>
-          Plate-and-frame(667)은 타이볼트가 개스킷 판다발을 눌러 압력을 담습니다.
-          이 형식(810)은 용접이 유체 간 경계를 만들고, 볼트는 용기 덮개(panel)만 조입니다.
+          Fully welded pack in frame(662)은 같은 용접 다발을 타이볼트 프레임에 가둡니다.
+          이 형식(810)은 column·head가 pack을 잡고, 볼트는 용기 덮개(panel)만 조입니다.
         </p>
       </section>
 
@@ -357,19 +357,19 @@
       </section>
 
       <section>
-        <h2>P&amp;F와 한 줄로 대조</h2>
+        <h2>용접형끼리 한 줄로 대조</h2>
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th></th><th>Plate-and-frame (667)</th><th>Plate-block (이 페이지)</th></tr>
+              <tr><th></th><th>Fully welded in frame (662)</th><th>Plate-block (810)</th><th>Plate-and-shell</th></tr>
             </thead>
             <tbody>
-              <tr><td>전열면 밀봉</td><td>개스킷 또는 pair 용접</td><td>모든 판 사이 용접</td></tr>
-              <tr><td>압력 골조</td><td>cover + tie bolt</td><td>4 column + 2 head + 4 panel 볼트</td></tr>
-              <tr><td>외부 누설 개스킷</td><td>판 수 × 포트 개스킷</td><td>panel gasket 4</td></tr>
-              <tr><td>열어 보는 단위</td><td>판 / pair</td><td>panel 면 (채널은 보이나 판은 안 빠짐)</td></tr>
-              <tr><td>증설</td><td>프레임 20% 여유</td><td>없음. 병렬 block</td></tr>
-              <tr><td>Carrying bar</td><td>있음</td><td>없음</td></tr>
+              <tr><td>전열면 밀봉</td><td>모든 판 사이 용접</td><td>모든 판 사이 용접</td><td>모든 판 사이 용접</td></tr>
+              <tr><td>압력 골조</td><td>cover + tie bolt</td><td>4 column + 2 head + 4 panel 볼트</td><td>원통 shell</td></tr>
+              <tr><td>유체–대기 밀봉</td><td>프레임 조인트</td><td>panel gasket 4</td><td>shell / cover</td></tr>
+              <tr><td>열어 보는 단위</td><td>cover (판은 안 빠짐)</td><td>panel 면 (채널은 보이나 판은 안 빠짐)</td><td>한쪽만 또는 둘 다 못 염</td></tr>
+              <tr><td>증설</td><td>pack 교체</td><td>병렬 block</td><td>기기 교체 / 병렬</td></tr>
+              <tr><td>현행 API</td><td>없음 (662 레거시)</td><td>810</td><td>없음 (810 제외)</td></tr>
             </tbody>
           </table>
         </div>
@@ -388,7 +388,7 @@
       </p>
     </footer>
     <script type="module">
-      import { initBloc3D } from "./bloc3d.js?v=13";
+      import { initBloc3D } from "./bloc3d.js?v=14";
       initBloc3D(document.getElementById("bloc-3d"));
     </script>
   </body>

@@ -21,6 +21,8 @@ body {
   background: var(--bg);
   color: var(--ink);
   font: 16px/1.55 Arial, Helvetica, sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 button,
