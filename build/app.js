@@ -18,6 +18,8 @@ tabs.forEach((button) => {
     if (button.dataset.tab === "anatomy") {
       history.replaceState(null, "", "#anatomy");
       mountBloc3D();
+    } else if (button.dataset.tab === "p667") {
+      history.replaceState(null, "", "#p667");
     } else {
       history.replaceState(null, "", location.pathname);
     }
@@ -50,13 +52,15 @@ if (anatomyIds.has(hash)) {
       document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
+} else if (hash === "p667") {
+  activateTab("p667");
 }
 
 function mountBloc3D() {
   const el = document.getElementById("bloc-3d");
   if (!el) return;
   if (!viewerPromise) {
-    viewerPromise = import("./bloc3d.js?v=14")
+    viewerPromise = import("./bloc3d.js?v=15")
       .then((mod) => mod.initBloc3D(el))
       .catch((err) => {
         console.error(err);
