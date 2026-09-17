@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>W-PHEX — Welded Plate Heat Exchanger 코드 정리</title>
-    <link rel="stylesheet" href="./app.css" />
+    <link rel="stylesheet" href="./app.css?v=17" />
     <script type="importmap">
       {
         "imports": {
@@ -21,7 +21,7 @@
       <p class="lede">
         API 662 / 667 / 810을 정리합니다. 설계 조건의 본문은 <strong>welded plate heat exchanger</strong>입니다.
         개스킷·세미용접 P&amp;F는 Scope 표와 <strong>662-1→667</strong> 탭(코드 개정 노트)에서만 다룹니다.
-        원문 검색·챗봇은 없습니다.
+        원문 검색·챗봇은 없습니다. 항목 옆 <strong>§</strong> 원을 누르면 해당 문장이 어느 표준 조항에 있는지가 나옵니다.
       </p>
       <p class="headline">
         현행 용접 plate-block은 API 810. 662의 fully welded pack in frame은 구판 조항이고,
@@ -48,21 +48,21 @@
         <div class="cards">
           <article class="card">
             <div class="badge legacy">2002 · 통합 구판</div>
-            <h3>API 662</h3>
+            <h3>API 662</h3> <button type="button" class="cite" aria-label="출처" data-cite="662:표지 · 1 Scope"></button>
             <p>2nd Ed., April 2002. ISO 15547:2000과 동일.</p>
             <p>용접형으로는 <strong>fully welded plate pack을 프레임에 구속</strong>한 형식만 정의합니다. Plate-block(column + removable panel)은 이름이 없습니다.</p>
             <p>판 용접 NDE·sour·H2·HTHS 전용 장이 거의 없습니다. 신규 용접형 발주용 현행 코드가 아닙니다.</p>
           </article>
           <article class="card">
             <div class="badge current">2022 · 용접형 제외</div>
-            <h3>API 667</h3>
+            <h3>API 667</h3> <button type="button" class="cite" aria-label="출처" data-cite="667:표지 · 1 Scope"></button>
             <p>1st Ed., March 2022. 구 API 662-1. Plate-and-Frame.</p>
             <p>용접형 설계 조건이 없습니다. Fully welded P&amp;F, plate-block, plate-in-shell, brazed를 <strong>명시 제외</strong>합니다.</p>
             <p>이 사이트에서 667 숫자는 “용접형에 적용되지 않음”을 확인하는 용도입니다.</p>
           </article>
           <article class="card">
             <div class="badge current">2025 · plate-block 현행</div>
-            <h3>API 810</h3>
+            <h3>API 810</h3> <button type="button" class="cite" aria-label="출처" data-cite="810:표지 · 1 Scope · Errata 1"></button>
             <p>1st Ed., October 2025 / Errata 1 July 2026. Welded Plate-block Heat Exchangers.</p>
             <p>용접 pack + 볼트 removable panel + fixed heads + columns. Compabloc / K°Bloc / LHEBloc류.</p>
             <p>원통 shell 안 block, panel로 공정측을 기계 세정할 수 없는 구조는 제외. HTHS는 Section 12 + API 941.</p>
@@ -80,8 +80,8 @@
               <tr><th>형식</th><th>API 662:2002</th><th>API 667:2022</th><th>API 810:2025</th></tr>
             </thead>
             <tbody>
-              <tr><td>Gasketed plate-and-frame</td><td>Scope에 있음</td><td>Scope에 있음 (주 대상)</td><td>없음 → 667</td></tr>
-              <tr><td>Semi-welded plate-and-frame</td><td>Scope에 있음</td><td>Scope에 있음</td><td>없음 → 667</td></tr>
+              <tr><td>Gasketed plate-and-frame <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope|667:1 Scope|810:1 Scope (P&amp;F는 API 667로 보냄)"></button></td><td>Scope에 있음</td><td>Scope에 있음 (주 대상)</td><td>없음 → 667</td></tr>
+              <tr><td>Semi-welded plate-and-frame <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope|667:1 Scope|810:1 Scope (semi-welded는 API 667)"></button></td><td>Scope에 있음</td><td>Scope에 있음</td><td>없음 → 667</td></tr>
             </tbody>
           </table>
         </div>
@@ -93,7 +93,7 @@
         <div class="types">
           <article class="type">
             <div class="badge">662 · 667은 제외</div>
-            <h3>Fully welded pack in frame</h3>
+            <h3>Fully welded pack in frame</h3> <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope · 3 Terms (fully welded plate pack)|667:1 Scope (명시 제외)"></button>
             <p>
               판 사이는 전부 용접. 그 pack을 P&amp;F 프레임(cover + tie bolt)으로 구속.
               662가 유일하게 이름으로 받은 용접형. 667은 명시 제외. 전용 현행 API 없음.
@@ -101,7 +101,7 @@
           </article>
           <article class="type">
             <div class="badge">810</div>
-            <h3>Welded plate-block</h3>
+            <h3>Welded plate-block</h3> <button type="button" class="cite" aria-label="출처" data-cite="810:1 Scope · 3.30 welded plate-block heat exchanger"></button>
             <p>
               판 사이는 용접. 압력 골조는 4 column + 2 head + 4 removable panel.
               유체–유체는 pack 용접, 유체–대기는 panel gasket 4장. 패널을 열어 채널을 기계 세정.
@@ -109,7 +109,7 @@
           </article>
           <article class="type">
             <div class="badge">세 코드 제외</div>
-            <h3>Plate-and-shell / shell 안 block</h3>
+            <h3>Plate-and-shell / shell 안 block</h3> <button type="button" class="cite" aria-label="출처" data-cite="810:1 Scope (cylindrical shell · 세정 불가 구조 제외)|667:1 Scope (plate-in-shell 제외)"></button>
             <p>
               용접 pack을 원통 shell에 넣거나, panel로 전 공정측 기계 세정이 안 되는 구조.
               810이 명시 제외. 압력코드 + 구매 사양으로 메움.
@@ -124,11 +124,11 @@
               <tr><th>연도</th><th>문서</th><th>용접형 취급</th></tr>
             </thead>
             <tbody>
-              <tr><td>1995</td><td>API 662 1st</td><td>정유용 plate HX 시작. 용접 pack in frame이 같은 문서에 섞여 들어감.</td></tr>
-              <tr><td>2002</td><td>API 662 2nd / ISO 15547</td><td>Fully welded pack in frame을 포함. Plate-block이라는 말은 없음. 판 용접 NDE는 구매자 임의.</td></tr>
-              <tr><td>2006 / 2011</td><td>API 662-1 1st (Feb 2006, reaffirmed 2011)</td><td>약 26쪽. Scope에 gasketed·semi-welded·<strong>welded P&amp;F</strong>가 같이 있었음. Plate-block은 없음.</td></tr>
-              <tr><td>2022</td><td>API 667 1st</td><td>약 45쪽, 11장+Annex A–C. Welded P&amp;F·plate-block·brazed·plate-in-shell을 <strong>명시 제외</strong>. 용접형 설계 조항 공백.</td></tr>
-              <tr><td>2025–26</td><td>API 810 1st + Errata 1</td><td>Welded plate-block 전용. Semi-welded는 667로. Shell 내 block·세정 불가 구조 제외.</td></tr>
+              <tr><td>1995</td><td>API 662 1st <button type="button" class="cite" aria-label="출처" data-cite="NOTE:계보 요약. 1995 1st는 이 사이트의 주 원문이 아님"></button></td><td>정유용 plate HX 시작. 용접 pack in frame이 같은 문서에 섞여 들어감.</td></tr>
+              <tr><td>2002</td><td>API 662 2nd / ISO 15547 <button type="button" class="cite" aria-label="출처" data-cite="662:표지 · 1 Scope"></button></td><td>Fully welded pack in frame을 포함. Plate-block이라는 말은 없음. 판 용접 NDE는 구매자 임의.</td></tr>
+              <tr><td>2006 / 2011</td><td>API 662-1 1st (Feb 2006, reaffirmed 2011) <button type="button" class="cite" aria-label="출처" data-cite="662-1:표지 · 1 Scope|667:Introduction (formerly 662-1)"></button></td><td>약 26쪽. Scope에 gasketed·semi-welded·<strong>welded P&amp;F</strong>가 같이 있었음. Plate-block은 없음.</td></tr>
+              <tr><td>2022</td><td>API 667 1st <button type="button" class="cite" aria-label="출처" data-cite="667:표지 · 1 Scope · Contents (11장 + Annex A–C)"></button></td><td>약 45쪽, 11장+Annex A–C. Welded P&amp;F·plate-block·brazed·plate-in-shell을 <strong>명시 제외</strong>. 용접형 설계 조항 공백.</td></tr>
+              <tr><td>2025–26</td><td>API 810 1st + Errata 1 <button type="button" class="cite" aria-label="출처" data-cite="810:표지 · 1 Scope"></button></td><td>Welded plate-block 전용. Semi-welded는 667로. Shell 내 block·세정 불가 구조 제외.</td></tr>
             </tbody>
           </table>
         </div>
@@ -159,14 +159,14 @@
               <tr><th>항목</th><th>API 662-1 (2006 / 2011)</th><th>API 667:2022</th></tr>
             </thead>
             <tbody>
-              <tr><td>제목</td><td>Plate-and-Frame Heat Exchangers</td><td>동일. Formerly API 662-1</td></tr>
-              <tr><td>Gasketed P&amp;F</td><td>포함</td><td>포함 (주 대상)</td></tr>
-              <tr><td>Semi-welded P&amp;F</td><td>포함</td><td>포함. pair는 레이저 용접으로 못 박음</td></tr>
-              <tr><td>Welded plate-and-frame</td><td><strong>Scope에 있었음</strong></td><td><strong>명시 제외</strong></td></tr>
-              <tr><td>Fully welded plate-block</td><td>없음</td><td>명시 제외 → 이후 810 (2022년 당시 미발행, 2025 발행)</td></tr>
-              <tr><td>Brazed plate</td><td>이 문서 밖 (662-2 계열)</td><td>제외. 별도 API 668 자리</td></tr>
-              <tr><td>Plate-in-shell</td><td>없음/제외</td><td>명시 제외</td></tr>
-              <tr><td>용어</td><td>짧음</td><td>cover plate(end plate), frame, liner, P&amp;F 정의를 넓힘. plate gap / channel spacing 정의가 662-1과 다름</td></tr>
+              <tr><td>제목 <button type="button" class="cite" aria-label="출처" data-cite="662-1:표지|667:표지 (Formerly API 662-1)"></button></td><td>Plate-and-Frame Heat Exchangers</td><td>동일. Formerly API 662-1</td></tr>
+              <tr><td>Gasketed P&amp;F <button type="button" class="cite" aria-label="출처" data-cite="662-1:1 Scope|667:1 Scope"></button></td><td>포함</td><td>포함 (주 대상)</td></tr>
+              <tr><td>Semi-welded P&amp;F <button type="button" class="cite" aria-label="출처" data-cite="662-1:1 Scope|667:1 Scope · 9.1.2 (laser welded)"></button></td><td>포함</td><td>포함. pair는 레이저 용접으로 못 박음</td></tr>
+              <tr><td>Welded plate-and-frame <button type="button" class="cite" aria-label="출처" data-cite="662-1:1 Scope (포함)|667:1 Scope (명시 제외)"></button></td><td><strong>Scope에 있었음</strong></td><td><strong>명시 제외</strong></td></tr>
+              <tr><td>Fully welded plate-block <button type="button" class="cite" aria-label="출처" data-cite="662-1:없음|667:1 Scope (명시 제외)|810:1 Scope (2025)"></button></td><td>없음</td><td>명시 제외 → 이후 810 (2022년 당시 미발행, 2025 발행)</td></tr>
+              <tr><td>Brazed plate <button type="button" class="cite" aria-label="출처" data-cite="667:1 Scope (제외, API 668 자리)"></button></td><td>이 문서 밖 (662-2 계열)</td><td>제외. 별도 API 668 자리</td></tr>
+              <tr><td>Plate-in-shell <button type="button" class="cite" aria-label="출처" data-cite="667:1 Scope (명시 제외)|810:1 Scope (cylindrical shell 제외)"></button></td><td>없음/제외</td><td>명시 제외</td></tr>
+              <tr><td>용어 <button type="button" class="cite" aria-label="출처" data-cite="667:3 Terms (3.4 cover/end plate, 3.5 frame, liner, 3.13 plate gap/channel spacing)|662-1:3 Terms (더 짧음)"></button></td><td>짧음</td><td>cover plate(end plate), frame, liner, P&amp;F 정의를 넓힘. plate gap / channel spacing 정의가 662-1과 다름</td></tr>
             </tbody>
           </table>
         </div>
@@ -178,9 +178,9 @@
 
         <h3>제안·보고서 (5장, 6.3)</h3>
         <ul class="select-list">
-          <li>벤더 제안에 최대 입자 크기, fouling margin을 넣습니다.</li>
-          <li>구매자가 지정하면 열설계를 구매자가 검증할 수 있는 추가 데이터를 제출합니다.</li>
-          <li>검사·시험 기록을 상세히 남깁니다 (6.3).</li>
+          <li>벤더 제안에 최대 입자 크기, fouling margin을 넣습니다. <button type="button" class="cite" aria-label="출처" data-cite="667:5.1 (maximum particle size, fouling margin)"></button></li>
+          <li>구매자가 지정하면 열설계를 구매자가 검증할 수 있는 추가 데이터를 제출합니다. <button type="button" class="cite" aria-label="출처" data-cite="667:5장 (thermal verification data, when specified)"></button></li>
+          <li>검사·시험 기록을 상세히 남깁니다 (6.3). <button type="button" class="cite" aria-label="출처" data-cite="667:6.3 Reports"></button></li>
         </ul>
 
         <h3>특수운전 — sour와 cyclic</h3>
@@ -191,10 +191,10 @@
               <tr><th>주제</th><th>667에서 추가·강화된 것</th></tr>
             </thead>
             <tbody>
-              <tr><td>H2S / sour</td><td>NACE MR0103, MR0175, SP0472. 재료·설계. PQR에 마이크로경도(SP0472 또는 MR0175)</td></tr>
-              <tr><td>Cyclic 정의</td><td>구매자가 cyclic을 지정. 정상 운전압 변동 20%, 유량 변동 20%, 운전온도 변동이 30 °C를 넘는 경우. 한 사이클은 변동이 24시간 안에 일어나고 연 12회를 넘는 것 (API RP 571 열피로 문법과 맞춤)</td></tr>
-              <tr><td>Cyclic일 때 기기</td><td>P&amp;F는 그런 서비스에 권하지 않음. 피로 파단보다 개스킷·liner 누설이 먼저. VIII-2 cyclic/fatigue를 보면 됨</td></tr>
-              <tr><td>Cyclic 연결 금지</td><td>Slip-on / lap joint 금지. Lined connection 금지(구매자 승인 예외). Set-in을 fillet만으로 붙이는 것 금지</td></tr>
+              <tr><td>H2S / sour <button type="button" class="cite" aria-label="출처" data-cite="667:2 Normative References · 4.7–4.8 · 8.2 · 9.1 (PQR microhardness) · A.1.1"></button></td><td>NACE MR0103, MR0175, SP0472. 재료·설계. PQR에 마이크로경도(SP0472 또는 MR0175)</td></tr>
+              <tr><td>Cyclic 정의 <button type="button" class="cite" aria-label="출처" data-cite="667:3.2 cyclic service · 4.9–4.10 · A.1.2.1 (20% P, 20% flow, ΔT&gt;30 °C, &lt;24 h, &gt;12/year)"></button></td><td>구매자가 cyclic을 지정. 정상 운전압 변동 20%, 유량 변동 20%, 운전온도 변동이 30 °C를 넘는 경우. 한 사이클은 변동이 24시간 안에 일어나고 연 12회를 넘는 것 (API RP 571 열피로 문법과 맞춤)</td></tr>
+              <tr><td>Cyclic일 때 기기 <button type="button" class="cite" aria-label="출처" data-cite="667:A.1.2.4 (gasket/liner leak first) · A.1.2 (VIII-2/fatigue 안내)"></button></td><td>P&amp;F는 그런 서비스에 권하지 않음. 피로 파단보다 개스킷·liner 누설이 먼저. VIII-2 cyclic/fatigue를 보면 됨</td></tr>
+              <tr><td>Cyclic 연결 금지 <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.5 (slip-on/lap) · 7.7.6 (lined) · 7.7.7 c) (fillet-only set-in)"></button></td><td>Slip-on / lap joint 금지. Lined connection 금지(구매자 승인 예외). Set-in을 fillet만으로 붙이는 것 금지</td></tr>
             </tbody>
           </table>
         </div>
@@ -206,11 +206,11 @@
               <tr><th>조항</th><th>667 추가</th></tr>
             </thead>
             <tbody>
-              <tr><td>CA (7.5)</td><td>내식재·liner·overlay가 없는 탄소강 습윤면(노즐·cover) 최소 3 mm. Overlay를 쓰면 완성면에서 최소 1.5 mm 깊이</td></tr>
-              <tr><td>End plate (7.6)</td><td>진공 등에서 stiffener 또는 두께 추가 가능</td></tr>
-              <tr><td>Carrying / guide bar (7.6.4)</td><td>판 pack의 좌우·상하 움직임을 제한해 개스킷 정렬, 스네이킹 방지</td></tr>
-              <tr><td>Drip tray (7.6.8)</td><td>쓸 때: pack 밑면과 트레이 사이 ≥5 mm, 깊이 ≥25 mm, pack 최대 치수보다 가로·세로 각 ≥50 mm</td></tr>
-              <tr><td>클립·서포트 재질 (8장)</td><td>압력부에 직접 용접하는 외부 부품은 모재와 같은 공칭 조성. 662-1은 용접 가능한 연강 또는 압력부 허용강이면 됨</td></tr>
+              <tr><td>CA (7.5) <button type="button" class="cite" aria-label="출처" data-cite="667:7.5.2 (CS wetted 3 mm) · 7.5.4 (overlay ≥1.5 mm from finished surface)"></button></td><td>내식재·liner·overlay가 없는 탄소강 습윤면(노즐·cover) 최소 3 mm. Overlay를 쓰면 완성면에서 최소 1.5 mm 깊이</td></tr>
+              <tr><td>End plate (7.6) <button type="button" class="cite" aria-label="출처" data-cite="667:7.6.2 (stiffener or added thickness, vacuum 등)"></button></td><td>진공 등에서 stiffener 또는 두께 추가 가능</td></tr>
+              <tr><td>Carrying / guide bar (7.6.4) <button type="button" class="cite" aria-label="출처" data-cite="667:7.6.4 (alignment, prevent snaking)"></button></td><td>판 pack의 좌우·상하 움직임을 제한해 개스킷 정렬, 스네이킹 방지</td></tr>
+              <tr><td>Drip tray (7.6.8) <button type="button" class="cite" aria-label="출처" data-cite="667:7.6.8 (≥5 mm clearance, ≥25 mm deep, ≥50 mm longer/wider)"></button></td><td>쓸 때: pack 밑면과 트레이 사이 ≥5 mm, 깊이 ≥25 mm, pack 최대 치수보다 가로·세로 각 ≥50 mm</td></tr>
+              <tr><td>클립·서포트 재질 (8장) <button type="button" class="cite" aria-label="출처" data-cite="667:8.1 (same nominal composition)|662-1:8장 (weldable mild CS or pressure-part steel)"></button></td><td>압력부에 직접 용접하는 외부 부품은 모재와 같은 공칭 조성. 662-1은 용접 가능한 연강 또는 압력부 허용강이면 됨</td></tr>
             </tbody>
           </table>
         </div>
@@ -222,13 +222,13 @@
               <tr><th>항목</th><th>667</th></tr>
             </thead>
             <tbody>
-              <tr><td>형상</td><td>Studded, set-on, set-in (lined/overlay / unlined). 플랜지면 WN</td></tr>
-              <tr><td>Slip-on / lap</td><td>구매자 합의 시에만. cyclic·sour·wet H2S에서는 금지</td></tr>
-              <tr><td>Set-on</td><td>전용입</td></tr>
-              <tr><td>Set-in</td><td>end cover 안·밖 모두 fillet 및/또는 groove. Fillet만은 cyclic 금지</td></tr>
-              <tr><td>Liner</td><td>용접 또는 성형. cyclic에서 lined connection은 구매자 승인 없이 금지. 합금 liner 최소 1 mm. 통짜 합금 노즐은 구매자 승인</td></tr>
-              <tr><td>Reducer</td><td>편심 (벤트·배수)</td></tr>
-              <tr><td>노즐 하중</td><td>662-1 Standard 표(Table 1)의 <strong>2배</strong>, Severe 표(Table 2)의 <strong>0.4배</strong>. 힘·모멘트 방향 정의가 바뀜</td></tr>
+              <tr><td>형상 <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.1 · Fig. 4 (studded / set-on / set-in)"></button></td><td>Studded, set-on, set-in (lined/overlay / unlined). 플랜지면 WN</td></tr>
+              <tr><td>Slip-on / lap <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.5"></button></td><td>구매자 합의 시에만. cyclic·sour·wet H2S에서는 금지</td></tr>
+              <tr><td>Set-on <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.7 (full penetration)"></button></td><td>전용입</td></tr>
+              <tr><td>Set-in <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.7 (inside and outside) · fillet-only는 cyclic 금지"></button></td><td>end cover 안·밖 모두 fillet 및/또는 groove. Fillet만은 cyclic 금지</td></tr>
+              <tr><td>Liner <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.6 · 7.7.11 · 7.7.12 (alloy liner ≥1 mm)"></button></td><td>용접 또는 성형. cyclic에서 lined connection은 구매자 승인 없이 금지. 합금 liner 최소 1 mm. 통짜 합금 노즐은 구매자 승인</td></tr>
+              <tr><td>Reducer <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.10 (eccentric)"></button></td><td>편심 (벤트·배수)</td></tr>
+              <tr><td>노즐 하중 <button type="button" class="cite" aria-label="출처" data-cite="667:7.7.17 · Table 1 · Fig. 5 · A.3.9|662-1:Table 1 Standard · Table 2 Severe (667 숫자와 배율·방향이 다름)"></button></td><td>662-1 Standard 표(Table 1)의 <strong>2배</strong>, Severe 표(Table 2)의 <strong>0.4배</strong>. 힘·모멘트 방향 정의가 바뀜</td></tr>
             </tbody>
           </table>
         </div>
@@ -239,20 +239,20 @@
 
         <h3>판 개스킷 (7.8, Annex A.3.10)</h3>
         <ul class="select-list">
-          <li>구매자가 개스킷 재질을 안 찍으면 벤더가 운전·유체 조성으로 추천하고 구매자가 승인합니다.</li>
-          <li>유체 조성(개스킷을 건드리는 미량 성분)과 CIP·플러시·upset 같은 대체 운전도 구매자가 줍니다.</li>
-          <li>판과 개스킷은 한 세트로 설계합니다. 홈 폭·경도 공차는 벤더 고유입니다. 비OEM “복제 개스킷”은 누설·홈 손상·정렬 불량의 후보입니다.</li>
-          <li>접착식: 잦은 분해·하이드로블라스트, 개스킷 밀림, 팽윤, 입자 끼임에 유리. 접착 품질이 중요합니다.</li>
-          <li>클립식(무접착): 서비스가 쉽고 접착제 오염이 없음. 원격지 교체. 고온(대략 140 °C 이상)에서 접착식이 눌려 깨질 수 있는 재질(예: HNBR)은 클립 쪽이 나을 수 있습니다.</li>
-          <li>접착 개스킷은 sample pull test, 클립은 설치 후 육안 (9.2).</li>
+          <li>구매자가 개스킷 재질을 안 찍으면 벤더가 운전·유체 조성으로 추천하고 구매자가 승인합니다. <button type="button" class="cite" aria-label="출처" data-cite="667:7.8.6"></button></li>
+          <li>유체 조성(개스킷을 건드리는 미량 성분)과 CIP·플러시·upset 같은 대체 운전도 구매자가 줍니다. <button type="button" class="cite" aria-label="출처" data-cite="667:7.8.6"></button></li>
+          <li>판과 개스킷은 한 세트로 설계합니다. 홈 폭·경도 공차는 벤더 고유입니다. 비OEM “복제 개스킷”은 누설·홈 손상·정렬 불량의 후보입니다. <button type="button" class="cite" aria-label="출처" data-cite="667:A.3.10.1"></button></li>
+          <li>접착식: 잦은 분해·하이드로블라스트, 개스킷 밀림, 팽윤, 입자 끼임에 유리. 접착 품질이 중요합니다. <button type="button" class="cite" aria-label="출처" data-cite="667:A.3.10.7 · A.3.10.8"></button></li>
+          <li>클립식(무접착): 서비스가 쉽고 접착제 오염이 없음. 원격지 교체. 고온(대략 140 °C 이상)에서 접착식이 눌려 깨질 수 있는 재질(예: HNBR)은 클립 쪽이 나을 수 있습니다. <button type="button" class="cite" aria-label="출처" data-cite="667:A.3.10.7"></button></li>
+          <li>접착 개스킷은 sample pull test, 클립은 설치 후 육안 (9.2). <button type="button" class="cite" aria-label="출처" data-cite="667:9.2"></button></li>
         </ul>
 
         <h3>제작 (9장)</h3>
         <ul class="select-list">
-          <li>세미용접 pair는 <strong>레이저 용접</strong>이어야 합니다. 662-1에는 이 문장이 없습니다.</li>
-          <li>러그·구조 서포트 같은 부착 용접은 연속 용접.</li>
-          <li>수리 WPS는 수리 전에 구매자가 검토.</li>
-          <li>Sour / wet H2S면 PQR에 마이크로경도.</li>
+          <li>세미용접 pair는 <strong>레이저 용접</strong>이어야 합니다. 662-1에는 이 문장이 없습니다. <button type="button" class="cite" aria-label="출처" data-cite="667:9.1.2"></button></li>
+          <li>러그·구조 서포트 같은 부착 용접은 연속 용접. <button type="button" class="cite" aria-label="출처" data-cite="667:9.1 (attachment welds continuous)"></button></li>
+          <li>수리 WPS는 수리 전에 구매자가 검토. <button type="button" class="cite" aria-label="출처" data-cite="667:9.1 (repair WPS review before repair)"></button></li>
+          <li>Sour / wet H2S면 PQR에 마이크로경도. <button type="button" class="cite" aria-label="출처" data-cite="667:9.1 (PQR microhardness, SP0472 or MR0175)"></button></li>
         </ul>
 
         <h3>검사·수압 (10장)</h3>
@@ -262,29 +262,29 @@
               <tr><th>항목</th><th>662-1</th><th>667</th></tr>
             </thead>
             <tbody>
-              <tr><td>Cover 개구</td><td>—</td><td>Set-on 개구 라미네이션 검사</td></tr>
-              <tr><td>연결부 NDE</td><td>방법을 구매자가 지정</td><td>용접 전·후 MT/PT. 지정 시 set-on 용접 후 부착부·cover UT</td></tr>
-              <tr><td>맞대기 RT</td><td>구매자/코드</td><td>접근 가능한 맞대기마다 spot RT 최소 1. 기공 한도는 전RT 조인트 기준</td></tr>
-              <tr><td>Liner 용접</td><td>—</td><td>PT</td></tr>
-              <tr><td>제작 경도</td><td>—</td><td>탄소강 부품 용접. 코드가 시키면 HAZ. PWHT 후면 PWHT 후. 유체 접촉측 휴대 Brinell &lt;225 HBW. NPS 2 이상 연결부–부품 용접</td></tr>
-              <tr><td>Sour CS</td><td>약함</td><td>CS 판 UT 라미네이션(구매자 지정). 라이닝 전 공정측 접근 가능 완성 용접·HAZ는 WFMT. 경도는 MR0175 또는 MR0103</td></tr>
-              <tr><td>수압</td><td>각 측</td><td>각 측 + <strong>양측 동시</strong>. 최종 수압 전 용접부·liner 위 도장 가능 여부는 구매자가 지정</td></tr>
+              <tr><td>Cover 개구 <button type="button" class="cite" aria-label="출처" data-cite="667:10.1 (set-on opening lamination)"></button></td><td>—</td><td>Set-on 개구 라미네이션 검사</td></tr>
+              <tr><td>연결부 NDE <button type="button" class="cite" aria-label="출처" data-cite="667:10.1 (MT/PT before and after; UT of set-on when specified)|662-1:NDE 방법은 구매자 지정"></button></td><td>방법을 구매자가 지정</td><td>용접 전·후 MT/PT. 지정 시 set-on 용접 후 부착부·cover UT</td></tr>
+              <tr><td>맞대기 RT <button type="button" class="cite" aria-label="출처" data-cite="667:10.1 (spot RT each accessible butt; porosity as fully radiographed)"></button></td><td>구매자/코드</td><td>접근 가능한 맞대기마다 spot RT 최소 1. 기공 한도는 전RT 조인트 기준</td></tr>
+              <tr><td>Liner 용접 <button type="button" class="cite" aria-label="출처" data-cite="667:10.1 (PT of liner welds)"></button></td><td>—</td><td>PT</td></tr>
+              <tr><td>제작 경도 <button type="button" class="cite" aria-label="출처" data-cite="667:10.1 (CS production hardness, fluid side &lt;225 HBW, NPS 2+)"></button></td><td>—</td><td>탄소강 부품 용접. 코드가 시키면 HAZ. PWHT 후면 PWHT 후. 유체 접촉측 휴대 Brinell &lt;225 HBW. NPS 2 이상 연결부–부품 용접</td></tr>
+              <tr><td>Sour CS <button type="button" class="cite" aria-label="출처" data-cite="667:10.1 (CS plate UT when specified; WFMT process-side before lining; MR0175/MR0103)"></button></td><td>약함</td><td>CS 판 UT 라미네이션(구매자 지정). 라이닝 전 공정측 접근 가능 완성 용접·HAZ는 WFMT. 경도는 MR0175 또는 MR0103</td></tr>
+              <tr><td>수압 <button type="button" class="cite" aria-label="출처" data-cite="667:10.2 (each side + both sides simultaneous; paint/liners before final test = purchaser)|662-1:각 측 수압"></button></td><td>각 측</td><td>각 측 + <strong>양측 동시</strong>. 최종 수압 전 용접부·liner 위 도장 가능 여부는 구매자가 지정</td></tr>
             </tbody>
           </table>
         </div>
 
         <h3>출하 (11장)</h3>
         <ul class="select-list">
-          <li>구매자가 지정하면 질소·아르곤 등으로 purge and fill.</li>
-          <li>양압을 압력계로 표시하고, 수송 중 계기를 보호하며, 저장 중에도 양압을 유지합니다.</li>
-          <li>모든 개구에 “내부는 ○○ 가스 가압. 열기 전에 감압” 라벨.</li>
+          <li>구매자가 지정하면 질소·아르곤 등으로 purge and fill. <button type="button" class="cite" aria-label="출처" data-cite="667:11장 (inert gas purge and fill, when specified)"></button></li>
+          <li>양압을 압력계로 표시하고, 수송 중 계기를 보호하며, 저장 중에도 양압을 유지합니다. <button type="button" class="cite" aria-label="출처" data-cite="667:11장"></button></li>
+          <li>모든 개구에 “내부는 ○○ 가스 가압. 열기 전에 감압” 라벨. <button type="button" class="cite" aria-label="출처" data-cite="667:11장"></button></li>
         </ul>
 
         <h3>유지된 것 · 667에 없는 것</h3>
         <ul class="select-list">
-          <li>유지: 차압 설계 금지, 판 최소 0.5 mm, 판 CA=0, cover+tie bolt, % fouling margin, 포트 이중 개스킷 문법.</li>
-          <li>없음: Hydrogen / HTHS / API 941. 그 서비스의 P&amp;F는 개스킷이 먼저 한계입니다.</li>
-          <li>없음: fully welded P&amp;F·plate-block 설계. 667을 걸 수 없습니다. Block은 810.</li>
+          <li>유지: 차압 설계 금지, 판 최소 0.5 mm, 판 CA=0, cover+tie bolt, % fouling margin, 포트 이중 개스킷 문법. <button type="button" class="cite" aria-label="출처" data-cite="662:8.3 · 8.6.1 · 8.5.2 · 8.4 · 8.8.4|667:7.3 · 7.6.1 · 7.5.1 · 7.4 · 7.8.5"></button></li>
+          <li>없음: Hydrogen / HTHS / API 941. 그 서비스의 P&amp;F는 개스킷이 먼저 한계입니다. <button type="button" class="cite" aria-label="출처" data-cite="667:1 Scope · 2장 (API 941 없음)|810:Section 12 · API 941"></button></li>
+          <li>없음: fully welded P&amp;F·plate-block 설계. 667을 걸 수 없습니다. Block은 810. <button type="button" class="cite" aria-label="출처" data-cite="667:1 Scope|810:1 Scope"></button></li>
         </ul>
 
         <h3>사양에 쓸 때</h3>
@@ -312,14 +312,14 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>공식 대상</td><td>프레임에 넣은 fully welded plate pack</td><td>용접형 없음</td><td>용접 pack + removable panel</td></tr>
-              <tr><td>판–판 밀봉</td><td>전부 용접. 판 사이 개스킷 없음</td><td>—</td><td>전부 용접. 판 사이 개스킷 없음</td></tr>
-              <tr><td>유체–대기 밀봉</td><td>프레임 cover 압축 (타이볼트)</td><td>—</td><td>Panel gasket 4장 (흑연/PTFE/grooved metal)</td></tr>
-              <tr><td>압력 골조</td><td>Fixed/movable cover + tie bolts + connections</td><td>—</td><td>Panels + columns + fixed heads + panel bolting + nozzles</td></tr>
-              <tr><td>Carrying bar</td><td>프레임이면 있음. Pack을 매달고 정렬</td><td>—</td><td>없음. Column이 pack을 잡음</td></tr>
-              <tr><td>기계 세정</td><td>프레임을 열어도 판이 안 빠짐. 채널 접근은 형식 의존, 코드가 panel 세정을 요구하지 않음</td><td>—</td><td>구매자가 지정한 스트림은 panel을 열어 hydro-blast. 못 여는 구조는 Scope 밖</td></tr>
-              <tr><td>기존 기기 개조</td><td>미언급</td><td>—</td><td>구매자·제작자 합의 + 관할 법규</td></tr>
-              <tr><td>Normative 예</td><td>ISO 8501-1 (도장)</td><td>(용접형 없음)</td><td>API 941, ASME VIII-2, B16.25, PCC-1, NACE</td></tr>
+              <tr><td>공식 대상 <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope (welded PHE constrained within a frame)|667:1 Scope (용접형 제외)|810:1 Scope · 3.30"></button></td><td>프레임에 넣은 fully welded plate pack</td><td>용접형 없음</td><td>용접 pack + removable panel</td></tr>
+              <tr><td>판–판 밀봉 <button type="button" class="cite" aria-label="출처" data-cite="662:3 Terms (fully welded plate pack)|810:1 Scope · 3 Terms (welded plate pack)"></button></td><td>전부 용접. 판 사이 개스킷 없음</td><td>—</td><td>전부 용접. 판 사이 개스킷 없음</td></tr>
+              <tr><td>유체–대기 밀봉 <button type="button" class="cite" aria-label="출처" data-cite="662:8.1 / 8.6 (frame · covers · tie bolts)|810:3 Terms (panel gasket) · 7.7.1"></button></td><td>프레임 cover 압축 (타이볼트)</td><td>—</td><td>Panel gasket 4장 (흑연/PTFE/grooved metal)</td></tr>
+              <tr><td>압력 골조 <button type="button" class="cite" aria-label="출처" data-cite="662:3 Terms (frame) · 8.6|810:3.4 column · 3.8/3.9 head · 7.5.2 panels"></button></td><td>Fixed/movable cover + tie bolts + connections</td><td>—</td><td>Panels + columns + fixed heads + panel bolting + nozzles</td></tr>
+              <tr><td>Carrying bar <button type="button" class="cite" aria-label="출처" data-cite="662:8.6.4 (gasketed/semi-welded 조항)|810:없음 (column이 pack을 잡음, 3.4 · 7.5.4)"></button></td><td>프레임이면 있음. Pack을 매달고 정렬</td><td>—</td><td>없음. Column이 pack을 잡음</td></tr>
+              <tr><td>기계 세정 <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope (frame 형식, panel 세정 요구 없음)|810:1 Scope · 4.14 · 7.5.1.2"></button></td><td>프레임을 열어도 판이 안 빠짐. 채널 접근은 형식 의존, 코드가 panel 세정을 요구하지 않음</td><td>—</td><td>구매자가 지정한 스트림은 panel을 열어 hydro-blast. 못 여는 구조는 Scope 밖</td></tr>
+              <tr><td>기존 기기 개조 (Modification or replacement) <button type="button" class="cite" aria-label="출처" data-cite="810:Introduction (p. vii) — new supply/fabrication. modification or replacement of existing HEX/components는 purchaser–vendor 합의 + jurisdictional/post-construction code|662:Introduction/1 Scope에 대응 문장 없음|667:Introduction/1 Scope에 대응 문장 없음 (용접형 제외)"></button></td><td>미언급</td><td>—</td><td>구매자·제작자 합의 + 관할 법규</td></tr>
+              <tr><td>Normative 예 <button type="button" class="cite" aria-label="출처" data-cite="662:2 Normative reference (ISO 8501-1 등)|667:2 Normative References (NACE; 용접형 설계 없음)|810:2 Normative References (API 941, ASME VIII-2, B16.25, PCC-1, NACE)"></button></td><td>ISO 8501-1 (도장)</td><td>(용접형 없음)</td><td>API 941, ASME VIII-2, B16.25, PCC-1, NACE</td></tr>
             </tbody>
           </table>
         </div>
@@ -331,13 +331,13 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>설계압력</td><td>차압 설계 금지. 한쪽 설계압 + 반대 대기/지정 진공</td><td>용접형 조항 없음</td><td>동일: 한쪽 설계압 + 반대 대기/지정 진공. 정지·블라인드에서 전압이 한쪽만 걸림</td></tr>
-              <tr><td>공유 부품 설계온도</td><td>최대/MDMT를 전 압력부품에</td><td>—</td><td>양측 영향 부품(panel, column, 외부 볼트)은 hot/cold 중 더 가혹한 쪽</td></tr>
-              <tr><td>전열판 최소 두께 (press 전)</td><td>0.5 mm (문서 일반값. 용접 pack에도 같은 문장이 적용)</td><td>—</td><td>0.8 mm. Annex는 통상 0.8–1.2 mm 공급</td></tr>
-              <tr><td>판 부식여유</td><td>0. 판에 CA를 더하지 않음</td><td>—</td><td>0. 건전성은 재질 선정(부식률 ≈ 무시)</td></tr>
-              <tr><td>골조 부식여유</td><td>노즐 등 습윤 CS. 판은 0</td><td>—</td><td>내식재/라이너가 없으면 습윤면 전부 구매자 지정</td></tr>
-              <tr><td>차압만으로 panel/cover를 얇게</td><td>금지 취지 (한쪽 만충)</td><td>—</td><td>명시 금지. 운전 중 항상 차압이라는 가정 불가</td></tr>
-              <tr><td>직렬 unit 재질·온도</td><td>미규정</td><td>—</td><td>블록마다 설계온도·공칭 재질을 함부로 다르게 하지 않음. 핫엔드만 Cr-Mo는 구매자 명시</td></tr>
+              <tr><td>설계압력 <button type="button" class="cite" aria-label="출처" data-cite="662:8.3 (not based on differential pressure)|810:7.2 (design pressure on either side, atmospheric or specified vacuum on the other)|667:7.3 (P&amp;F 전용. 용접형 조항 없음)"></button></td><td>차압 설계 금지. 한쪽 설계압 + 반대 대기/지정 진공</td><td>용접형 조항 없음</td><td>동일: 한쪽 설계압 + 반대 대기/지정 진공. 정지·블라인드에서 전압이 한쪽만 걸림</td></tr>
+              <tr><td>공유 부품 설계온도 <button type="button" class="cite" aria-label="출처" data-cite="662:8.2.2 (all pressure-retaining components)|810:7.1.2 (more severe of hot or cold, including external bolting)"></button></td><td>최대/MDMT를 전 압력부품에</td><td>—</td><td>양측 영향 부품(panel, column, 외부 볼트)은 hot/cold 중 더 가혹한 쪽</td></tr>
+              <tr><td>전열판 최소 두께 (press 전) <button type="button" class="cite" aria-label="출처" data-cite="662:8.6.1 a) (gasketed plates ≥0.5 mm; 용접 pack에 같은 문장이 그대로 읽힘)|810:7.5.1.1 (≥0.8 mm) · A.4.2 (통상 0.8–1.2 mm 안내)"></button></td><td>0.5 mm (문서 일반값. 용접 pack에도 같은 문장이 적용)</td><td>—</td><td>0.8 mm. Annex는 통상 0.8–1.2 mm 공급</td></tr>
+              <tr><td>판 부식여유 <button type="button" class="cite" aria-label="출처" data-cite="662:8.5.2 (assumed zero CA)|810:7.4.2 (CA shall not be added to plate thickness) · A.4.2"></button></td><td>0. 판에 CA를 더하지 않음</td><td>—</td><td>0. 건전성은 재질 선정(부식률 ≈ 무시)</td></tr>
+              <tr><td>골조 부식여유 <button type="button" class="cite" aria-label="출처" data-cite="662:8.5.1 (connections only, if specified)|810:7.4.1 (purchaser specifies CA on wetted surfaces without CRA/liner/overlay)"></button></td><td>노즐 등 습윤 CS. 판은 0</td><td>—</td><td>내식재/라이너가 없으면 습윤면 전부 구매자 지정</td></tr>
+              <tr><td>차압만으로 panel/cover를 얇게 <button type="button" class="cite" aria-label="출처" data-cite="662:8.3|810:7.2"></button></td><td>금지 취지 (한쪽 만충)</td><td>—</td><td>명시 금지. 운전 중 항상 차압이라는 가정 불가</td></tr>
+              <tr><td>직렬 unit 재질·온도 <button type="button" class="cite" aria-label="출처" data-cite="810:12.2.2 · 12.3.2 (series units; HTHS)|662:대응 문장 없음"></button></td><td>미규정</td><td>—</td><td>블록마다 설계온도·공칭 재질을 함부로 다르게 하지 않음. 핫엔드만 Cr-Mo는 구매자 명시</td></tr>
             </tbody>
           </table>
         </div>
@@ -349,12 +349,12 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>Liner 최소 두께</td><td>쓰면 판 두께 이상</td><td>—</td><td>max(1 mm, 판 두께)</td></tr>
-              <tr><td>개스킷 접촉폭</td><td>프레임 개스킷면. 수치 약함</td><td>—</td><td>liner 개스킷 접촉폭 ≥ 9 mm</td></tr>
-              <tr><td>Column / head liner</td><td>프레임 형식에는 column이 없음. Cover lining은 옵션 수준</td><td>—</td><td>pack의 일부. Column/head/panel/nozzle liner. Panel liner는 개스킷 외주까지, plug weld</td></tr>
-              <tr><td>Loose liner와 sour</td><td>sour 장 자체가 거의 없음</td><td>—</td><td>Loose liner는 모재 보호로 안 봄. Annex는 뒤 CS에도 sour 요구를 보통 적용</td></tr>
-              <tr><td>수소 서비스 밀폐 공간</td><td>없음</td><td>—</td><td>liner가 만든 포켓은 벤트 (실무·IOM 6 mm급). 빼면 압력 축적</td></tr>
-              <tr><td>Comb / wing</td><td>문서가 모서리 문법을 세 학교로 나누지 않음</td><td>—</td><td>pack–liner 용접은 접근 가능해야 함. 두께·겹침 용접은 구매자가 810 언어로 고정</td></tr>
+              <tr><td>Liner 최소 두께 <button type="button" class="cite" aria-label="출처" data-cite="662:8.7.5 (lining ≥ plate thickness)|810:7.5.4.1 / 7.5.5.1 / 7.5.6.1 — max(1 mm, plate thickness)"></button></td><td>쓰면 판 두께 이상</td><td>—</td><td>max(1 mm, 판 두께)</td></tr>
+              <tr><td>개스킷 접촉폭 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.4.2 (≥9 mm)|662:수치 조항 약함"></button></td><td>프레임 개스킷면. 수치 약함</td><td>—</td><td>liner 개스킷 접촉폭 ≥ 9 mm</td></tr>
+              <tr><td>Column / head liner <button type="button" class="cite" aria-label="출처" data-cite="810:3.6 column liner · 3.9 head liner · 7.5.4 · 7.5.5|662:column 정의 없음"></button></td><td>프레임 형식에는 column이 없음. Cover lining은 옵션 수준</td><td>—</td><td>pack의 일부. Column/head/panel/nozzle liner. Panel liner는 개스킷 외주까지, plug weld</td></tr>
+              <tr><td>Loose liner와 sour <button type="button" class="cite" aria-label="출처" data-cite="810:4.8 · A.2.1 (liner 뒤 CS에도 sour 요구를 적용할지)|662:sour 장 거의 없음"></button></td><td>sour 장 자체가 거의 없음</td><td>—</td><td>Loose liner는 모재 보호로 안 봄. Annex는 뒤 CS에도 sour 요구를 보통 적용</td></tr>
+              <tr><td>수소 서비스 밀폐 공간 <button type="button" class="cite" aria-label="출처" data-cite="810:9.1.5 · A.4.4.3"></button></td><td>없음</td><td>—</td><td>liner가 만든 포켓은 벤트 (실무·IOM 6 mm급). 빼면 압력 축적</td></tr>
+              <tr><td>Comb / wing <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.3 (all plate pack welds accessible) · 3.6|NOTE:comb 두께·겹침 용접은 벤더 학교. 810이 이름을 세 학교로 나누지는 않음"></button></td><td>문서가 모서리 문법을 세 학교로 나누지 않음</td><td>—</td><td>pack–liner 용접은 접근 가능해야 함. 두께·겹침 용접은 구매자가 810 언어로 고정</td></tr>
             </tbody>
           </table>
         </div>
@@ -366,15 +366,15 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>노즐 위치</td><td>Cover (주로 fixed). Studded 또는 flanged</td><td>—</td><td>Panel에 용접 flange. Studded는 합의. Set-in 기본</td></tr>
-              <tr><td>Slip-on / fillet set-in 금지</td><td>약함</td><td>—</td><td>P&gt;2100 kPa, T&gt;204 °C, CA&gt;3 mm, H2, sour, cyclic, vacuum, T&lt;−50 °C, Cl.150 초과, PWHT</td></tr>
-              <tr><td>노즐 하중표</td><td>Standard + Severe. 분모 5. Cl.150/300/600. Cover 기준</td><td>—</td><td>Nozzle–panel 교점. 분모 2.5. Cl.150/300/600. 축력 ±. 등급을 배관하중 때문에 깎을 수 있음</td></tr>
-              <tr><td>금지 호칭</td><td>DN 32/65/90/125</td><td>—</td><td>동일</td></tr>
-              <tr><td>자가배수·벤트</td><td>연결부 통해</td><td>—</td><td>공정 연결 또는 전용 drain/vent. CP50급은 별도 vent/drain이 흔함</td></tr>
-              <tr><td>골조 볼트</td><td>Tie bolt ≥16 mm. Pack을 압축</td><td>—</td><td>Panel bolt ≥19 mm, TS ≥75 ksi, PCC-1 washer, 피치 ASME VIII-2, 코너 대각 포함</td></tr>
-              <tr><td>외부 개스킷</td><td>Cover–pack / 프레임 조인트. 판 사이 개스킷은 없음</td><td>—</td><td>Panel용만. 외주 구속. 멀티피스는 interlock. 단기인장 허용응력을 이 조인트에 쓰지 않음</td></tr>
-              <tr><td>접지</td><td>프레임 양단 2개</td><td>—</td><td>panel 또는 fixed head에 clip 1개 이상</td></tr>
-              <tr><td>Shroud / drip / fireproof</td><td>옵션 (유류화재 type test). Spray leak는 개스킷형 전제에 가깝고 용접 pack에는 약하게 옮김</td><td>—</td><td>없음. 외부 누설점은 panel gasket이지 판 개스킷이 아님</td></tr>
+              <tr><td>노즐 위치 <button type="button" class="cite" aria-label="출처" data-cite="662:8.7.1 (studded or flanged, covers)|810:7.6.1 (flanged and welded to the panel; studded if agreed) · 7.6.3 (set-in default)"></button></td><td>Cover (주로 fixed). Studded 또는 flanged</td><td>—</td><td>Panel에 용접 flange. Studded는 합의. Set-in 기본</td></tr>
+              <tr><td>Slip-on / fillet set-in 금지 <button type="button" class="cite" aria-label="출처" data-cite="810:7.6.5 (P, T, CA, H2, sour, cyclic, vacuum, low T, &gt;Cl.150, PWHT)|662:대응 금지 목록이 약함"></button></td><td>약함</td><td>—</td><td>P&gt;2100 kPa, T&gt;204 °C, CA&gt;3 mm, H2, sour, cyclic, vacuum, T&lt;−50 °C, Cl.150 초과, PWHT</td></tr>
+              <tr><td>노즐 하중표 <button type="button" class="cite" aria-label="출처" data-cite="662:8.7.10 · Tables 1–2 · A.7|810:7.6.15 · Table 1 · Fig. 7 · A.4.7 (nozzle-to-panel intersection)"></button></td><td>Standard + Severe. 분모 5. Cl.150/300/600. Cover 기준</td><td>—</td><td>Nozzle–panel 교점. 분모 2.5. Cl.150/300/600. 축력 ±. 등급을 배관하중 때문에 깎을 수 있음</td></tr>
+              <tr><td>금지 호칭 <button type="button" class="cite" aria-label="출처" data-cite="662:8.7.8|810:7.6.10|667:7.7.16 (P&amp;F)"></button></td><td>DN 32/65/90/125</td><td>—</td><td>동일</td></tr>
+              <tr><td>자가배수·벤트 <button type="button" class="cite" aria-label="출처" data-cite="662:8.7.4|810:7.6.6"></button></td><td>연결부 통해</td><td>—</td><td>공정 연결 또는 전용 drain/vent. CP50급은 별도 vent/drain이 흔함</td></tr>
+              <tr><td>골조 볼트 <button type="button" class="cite" aria-label="출처" data-cite="662:8.6.3 a) (tie bolts ≥16 mm, gasketed/semi-welded 문장)|810:7.5.2.4 (≥19 mm) · 8.1.11 (TS ≥75 ksi) · 7.5.2.6 (PCC-1 washers) · 7.5.2.7 (VIII-2 pitch, corner diagonal)"></button></td><td>Tie bolt ≥16 mm. Pack을 압축</td><td>—</td><td>Panel bolt ≥19 mm, TS ≥75 ksi, PCC-1 washer, 피치 ASME VIII-2, 코너 대각 포함</td></tr>
+              <tr><td>외부 개스킷 <button type="button" class="cite" aria-label="출처" data-cite="810:7.7.1 (panel gaskets confined, multipiece interlock)|662:8.8 (plate gaskets — 용접 pack의 판 사이에는 해당 없음)"></button></td><td>Cover–pack / 프레임 조인트. 판 사이 개스킷은 없음</td><td>—</td><td>Panel용만. 외주 구속. 멀티피스는 interlock. 단기인장 허용응력을 이 조인트에 쓰지 않음</td></tr>
+              <tr><td>접지 <button type="button" class="cite" aria-label="출처" data-cite="662:8.6.10 (two earthing lugs)|810:7.8.4 (grounding clip on panel or fixed head)"></button></td><td>프레임 양단 2개</td><td>—</td><td>panel 또는 fixed head에 clip 1개 이상</td></tr>
+              <tr><td>Shroud / drip / fireproof <button type="button" class="cite" aria-label="출처" data-cite="662:8.6.7–8.6.9|810:대응 옵션 장 없음"></button></td><td>옵션 (유류화재 type test). Spray leak는 개스킷형 전제에 가깝고 용접 pack에는 약하게 옮김</td><td>—</td><td>없음. 외부 누설점은 panel gasket이지 판 개스킷이 아님</td></tr>
             </tbody>
           </table>
         </div>
@@ -386,14 +386,14 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>Sour / wet H2S</td><td>거의 없음. 구매자 사양에 의존</td><td>—</td><td>NACE MR0175/MR0103, SP0472, HIC 등. Liner 뒤 CS 적용을 구매자가 찍음</td></tr>
-              <tr><td>Hydrogen</td><td>없음</td><td>—</td><td>구매자 지정. 밀폐공간 벤트</td></tr>
-              <tr><td>HTHS</td><td>없음</td><td>—</td><td>Section 12. 문턱: H2 pp &gt;350 kPa abs 그리고 T&gt;204 °C. API 941 + IOW. 전용입 맞대기 100% 체적검사, CS 제작 후 PWHT, DMW 금지, PMI, 습윤측 WFMT</td></tr>
-              <tr><td>설계온도 vs 재료온도</td><td>분리하지 않음</td><td>—</td><td>HTHS에서 분리 가능. 금속 온도가 낮다고 주장하려면 계측·IOW</td></tr>
-              <tr><td>Cyclic / fatigue</td><td>Annex: VIII-2 fatigue 권고</td><td>—</td><td>구매자가 변동량·주기 지정. Fatigue 해석 시 라이너 노즐 금지</td></tr>
-              <tr><td>주강</td><td>미언급</td><td>—</td><td>원칙 금지</td></tr>
-              <tr><td>Oxyacetylene</td><td>미언급</td><td>—</td><td>금지</td></tr>
-              <tr><td>PMI</td><td>미언급</td><td>—</td><td>HTHS에서는 사실상 필수. 범위는 구매자</td></tr>
+              <tr><td>Sour / wet H2S <button type="button" class="cite" aria-label="출처" data-cite="810:4.7–4.8 · 8.2 · 10.1 sour NDE|662:거의 없음"></button></td><td>거의 없음. 구매자 사양에 의존</td><td>—</td><td>NACE MR0175/MR0103, SP0472, HIC 등. Liner 뒤 CS 적용을 구매자가 찍음</td></tr>
+              <tr><td>Hydrogen <button type="button" class="cite" aria-label="출처" data-cite="810:4.9 · 3.16 hydrogen service · 9.1.5"></button></td><td>없음</td><td>—</td><td>구매자 지정. 밀폐공간 벤트</td></tr>
+              <tr><td>HTHS <button type="button" class="cite" aria-label="출처" data-cite="810:3.15 HTHS (H2 pp &gt;350 kPa abs and T&gt;204 °C) · Section 12 · 2 Normative (API 941)"></button></td><td>없음</td><td>—</td><td>Section 12. 문턱: H2 pp &gt;350 kPa abs 그리고 T&gt;204 °C. API 941 + IOW. 전용입 맞대기 100% 체적검사, CS 제작 후 PWHT, DMW 금지, PMI, 습윤측 WFMT</td></tr>
+              <tr><td>설계온도 vs 재료온도 <button type="button" class="cite" aria-label="출처" data-cite="810:12.2 · A.8.2"></button></td><td>분리하지 않음</td><td>—</td><td>HTHS에서 분리 가능. 금속 온도가 낮다고 주장하려면 계측·IOW</td></tr>
+              <tr><td>Cyclic / fatigue <button type="button" class="cite" aria-label="출처" data-cite="662:Annex (fatigue 안내 수준)|810:4.10–4.11 · 7.6.12 (no lined connections if fatigue analysis) · A.2.3"></button></td><td>Annex: VIII-2 fatigue 권고</td><td>—</td><td>구매자가 변동량·주기 지정. Fatigue 해석 시 라이너 노즐 금지</td></tr>
+              <tr><td>주강 <button type="button" class="cite" aria-label="출처" data-cite="810:8.1.1 (castings shall not be used unless approved)"></button></td><td>미언급</td><td>—</td><td>원칙 금지</td></tr>
+              <tr><td>Oxyacetylene <button type="button" class="cite" aria-label="출처" data-cite="810:9.1.3 (oxyacetylene gas welding 금지)"></button></td><td>미언급</td><td>—</td><td>금지</td></tr>
+              <tr><td>PMI <button type="button" class="cite" aria-label="출처" data-cite="810:10.1.13 · 12.6 (HTHS)"></button></td><td>미언급</td><td>—</td><td>HTHS에서는 사실상 필수. 범위는 구매자</td></tr>
             </tbody>
           </table>
         </div>
@@ -409,13 +409,13 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>판 용접의 지위</td><td>밀봉 용접. 압력코드 자격·NDE는 구매자 임의</td><td>—</td><td>유체–유체 압력경계. 전열판·pack–liner·liner–liner·panel/nozzle liner·리프팅 러그까지 압력코드 자격</td></tr>
-              <tr><td>성형 후 전열판</td><td>Light box / PT / He는 지정 시</td><td>—</td><td>용접 전 전 판 vacuum 또는 PT</td></tr>
-              <tr><td>판–판 용접 NDE</td><td>절차·NDE 구매자 임의</td><td>—</td><td>PT 또는 bubble. Interstream He 기본 1×10⁻⁸ kPa·m³/s @ 100 kPa (지정 시)</td></tr>
-              <tr><td>Pack 용접 접근성</td><td>프레임을 열면 바깥은 보이나, “모든 시임을 검사·수리할 수 있어야 한다”는 문장이 약함</td><td>—</td><td>모든 plate pack 용접은 접근 가능해야 함. 나중에 못 고치는 코어는 취지에 어긋남</td></tr>
-              <tr><td>맞대기 RT</td><td>구매자/압력코드</td><td>—</td><td>접근 joint마다 spot RT 1. Porosity는 전RT 기준. Nozzle–flange 맞대기는 코드 미요구 시 면제 가능</td></tr>
-              <tr><td>Channel plug / 막음 수리</td><td>미언급</td><td>—</td><td>채널을 막는 수리는 사전 승인. 그 경로는 영구 손실</td></tr>
-              <tr><td>도장</td><td>ISO 8501-1</td><td>—</td><td>구매자. 압력코드·NACE와 별개</td></tr>
+              <tr><td>판 용접의 지위 <button type="button" class="cite" aria-label="출처" data-cite="662:10.1 welding · 11.1.2 (NDE of plates = purchaser)|810:9.1 (pressure design code welding) · 7.5.1.3"></button></td><td>밀봉 용접. 압력코드 자격·NDE는 구매자 임의</td><td>—</td><td>유체–유체 압력경계. 전열판·pack–liner·liner–liner·panel/nozzle liner·리프팅 러그까지 압력코드 자격</td></tr>
+              <tr><td>성형 후 전열판 <button type="button" class="cite" aria-label="출처" data-cite="810:10.1.1 (vacuum or PT of each plate before welding)|662:지정 시"></button></td><td>Light box / PT / He는 지정 시</td><td>—</td><td>용접 전 전 판 vacuum 또는 PT</td></tr>
+              <tr><td>판–판 용접 NDE <button type="button" class="cite" aria-label="출처" data-cite="810:10.1 (PT or bubble) · 10.1.3 (interstream He when specified, default 1×10⁻⁸ kPa·m³/s @ 100 kPa)"></button></td><td>절차·NDE 구매자 임의</td><td>—</td><td>PT 또는 bubble. Interstream He 기본 1×10⁻⁸ kPa·m³/s @ 100 kPa (지정 시)</td></tr>
+              <tr><td>Pack 용접 접근성 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.3"></button></td><td>프레임을 열면 바깥은 보이나, “모든 시임을 검사·수리할 수 있어야 한다”는 문장이 약함</td><td>—</td><td>모든 plate pack 용접은 접근 가능해야 함. 나중에 못 고치는 코어는 취지에 어긋남</td></tr>
+              <tr><td>맞대기 RT <button type="button" class="cite" aria-label="출처" data-cite="810:10.1 (spot RT each accessible butt)"></button></td><td>구매자/압력코드</td><td>—</td><td>접근 joint마다 spot RT 1. Porosity는 전RT 기준. Nozzle–flange 맞대기는 코드 미요구 시 면제 가능</td></tr>
+              <tr><td>Channel plug / 막음 수리 <button type="button" class="cite" aria-label="출처" data-cite="810:9.1 (channel-blocking repair needs prior approval)"></button></td><td>미언급</td><td>—</td><td>채널을 막는 수리는 사전 승인. 그 경로는 영구 손실</td></tr>
+              <tr><td>도장 <button type="button" class="cite" aria-label="출처" data-cite="662:10.3.2 (ISO 8501-1 blast-clean CS covers)|810:구매자 지정. 2장 normative에 도장 표준을 810 본문이 강제하지 않음"></button></td><td>ISO 8501-1</td><td>—</td><td>구매자. 압력코드·NACE와 별개</td></tr>
             </tbody>
           </table>
         </div>
@@ -427,12 +427,12 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>수압 방식</td><td>각 측 단독</td><td>—</td><td>각 측 + 양측 동시</td></tr>
-              <tr><td>수온</td><td>MDMT+17 °C, 상한 49 °C</td><td>—</td><td>최소 7 °C</td></tr>
-              <tr><td>시험수 Cl⁻</td><td>ASS 30 mg/kg</td><td>—</td><td>50 mg/kg (재질 불문)</td></tr>
-              <tr><td>유지 시간</td><td>누설 확인에 충분, 최소 30 min</td><td>—</td><td>안정화 후 최소 30 min</td></tr>
-              <tr><td>공압</td><td>없음</td><td>—</td><td>Panel을 연 뒤 재조립하면 개스킷 교체 + 100–170 kPa soap 필수. 현장 재조립에도 해당될 수 있음</td></tr>
-              <tr><td>Sour CS hardness / WFMT</td><td>—</td><td>—</td><td>접근 가능 내면 WFMT. Hardness 합격치는 구매자 지정</td></tr>
+              <tr><td>수압 방식 <button type="button" class="cite" aria-label="출처" data-cite="662:11.2.1 (each side separately)|810:10.2 (each side + both sides simultaneous)"></button></td><td>각 측 단독</td><td>—</td><td>각 측 + 양측 동시</td></tr>
+              <tr><td>수온 <button type="button" class="cite" aria-label="출처" data-cite="662:11.2.4 (MDMT+17 °C, max 49 °C)|810:10.2.5 (minimum 7 °C)"></button></td><td>MDMT+17 °C, 상한 49 °C</td><td>—</td><td>최소 7 °C</td></tr>
+              <tr><td>시험수 Cl⁻ <button type="button" class="cite" aria-label="출처" data-cite="662:11.2.5 (ASS/ASS-lined ≤30 mg/kg)|810:10.2.6 (≤50 mg/kg)"></button></td><td>ASS 30 mg/kg</td><td>—</td><td>50 mg/kg (재질 불문)</td></tr>
+              <tr><td>유지 시간 <button type="button" class="cite" aria-label="출처" data-cite="662:11.2.2 (inspection, not less than 30 min)|810:10.2.2 (≥30 min after stabilization)"></button></td><td>누설 확인에 충분, 최소 30 min</td><td>—</td><td>안정화 후 최소 30 min</td></tr>
+              <tr><td>공압 <button type="button" class="cite" aria-label="출처" data-cite="810:10.2.8 (reassembly after hydro: new gaskets + 100–170 kPa soap)|662:없음"></button></td><td>없음</td><td>—</td><td>Panel을 연 뒤 재조립하면 개스킷 교체 + 100–170 kPa soap 필수. 현장 재조립에도 해당될 수 있음</td></tr>
+              <tr><td>Sour CS hardness / WFMT <button type="button" class="cite" aria-label="출처" data-cite="810:10.1.6 · 10.1.10 · 8.2"></button></td><td>—</td><td>—</td><td>접근 가능 내면 WFMT. Hardness 합격치는 구매자 지정</td></tr>
             </tbody>
           </table>
         </div>
@@ -444,11 +444,11 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>S&amp;T fouling resistance</td><td>Annex: 쓰지 말 것. % margin + wall shear</td><td>—</td><td>동일. Table A.1 유체별. 양측 15%면 overall 25%. Dirty process 25% / 50 Pa</td></tr>
-              <tr><td>최소 예시</td><td>% margin 최소 10%, crude 25%, shear ≥50 Pa</td><td>—</td><td>Annex 표가 우선. Owner DEP가 있으면 DEP 표</td></tr>
-              <tr><td>유로</td><td>프레임 pack. 패스 배플 문법이 plate-block만큼 코드화되지 않음</td><td>—</td><td>패스 안은 교차류, 배플로 쌓아 향류. 배플은 청정 허용 ΔP의 2배, cage에 일체, panel·pack에 밀봉</td></tr>
-              <tr><td>판 패턴</td><td>일반 chevron 서술</td><td>—</td><td>Chevron(고 θ, jetting) / dimple·wide-gap(고체). 기계 세정 스트림에 패턴을 맞춤</td></tr>
-              <tr><td>입자</td><td>Annex: gap의 50% 초과 시 strainer</td><td>—</td><td>같은 취지. 스트레이너 ΔP를 수력에 넣음</td></tr>
+              <tr><td>S&amp;T fouling resistance <button type="button" class="cite" aria-label="출처" data-cite="662:Annex A.4 (RP to 8.4)|810:7.3 · A.4.1 · Table A.1"></button></td><td>Annex: 쓰지 말 것. % margin + wall shear</td><td>—</td><td>동일. Table A.1 유체별. 양측 15%면 overall 25%. Dirty process 25% / 50 Pa</td></tr>
+              <tr><td>최소 예시 <button type="button" class="cite" aria-label="출처" data-cite="662:Annex A.4|810:Table A.1 · A.4.1"></button></td><td>% margin 최소 10%, crude 25%, shear ≥50 Pa</td><td>—</td><td>Annex 표가 우선. Owner DEP가 있으면 DEP 표</td></tr>
+              <tr><td>유로 <button type="button" class="cite" aria-label="출처" data-cite="810:3.1 baffle · 7.5.3 · A.4 (crossflow pass / counterflow stack)"></button></td><td>프레임 pack. 패스 배플 문법이 plate-block만큼 코드화되지 않음</td><td>—</td><td>패스 안은 교차류, 배플로 쌓아 향류. 배플은 청정 허용 ΔP의 2배, cage에 일체, panel·pack에 밀봉</td></tr>
+              <tr><td>판 패턴 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.2 · A.4 (chevron / dimple)|662:8.6.1 일반 서술"></button></td><td>일반 chevron 서술</td><td>—</td><td>Chevron(고 θ, jetting) / dimple·wide-gap(고체). 기계 세정 스트림에 패턴을 맞춤</td></tr>
+              <tr><td>입자 <button type="button" class="cite" aria-label="출처" data-cite="662:Annex (gap의 약 50% 안내)|810:5.1 (max particle size in proposal) · A.4"></button></td><td>Annex: gap의 50% 초과 시 strainer</td><td>—</td><td>같은 취지. 스트레이너 ΔP를 수력에 넣음</td></tr>
             </tbody>
           </table>
         </div>
@@ -460,11 +460,11 @@
               <tr><th>항목</th><th>662 fully welded in frame</th><th>667</th><th>810 plate-block</th></tr>
             </thead>
             <tbody>
-              <tr><td>열어 보는 단위</td><td>프레임 cover. Pack은 한 덩어리</td><td>—</td><td>Panel 면. 채널은 보이나 판은 안 빠짐</td></tr>
-              <tr><td>전열판 개별 교체</td><td>불가 (용접 일체)</td><td>—</td><td>불가</td></tr>
-              <tr><td>면적 증설</td><td>20% 프레임 여유는 개스킷/세미용접 전용 조항. 용접 pack에는 해당 없음</td><td>—</td><td>없음. 병렬 block 또는 기기 교체</td></tr>
-              <tr><td>Panel / cover 해체 틈</td><td>타이볼트·커버 인양</td><td>—</td><td>jackscrew 또는 주위 ≥5 mm. 4면 공간을 outline에 넣음</td></tr>
-              <tr><td>배플</td><td>형식에 따라 있음. 설계 ΔP 배수 없음</td><td>—</td><td>청정 허용 ΔP의 2배. 꺾이면 바이패스</td></tr>
+              <tr><td>열어 보는 단위 <button type="button" class="cite" aria-label="출처" data-cite="662:8.6 covers|810:7.5.2 panels · 1 Scope"></button></td><td>프레임 cover. Pack은 한 덩어리</td><td>—</td><td>Panel 면. 채널은 보이나 판은 안 빠짐</td></tr>
+              <tr><td>전열판 개별 교체 <button type="button" class="cite" aria-label="출처" data-cite="662:8.1.2는 gasketed/semi-welded 전용|810:용접 pack — 개별 판 교체 조항 없음"></button></td><td>불가 (용접 일체)</td><td>—</td><td>불가</td></tr>
+              <tr><td>면적 증설 <button type="button" class="cite" aria-label="출처" data-cite="662:8.1.1 (20% future plates — gasketed/semi-welded)|810:없음"></button></td><td>20% 프레임 여유는 개스킷/세미용접 전용 조항. 용접 pack에는 해당 없음</td><td>—</td><td>없음. 병렬 block 또는 기기 교체</td></tr>
+              <tr><td>Panel / cover 해체 틈 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.2.3 (jackscrews or ≥5 mm) · 6.1 outline"></button></td><td>타이볼트·커버 인양</td><td>—</td><td>jackscrew 또는 주위 ≥5 mm. 4면 공간을 outline에 넣음</td></tr>
+              <tr><td>배플 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.3.1–7.5.3.2 (integral to cage, 2× clean allowable ΔP)|662:pass plate 8.6.1 d); 2×ΔP 없음"></button></td><td>형식에 따라 있음. 설계 ΔP 배수 없음</td><td>—</td><td>청정 허용 ΔP의 2배. 꺾이면 바이패스</td></tr>
             </tbody>
           </table>
         </div>
@@ -474,9 +474,9 @@
           662는 한 권에 세 형식을 넣었습니다. 아래는 용접 plate HEX 설계에 그대로 복사하면 안 되는 것들입니다.
         </p>
         <ul class="select-list">
-          <li>프레임 20% 추가 판 — 개스킷/세미용접 전용. 용접 pack은 판을 끼워 넣지 못합니다.</li>
-          <li>개별 판 또는 pair 교체 — 용접 일체에는 없음.</li>
-          <li>판 홈 탄성 개스킷, 포트 이중 개스킷, 대기 벤트 — 판 사이 개스킷이 없는 형식의 누설 문법이 아닙니다.</li>
+          <li>프레임 20% 추가 판 — 개스킷/세미용접 전용. 용접 pack은 판을 끼워 넣지 못합니다. <button type="button" class="cite" aria-label="출처" data-cite="662:8.1.1"></button></li>
+          <li>개별 판 또는 pair 교체 — 용접 일체에는 없음. <button type="button" class="cite" aria-label="출처" data-cite="662:8.1.2"></button></li>
+          <li>판 홈 탄성 개스킷, 포트 이중 개스킷, 대기 벤트 — 판 사이 개스킷이 없는 형식의 누설 문법이 아닙니다. <button type="button" class="cite" aria-label="출처" data-cite="662:8.8.1–8.8.4"></button></li>
           <li>그 조항들을 810 panel gasket(덮개 밀봉 4장)과 같은 예비품·같은 수명 모델로 묶지 마십시오.</li>
         </ul>
       </section>
@@ -489,40 +489,40 @@
         </p>
 
         <div class="note">
-          <p><strong>1. 차압으로 설계하지 않는다.</strong> 한쪽 설계압 + 반대쪽 대기(또는 지정 진공). 운전 중 항상 차압만 걸린다고 가정하면 안 됩니다. 정지·밸브 오조작·블라인드에서 전압이 한쪽만 걸립니다.</p>
+          <p><strong>1. 차압으로 설계하지 않는다.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.2"></button> 한쪽 설계압 + 반대쪽 대기(또는 지정 진공). 운전 중 항상 차압만 걸린다고 가정하면 안 됩니다. 정지·밸브 오조작·블라인드에서 전압이 한쪽만 걸립니다.</p>
         </div>
         <div class="note">
-          <p><strong>2. 공유 부품 온도는 더 가혹한 쪽.</strong> Panel, column, 외부 볼트처럼 양측에 영향받는 부품의 설계온도는 hot/cold 중 가혹한 값입니다. 볼트 재질·크리프·개스킷이 여기서 갈립니다.</p>
+          <p><strong>2. 공유 부품 온도는 더 가혹한 쪽.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.1.2"></button> Panel, column, 외부 볼트처럼 양측에 영향받는 부품의 설계온도는 hot/cold 중 가혹한 값입니다. 볼트 재질·크리프·개스킷이 여기서 갈립니다.</p>
         </div>
         <div class="note">
-          <p><strong>3. 전열판은 0.8 mm, 부식여유 없음.</strong> Press 전 공칭 최소 0.8 mm. CA를 판에 더하지 않습니다. 얇은 판의 건전성은 재질 선정(부식률 ≈ 무시)으로 지킵니다. Annex는 통상 0.8–1.2 mm 공급을 말합니다. 662 용접 pack의 0.5 mm보다 올렸습니다.</p>
+          <p><strong>3. 전열판은 0.8 mm, 부식여유 없음.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.1 · 7.4.2 · A.4.2"></button> Press 전 공칭 최소 0.8 mm. CA를 판에 더하지 않습니다. 얇은 판의 건전성은 재질 선정(부식률 ≈ 무시)으로 지킵니다. Annex는 통상 0.8–1.2 mm 공급을 말합니다. 662 용접 pack의 0.5 mm보다 올렸습니다.</p>
         </div>
         <div class="note">
-          <p><strong>4. Pack 용접은 검사·수리가 가능해야 한다.</strong> 모든 plate pack 용접은 접근 가능해야 합니다. Channel을 막아버리는 수리는 사전 승인입니다. 나중에 못 고치는 코어를 사면 810 취지에 어긋납니다.</p>
+          <p><strong>4. Pack 용접은 검사·수리가 가능해야 한다.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.3 · 9.1"></button> 모든 plate pack 용접은 접근 가능해야 합니다. Channel을 막아버리는 수리는 사전 승인입니다. 나중에 못 고치는 코어를 사면 810 취지에 어긋납니다.</p>
         </div>
         <div class="note">
-          <p><strong>5. Panel은 압력 + 노즐하중 + 볼트하중.</strong> 스티프너로 압력을 받게 하지 않습니다(승인 예외). Panel은 head·column과 interlock되고 볼트로만 붙습니다. 볼트 ≥19 mm, 피치는 ASME VIII-2, washer는 PCC-1. 코너 대각 피치도 포함합니다.</p>
+          <p><strong>5. Panel은 압력 + 노즐하중 + 볼트하중.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.2.1–7.5.2.9"></button> 스티프너로 압력을 받게 하지 않습니다(승인 예외). Panel은 head·column과 interlock되고 볼트로만 붙습니다. 볼트 ≥19 mm, 피치는 ASME VIII-2, washer는 PCC-1. 코너 대각 피치도 포함합니다.</p>
         </div>
         <div class="note">
-          <p><strong>6. 배플은 청정 허용 ΔP의 2배.</strong> Baffle은 cage에 일체, panel과 pack에 밀봉. 막힘·세정 후 차압이 커져도 배플이 먼저 꺾이면 바이패스로 성능이 무너집니다.</p>
+          <p><strong>6. 배플은 청정 허용 ΔP의 2배.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.3.1–7.5.3.2"></button> Baffle은 cage에 일체, panel과 pack에 밀봉. 막힘·세정 후 차압이 커져도 배플이 먼저 꺾이면 바이패스로 성능이 무너집니다.</p>
         </div>
         <div class="note">
-          <p><strong>7. Liner는 부식 보호이지 sour 면제가 아니다.</strong> Column/head/panel/nozzle liner 최소 max(1 mm, 판두께). 개스킷 접촉폭 ≥9 mm. Panel liner는 개스킷 외주까지, plug weld. Loose liner 뒤 탄소강에도 sour 요구를 적용할지 구매자가 찍습니다. Annex는 보통 적용하라고 합니다.</p>
+          <p><strong>7. Liner는 부식 보호이지 sour 면제가 아니다.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.4–7.5.6 · 4.8 · A.2.1"></button> Column/head/panel/nozzle liner 최소 max(1 mm, 판두께). 개스킷 접촉폭 ≥9 mm. Panel liner는 개스킷 외주까지, plug weld. Loose liner 뒤 탄소강에도 sour 요구를 적용할지 구매자가 찍습니다. Annex는 보통 적용하라고 합니다.</p>
         </div>
         <div class="note">
-          <p><strong>8. 노즐은 set-in + 전용입 쪽으로.</strong> Flange를 panel에 용접. Studded는 합의. Slip-on 또는 fillet/부분용입 set-in은 고압·고온·H2·sour·cyclic·진공·저온·Cl.150 초과·PWHT에서 금지. 노즐 하중은 panel 교점에서 축력 양방향.</p>
+          <p><strong>8. 노즐은 set-in + 전용입 쪽으로.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.6.1 · 7.6.3 · 7.6.5 · 7.6.15"></button> Flange를 panel에 용접. Studded는 합의. Slip-on 또는 fillet/부분용입 set-in은 고압·고온·H2·sour·cyclic·진공·저온·Cl.150 초과·PWHT에서 금지. 노즐 하중은 panel 교점에서 축력 양방향.</p>
         </div>
         <div class="note">
-          <p><strong>9. 기계 세정 스트림을 Scope에 묶는다.</strong> 구매자가 어느 쪽을 기계 세정할지 지정. 지정되면 판 패턴이 hydro-blast에 맞아야 합니다. Panel로 못 여는 쪽이면 810 적용 대상이 아닐 수 있습니다. 그때는 plate-and-shell 등 다른 용접형 + 압력코드입니다.</p>
+          <p><strong>9. 기계 세정 스트림을 Scope에 묶는다.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:1 Scope · 4.14 · 7.5.1.2"></button> 구매자가 어느 쪽을 기계 세정할지 지정. 지정되면 판 패턴이 hydro-blast에 맞아야 합니다. Panel로 못 여는 쪽이면 810 적용 대상이 아닐 수 있습니다. 그때는 plate-and-shell 등 다른 용접형 + 압력코드입니다.</p>
         </div>
         <div class="note">
-          <p><strong>10. HTHS는 설계온도와 재료온도를 분리한다.</strong> H2 분압 &gt;350 kPa abs이고 T&gt;204 °C면 Section 12. 재료는 API 941 + IOW 마진. 직렬 block은 설계온도·공칭 재질을 함부로 다르게 하지 않음. 전용입 맞대기 100% 체적검사, CS는 제작 후 PWHT, 이종금속용접 금지, PMI, 습윤측 WFMT. 판 pack/liner 용접은 hardness·baseline UT에서 제외되는 주석이 있으므로 구매자가 별도 합의해야 합니다.</p>
+          <p><strong>10. HTHS는 설계온도와 재료온도를 분리한다.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:3.15 · Section 12 · 12.2 · 12.5 · 12.6 · API 941 (2장)"></button> H2 분압 &gt;350 kPa abs이고 T&gt;204 °C면 Section 12. 재료는 API 941 + IOW 마진. 직렬 block은 설계온도·공칭 재질을 함부로 다르게 하지 않음. 전용입 맞대기 100% 체적검사, CS는 제작 후 PWHT, 이종금속용접 금지, PMI, 습윤측 WFMT. 판 pack/liner 용접은 hardness·baseline UT에서 제외되는 주석이 있으므로 구매자가 별도 합의해야 합니다.</p>
         </div>
         <div class="note">
-          <p><strong>11. 개스킷 조인트에 단기인장 허용응력을 쓰지 않는다.</strong> 약간의 영구변형이 누설을 만듭니다. 810은 gasketed panel에 그 응력값을 금지합니다. 이 개스킷은 판 사이가 아니라 덮개 밀봉입니다.</p>
+          <p><strong>11. 개스킷 조인트에 단기인장 허용응력을 쓰지 않는다.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:8.1.10"></button> 약간의 영구변형이 누설을 만듭니다. 810은 gasketed panel에 그 응력값을 금지합니다. 이 개스킷은 판 사이가 아니라 덮개 밀봉입니다.</p>
         </div>
         <div class="note">
-          <p><strong>12. Fouling은 % margin + 벽면전단.</strong> S&amp;T fouling resistance를 넣지 않습니다. 양측 15%면 overall 25% 권고. Dirty process는 25%/50 Pa.</p>
+          <p><strong>12. Fouling은 % margin + 벽면전단.</strong> <button type="button" class="cite" aria-label="출처" data-cite="810:7.3 · A.4.1 · Table A.1"></button> S&amp;T fouling resistance를 넣지 않습니다. 양측 15%면 overall 25% 권고. Dirty process는 25%/50 Pa.</p>
         </div>
 
         <h3>설계 시 같이 봐야 하는 숫자</h3>
@@ -532,18 +532,18 @@
               <tr><th>항목</th><th>값</th></tr>
             </thead>
             <tbody>
-              <tr><td>판 최소 두께</td><td>0.8 mm (press 전)</td></tr>
-              <tr><td>Liner 최소 두께</td><td>1 mm 또는 판 두께 중 큰 값</td></tr>
-              <tr><td>Liner 개스킷 접촉폭</td><td>≥ 9 mm</td></tr>
-              <tr><td>Panel 해체 틈</td><td>jackscrew 또는 주위 ≥ 5 mm</td></tr>
-              <tr><td>Panel 볼트</td><td>≥ 19 mm, TS ≥ 75 ksi</td></tr>
-              <tr><td>Panel 평탄도</td><td>변 &gt;1 m → 0.8 mm, ≤1 m → 0.6 mm</td></tr>
-              <tr><td>개스킷면 Ra</td><td>3.2–6.3 μm, PWHT 후 최종 가공</td></tr>
-              <tr><td>배플 설계 ΔP</td><td>≥ 2 × clean allowable ΔP</td></tr>
-              <tr><td>He leak 기본</td><td>1×10⁻⁸ kPa·m³/s @ 100 kPa</td></tr>
-              <tr><td>HTHS 문턱</td><td>H2 pp &gt; 350 kPa abs 그리고 T &gt; 204 °C</td></tr>
-              <tr><td>공압 (panel 재조립)</td><td>100–170 kPa soap</td></tr>
-              <tr><td>수압 유지</td><td>안정화 후 ≥ 30 min</td></tr>
+              <tr><td>판 최소 두께 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.1"></button></td><td>0.8 mm (press 전)</td></tr>
+              <tr><td>Liner 최소 두께 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.4.1 · 7.5.5.1 · 7.5.6.1"></button></td><td>1 mm 또는 판 두께 중 큰 값</td></tr>
+              <tr><td>Liner 개스킷 접촉폭 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.4.2"></button></td><td>≥ 9 mm</td></tr>
+              <tr><td>Panel 해체 틈 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.2.3"></button></td><td>jackscrew 또는 주위 ≥ 5 mm</td></tr>
+              <tr><td>Panel 볼트 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.2.4 · 8.1.11"></button></td><td>≥ 19 mm, TS ≥ 75 ksi</td></tr>
+              <tr><td>Panel 평탄도 <button type="button" class="cite" aria-label="출처" data-cite="810:9.3.3"></button></td><td>변 &gt;1 m → 0.8 mm, ≤1 m → 0.6 mm</td></tr>
+              <tr><td>개스킷면 Ra <button type="button" class="cite" aria-label="출처" data-cite="810:9.3.2 · 9.3.4"></button></td><td>3.2–6.3 μm, PWHT 후 최종 가공</td></tr>
+              <tr><td>배플 설계 ΔP <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.3.2"></button></td><td>≥ 2 × clean allowable ΔP</td></tr>
+              <tr><td>He leak 기본 <button type="button" class="cite" aria-label="출처" data-cite="810:10.1.3"></button></td><td>1×10⁻⁸ kPa·m³/s @ 100 kPa</td></tr>
+              <tr><td>HTHS 문턱 <button type="button" class="cite" aria-label="출처" data-cite="810:3.15"></button></td><td>H2 pp &gt; 350 kPa abs 그리고 T &gt; 204 °C</td></tr>
+              <tr><td>공압 (panel 재조립) <button type="button" class="cite" aria-label="출처" data-cite="810:10.2.8"></button></td><td>100–170 kPa soap</td></tr>
+              <tr><td>수압 유지 <button type="button" class="cite" aria-label="출처" data-cite="810:10.2.2"></button></td><td>안정화 후 ≥ 30 min</td></tr>
             </tbody>
           </table>
         </div>
@@ -556,15 +556,15 @@
               <tr><th>지정 항목</th><th>왜 중요한가</th></tr>
             </thead>
             <tbody>
-              <tr><td>기계 세정 대상 스트림</td><td>Scope가 removable panel로 세정 가능한 측에 묶임</td></tr>
-              <tr><td>Hydrogen / HTHS</td><td>Section 12, API 941, 전용입·PWHT·DMW 금지</td></tr>
-              <tr><td>Sour / wet H2S, liner 뒤 CS 적용</td><td>Loose liner는 모재 보호로 안 봄</td></tr>
-              <tr><td>Cyclic 여부·사이클 정의</td><td>라이너 노즐·fatigue 해석 범위</td></tr>
-              <tr><td>Panel gasket 내면 구속, overlay vs liner</td><td>고온 누설·보수용이성</td></tr>
-              <tr><td>Interstream He leak test</td><td>판 용접 품질의 실질 합격 기준</td></tr>
-              <tr><td>PMI 범위</td><td>HTHS에서는 사실상 필수</td></tr>
-              <tr><td>직렬 block의 설계온도·재질을 다르게 할지</td><td>기본은 같게. 핫엔드만 Cr-Mo는 명시해야 함</td></tr>
-              <tr><td>Comb/liner 두께·겹침 용접 금지</td><td>벤더 학교(3 mm comb vs wing+RSEW)가 틈새부식을 가름</td></tr>
+              <tr><td>기계 세정 대상 스트림 <button type="button" class="cite" aria-label="출처" data-cite="810:4.14 · Annex B"></button></td><td>Scope가 removable panel로 세정 가능한 측에 묶임</td></tr>
+              <tr><td>Hydrogen / HTHS <button type="button" class="cite" aria-label="출처" data-cite="810:4.9 · Section 12 · Annex B"></button></td><td>Section 12, API 941, 전용입·PWHT·DMW 금지</td></tr>
+              <tr><td>Sour / wet H2S, liner 뒤 CS 적용 <button type="button" class="cite" aria-label="출처" data-cite="810:4.7–4.8 · Annex B"></button></td><td>Loose liner는 모재 보호로 안 봄</td></tr>
+              <tr><td>Cyclic 여부·사이클 정의 <button type="button" class="cite" aria-label="출처" data-cite="810:4.10–4.11 · Annex B"></button></td><td>라이너 노즐·fatigue 해석 범위</td></tr>
+              <tr><td>Panel gasket 내면 구속, overlay vs liner <button type="button" class="cite" aria-label="출처" data-cite="810:7.7.1.2 · 7.5.5.4 · Annex B"></button></td><td>고온 누설·보수용이성</td></tr>
+              <tr><td>Interstream He leak test <button type="button" class="cite" aria-label="출처" data-cite="810:10.1.3 · Annex B"></button></td><td>판 용접 품질의 실질 합격 기준</td></tr>
+              <tr><td>PMI 범위 <button type="button" class="cite" aria-label="출처" data-cite="810:10.1.13 · Annex B"></button></td><td>HTHS에서는 사실상 필수</td></tr>
+              <tr><td>직렬 block의 설계온도·재질을 다르게 할지 <button type="button" class="cite" aria-label="출처" data-cite="810:12.2.2 · 12.3.2"></button></td><td>기본은 같게. 핫엔드만 Cr-Mo는 명시해야 함</td></tr>
+              <tr><td>Comb/liner 두께·겹침 용접 금지 <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.3 · 7.5.4|NOTE:벤더 학교 이슈. 810이 comb라는 단어를 세 학교로 나누지는 않음"></button></td><td>벤더 학교(3 mm comb vs wing+RSEW)가 틈새부식을 가름</td></tr>
             </tbody>
           </table>
         </div>
@@ -587,7 +587,7 @@
 
         <h3>2. 662가 용접 pack에 주지 못한 것</h3>
         <ul class="select-list">
-          <li>판 최소 두께가 0.5 mm로 개스킷 판과 같았습니다. 810은 0.8 mm로 올립니다.</li>
+          <li>판 최소 두께가 0.5 mm로 개스킷 판과 같았습니다. 810은 0.8 mm로 올립니다. <button type="button" class="cite" aria-label="출처" data-cite="662:8.6.1 a)|810:7.5.1.1"></button></li>
           <li>판 용접을 압력코드 자격·필수 NDE로 올리지 않았습니다.</li>
           <li>Column liner, comb, panel gasket 구속, 배플 2×ΔP가 없습니다. 기기가 그 부품을 쓰더라도 코드 언어가 없습니다.</li>
           <li>Hydrogen / HTHS / sour 전용 장이 없습니다. 고온 수소 배관망에 넣으라는 문법이 아닙니다.</li>
@@ -597,7 +597,7 @@
 
         <h3>3. 667의 공백이 실무에서 하는 일</h3>
         <p>
-          2022년 이후 fully welded in frame이나 Compabloc류를 667에 걸면 Scope 위반입니다.
+          2022년 이후 fully welded in frame이나 Compabloc류를 667에 걸면 Scope 위반입니다. <button type="button" class="cite" aria-label="출처" data-cite="667:1 Scope|810:1 Scope"></button>
           그 공백 동안 프로젝트는 압력코드 + 벤더 IOM + 구 662 문장 + 발주처 DEP를 섞어 썼습니다.
           810은 그 섞음을 plate-block에 한해 코드로 회수합니다. Fully welded in frame과 plate-and-shell은
           여전히 공백입니다.
@@ -632,7 +632,7 @@
       </section>
 
       <section id="vendors" class="panel">
-        <h2>제품 지도 — 같은 810 문법, 다른 용접 학교</h2>
+        <h2>제품 지도 — 같은 810 문법, 다른 용접 학교</h2> <button type="button" class="cite" aria-label="출처" data-cite="810:1 Scope · 3.30|IOM:카탈로그·세미나 숫자는 코드가 아님"></button>
         <p>
           Compabloc / K°Bloc / GEABloc / LHEBloc은 모두
           <strong>용접 plate pack + 4면 removable panel</strong>입니다. API 810이 이 형식을 코드로 받았습니다.
@@ -673,7 +673,7 @@
             </thead>
             <tbody>
               <tr><td>설계온도</td><td>약 −100 ~ 380 °C</td><td>−50 ~ 350 °C</td><td>panel gasket이 먼저 한계 (흑연 camprofile ~350 °C, Gylon ~270 °C)</td></tr>
-              <tr><td>설계압력</td><td>FV ~ 38 barg</td><td>FV ~ 35 bar</td><td>모델·압력코드 계산. BT20~BT120</td></tr>
+              <tr><td>설계압력 <button type="button" class="cite" aria-label="출처" data-cite="IOM:Compabloc 2011 세미나 · LHEBloc 카탈로그. 코드 한도가 아님|810:7.2 (설계압 문법만)"></button></td><td>FV ~ 38 barg</td><td>FV ~ 35 bar</td><td>모델·압력코드 계산. BT20~BT120</td></tr>
               <tr><td>전열면</td><td>세미나 당시 최대 ~840 m²/기</td><td>0.62 ~ 320 m²/set</td><td>판당 0.061(BT20) ~ 1.72 m²(BT120), 최대 ~500장</td></tr>
               <tr><td>판 두께</td><td>카탈로그·도면. 810 최소는 0.8 mm</td><td>자체 금형</td><td>0.8 mm (BT20–50), 1.0–1.2 mm (BT75–120)</td></tr>
               <tr><td>접근온도</td><td>향류로 수 °C. 세미나 5 °C 전후 사례</td><td>close approach를 장점으로 내세움</td><td>동일 문법</td></tr>
@@ -746,11 +746,11 @@
               <tr><th>질문</th><th>Plate-block (810)</th><th>Fully welded in frame</th><th>Plate-and-shell</th></tr>
             </thead>
             <tbody>
-              <tr><td>공정측을 panel로 기계 세정하는가</td><td>예. Scope 조건</td><td>아니오. Cover를 열어도 판이 안 빠짐</td><td>한쪽만 열리거나 둘 다 안 열릴 수 있음</td></tr>
-              <tr><td>현행 API</td><td>810</td><td>없음 (662 레거시)</td><td>없음 (810 제외)</td></tr>
-              <tr><td>고온·고압·H2</td><td>Section 12 + 941 문법 있음</td><td>코드 언어 없음. 압력코드로 메움</td><td>shell이 압력경계. 고온 창은 카탈로그상 더 넓을 수 있으나 810 세정 전제와 다름</td></tr>
-              <tr><td>면적 증설</td><td>병렬 block</td><td>pack 교체</td><td>기기 교체 / 병렬</td></tr>
-              <tr><td>노즐 하중</td><td>Panel이 받음. Cl.600 표</td><td>Cover + 타이볼트</td><td>Shell nozzle. S&amp;T에 가까움</td></tr>
+              <tr><td>공정측을 panel로 기계 세정하는가 <button type="button" class="cite" aria-label="출처" data-cite="810:1 Scope · 4.14|662:1 Scope"></button></td><td>예. Scope 조건</td><td>아니오. Cover를 열어도 판이 안 빠짐</td><td>한쪽만 열리거나 둘 다 안 열릴 수 있음</td></tr>
+              <tr><td>현행 API <button type="button" class="cite" aria-label="출처" data-cite="810:1 Scope|667:1 Scope|662:1 Scope"></button></td><td>810</td><td>없음 (662 레거시)</td><td>없음 (810 제외)</td></tr>
+              <tr><td>고온·고압·H2 <button type="button" class="cite" aria-label="출처" data-cite="810:Section 12 · API 941 (2장)|662:HTHS 장 없음|810:1 Scope (plate-and-shell 제외)"></button></td><td>Section 12 + 941 문법 있음</td><td>코드 언어 없음. 압력코드로 메움</td><td>shell이 압력경계. 고온 창은 카탈로그상 더 넓을 수 있으나 810 세정 전제와 다름</td></tr>
+              <tr><td>면적 증설 <button type="button" class="cite" aria-label="출처" data-cite="810:면적 증설 조항 없음 (병렬은 3.12 unit)|662:8.1.1은 gasketed/semi-welded 20% 여유"></button></td><td>병렬 block</td><td>pack 교체</td><td>기기 교체 / 병렬</td></tr>
+              <tr><td>노즐 하중 <button type="button" class="cite" aria-label="출처" data-cite="810:7.6.15 · Table 1 (nozzle-to-panel)|662:8.7.10 · Tables 1–2 (cover)"></button></td><td>Panel이 받음. Cl.600 표</td><td>Cover + 타이볼트</td><td>Shell nozzle. S&amp;T에 가까움</td></tr>
               <tr><td>언제 쓰는가</td><td>양측 누설 불허, panel 세정, 온도교차·회수, H2/HTHS</td><td>구 사양 호환, 프레임 공간만 있는 교체</td><td>한쪽 세정 불가 허용, shell 배관 관행, 더 높은 T/P 창이 필요할 때</td></tr>
             </tbody>
           </table>
@@ -770,7 +770,7 @@
           662 Annex와 810 Annex가 같은 이유로 % margin + shear를 씁니다.
         </p>
         <ul class="select-list">
-          <li>양쪽이 모두 15%를 넘으면 overall 25% (810 권고). margin은 U<sub>clean</sub>에 걸고 면적에 이중으로 걸지 않습니다.</li>
+          <li>양쪽이 모두 15%를 넘으면 overall 25% (810 권고). margin은 U<sub>clean</sub>에 걸고 면적에 이중으로 걸지 않습니다. <button type="button" class="cite" aria-label="출처" data-cite="810:A.4.1 · Table A.1"></button></li>
           <li>허용 ΔP는 청정 기준. 펌프·배관 수력은 fouled ΔP.</li>
           <li>K°Bloc HTRI CTW 사례: 0.45 m/s에서도 벽면전단 ~60 Pa, S&amp;T 1.8 m/s ~15 Pa. 유속만 비교하지 마십시오.</li>
           <li>왁싱은 margin 표 밖. 발주처와 별도 합의. Kelvion은 정지하 원유를 단기로만 허용합니다.</li>
@@ -787,7 +787,7 @@
       </section>
 
       <section id="ops" class="panel">
-        <h2>설치·운전·세정 — 용접 plate-block IOM</h2>
+        <h2>설치·운전·세정 — 용접 plate-block IOM</h2> <button type="button" class="cite" aria-label="출처" data-cite="IOM:Compabloc Instruction Manual · Kelvion K°Bloc / IKAN Balikpapan|810:1 Scope · 10.2.8 (재조립 공압만 코드)"></button>
         <p>
           코드는 기기를 맞게 사고, IOM은 기기를 안 깨게 돌립니다.
           Compabloc 영문 IOM, Kelvion K°Bloc 운전지침, Pertamina Balikpapan RDMP(IKAN) 개정에서 뽑았습니다.
@@ -808,11 +808,11 @@
               <tr><th>항목</th><th>Compabloc IOM</th><th>K°Bloc / Balikpapan 개정</th></tr>
             </thead>
             <tbody>
-              <tr><td>충액</td><td>일반적으로 냉측 먼저. 점진적</td><td>양측 10% 유량으로 충액·벤트. 빈 기기에 펌프 금지. 가능하면 하부 노즐로 채움</td></tr>
-              <tr><td>승온</td><td>통상 60 °C/h 초과 금지</td><td>10분마다 유량 10%p. 금속 승온 &lt; 5 K/min. 초과하면 유량을 줄임</td></tr>
-              <tr><td>입구 ΔT</td><td>설계 창 안</td><td>Thot,in − Tcold,in &lt; 200 K</td></tr>
-              <tr><td>압력</td><td>수격 금지. 설계압 초과 금지</td><td>≤ 0.5 bar/min. 밸브 급개폐·진동 금지</td></tr>
-              <tr><td>정지</td><td>보통 열측 먼저 닫음. 급냉보다 자연냉각</td><td>설계 P/T를 운전 한도로 본다. 장기 정지는 배수</td></tr>
+              <tr><td>충액 <button type="button" class="cite" aria-label="출처" data-cite="IOM:Compabloc IOM · K°Bloc / Balikpapan 개정"></button></td><td>일반적으로 냉측 먼저. 점진적</td><td>양측 10% 유량으로 충액·벤트. 빈 기기에 펌프 금지. 가능하면 하부 노즐로 채움</td></tr>
+              <tr><td>승온 <button type="button" class="cite" aria-label="출처" data-cite="IOM:Compabloc IOM · K°Bloc / Balikpapan 개정"></button></td><td>통상 60 °C/h 초과 금지</td><td>10분마다 유량 10%p. 금속 승온 &lt; 5 K/min. 초과하면 유량을 줄임</td></tr>
+              <tr><td>입구 ΔT <button type="button" class="cite" aria-label="출처" data-cite="IOM:K°Bloc / Balikpapan 개정"></button></td><td>설계 창 안</td><td>Thot,in − Tcold,in &lt; 200 K</td></tr>
+              <tr><td>압력 <button type="button" class="cite" aria-label="출처" data-cite="IOM:Compabloc IOM · K°Bloc"></button></td><td>수격 금지. 설계압 초과 금지</td><td>≤ 0.5 bar/min. 밸브 급개폐·진동 금지</td></tr>
+              <tr><td>정지 <button type="button" class="cite" aria-label="출처" data-cite="IOM:Compabloc IOM · K°Bloc"></button></td><td>보통 열측 먼저 닫음. 급냉보다 자연냉각</td><td>설계 P/T를 운전 한도로 본다. 장기 정지는 배수</td></tr>
             </tbody>
           </table>
         </div>
@@ -854,33 +854,33 @@
         <ul class="select-list">
           <li>S&amp;T fouling factor를 그대로 넣으면 과설계·저유속이 됩니다. % margin과 wall shear를 쓰십시오.</li>
           <li>Chevron 각 정의가 vendor마다 다릅니다. 810은 “흐름 수직선 기준”입니다. HTRI/제작사 각도와 혼동하지 마십시오.</li>
-          <li>입자 크기가 gap의 50%를 넘으면 strainer가 필요합니다 (662 Annex 취지, 810도 같음).</li>
+          <li>입자 크기가 gap의 50%를 넘으면 strainer가 필요합니다 (662 Annex 취지, 810도 같음). <button type="button" class="cite" aria-label="출처" data-cite="662:Annex fouling/particle 안내|810:5.1 · A.4"></button></li>
         </ul>
 
         <h3>재료·손상기구</h3>
         <ul class="select-list">
-          <li>Loose liner는 sour 면제 티켓이 아닙니다. 810 Annex는 모재에도 sour 요구를 적용하라고 합니다.</li>
+          <li>Loose liner는 sour 면제 티켓이 아닙니다. 810 Annex는 모재에도 sour 요구를 적용하라고 합니다. <button type="button" class="cite" aria-label="출처" data-cite="810:4.8 · A.2.1"></button></li>
           <li>HTHS에서 설계온도 ≠ 재료선정 온도일 수 있습니다. 금속 온도가 유체 설계온도보다 낮다고 주장하려면 계측·IOW가 필요합니다.</li>
-          <li>810은 주강을 원칙 금지합니다. 노즐·head에 주조품이 들어오면 막으십시오.</li>
+          <li>810은 주강을 원칙 금지합니다. 노즐·head에 주조품이 들어오면 막으십시오. <button type="button" class="cite" aria-label="출처" data-cite="810:8.1.1"></button></li>
           <li>판이 얇아서 부식여유를 못 줍니다. 재질을 한 단계 올리는 것이 CA 3 mm보다 맞습니다. LHE 예: 50 °C에서 합금에 따라 Cl⁻ 수십~수천 ppm, Ti 해수는 ~130 °C — 카탈로그이지 코드가 아닙니다.</li>
         </ul>
 
         <h3>제작·검사에서 자주 빠지는 것</h3>
         <ul class="select-list">
-          <li>810에서 수압 후 panel을 다시 열면 개스킷을 갈고 100–170 kPa soap 공압이 필수입니다. 현장 설치 후 재조립에도 해당될 수 있습니다.</li>
-          <li>시험수 Cl⁻는 662가 30 ppm, 810은 50 ppm입니다. 구 사양을 그대로 복사하면 불일치입니다.</li>
-          <li>수소 서비스에서 liner가 만든 밀폐 공간은 벤트가 필요합니다. 빼면 운전 중 압력 축적·균열 위험이 있습니다.</li>
+          <li>810에서 수압 후 panel을 다시 열면 개스킷을 갈고 100–170 kPa soap 공압이 필수입니다. 현장 설치 후 재조립에도 해당될 수 있습니다. <button type="button" class="cite" aria-label="출처" data-cite="810:10.2.8"></button></li>
+          <li>시험수 Cl⁻는 662가 30 ppm, 810은 50 ppm입니다. 구 사양을 그대로 복사하면 불일치입니다. <button type="button" class="cite" aria-label="출처" data-cite="662:11.2.5|810:10.2.6"></button></li>
+          <li>수소 서비스에서 liner가 만든 밀폐 공간은 벤트가 필요합니다. 빼면 운전 중 압력 축적·균열 위험이 있습니다. <button type="button" class="cite" aria-label="출처" data-cite="810:9.1.5 · A.4.4.3"></button></li>
           <li>pack/liner 용접이 HTHS hardness·baseline UT에서 제외되는 주석이 있으면, 그 시임을 어떻게 볼지 구매자가 별도 합의해야 합니다.</li>
         </ul>
 
         <h3>배관·배치</h3>
         <ul class="select-list">
-          <li>810은 panel 제거 공간을 outline에 넣습니다. 단열·플랫폼이 그 공간을 먹으면 기계 세정이 불가능해 Scope와 충돌합니다.</li>
-          <li>노즐 하중을 S&amp;T처럼 때리면 panel 변형·개스킷 누설로 갑니다. 플랜지 등급을 배관하중 때문에 한 단계 올리는 것이 810 문법입니다.</li>
+          <li>810은 panel 제거 공간을 outline에 넣습니다. 단열·플랫폼이 그 공간을 먹으면 기계 세정이 불가능해 Scope와 충돌합니다. <button type="button" class="cite" aria-label="출처" data-cite="810:6.1 · 7.5.2.3 · 1 Scope"></button></li>
+          <li>노즐 하중을 S&amp;T처럼 때리면 panel 변형·개스킷 누설로 갑니다. 플랜지 등급을 배관하중 때문에 한 단계 올리는 것이 810 문법입니다. <button type="button" class="cite" aria-label="출처" data-cite="810:7.6.15–7.6.16 · Table 1 NOTE"></button></li>
         </ul>
       </section>
       <section id="anatomy" class="panel">
-        <h2>구조 — welded plate-block을 분해해서 보기</h2>
+        <h2>구조 — welded plate-block을 분해해서 보기</h2> <button type="button" class="cite" aria-label="출처" data-cite="810:3 Terms · Figure 1–2|IOM:부품 이름(girder/column)은 벤더"></button>
         <p>
           부품 이름은 벤더마다 다릅니다. 같은 물건을 Alfa는 girder, Kelvion은 column,
           도면 불어는 longeron이라고 부릅니다. 유체와 유체 사이는 판 용접, 유체와 대기 사이는 panel gasket 네 장입니다.
@@ -1131,7 +1131,7 @@
       </section>
 
       <section id="baffle">
-        <h2>Baffle — 교차류를 향류로 쌓는 가로막</h2>
+        <h2>Baffle — 교차류를 향류로 쌓는 가로막</h2> <button type="button" class="cite" aria-label="출처" data-cite="810:3.1 baffle · 3.2 baffle cage · 7.5.3|IOM:Compabloc IOM (stamped baffle 차압, PTFE)"></button>
         <p>
           Panel을 열면 pack 면에 가로로 꽂힌 판이 보입니다. 그것이 baffle입니다.
           없으면 그 면은 한 패스 교차류로 끝나 온도교차에 약합니다. 있으면 유체가 지그재그로 여러 번 pack을 가로지릅니다.
@@ -1189,7 +1189,7 @@
           <li>테두리: column 두 개와 head 두 개가 만드는 창틀. Gasket이 앉던 가공면.</li>
           <li>창 안 앞쪽: baffle들. 가로막이 pack 골을 가로지릅니다. PTFE 끈이 girder 삼각 홈에 남아 있을 수 있습니다.</li>
           <li>그 뒤: 전열판의 <strong>열린 채널</strong>. Chevron이면 V골이 보이고, dimple이면 점 패턴입니다. 여기로 hydro-blast를 약 45°로 넣습니다.</li>
-          <li>창의 좌우 세로 모서리: comb 이빨 또는 wing이 판 끝과 맞물린 용접선. 810이 “접근 가능해야 한다”고 한 바로 그 선입니다.</li>
+          <li>창의 좌우 세로 모서리: comb 이빨 또는 wing이 판 끝과 맞물린 용접선. 810이 “접근 가능해야 한다”고 한 바로 그 선입니다. <button type="button" class="cite" aria-label="출처" data-cite="810:7.5.1.3"></button></li>
           <li>빼지 말아야 할 것: pack 자체. 판을 한 장 꺼내는 기계가 아닙니다. 채널이 막혀 플러그를 박는 순간 그 경로는 영구 손실입니다.</li>
         </ol>
         <p>
@@ -1206,12 +1206,12 @@
               <tr><th></th><th>Fully welded in frame (662)</th><th>Plate-block (810)</th><th>Plate-and-shell</th></tr>
             </thead>
             <tbody>
-              <tr><td>전열면 밀봉</td><td>모든 판 사이 용접</td><td>모든 판 사이 용접</td><td>모든 판 사이 용접</td></tr>
-              <tr><td>압력 골조</td><td>cover + tie bolt</td><td>4 column + 2 head + 4 panel 볼트</td><td>원통 shell</td></tr>
-              <tr><td>유체–대기 밀봉</td><td>프레임 조인트</td><td>panel gasket 4</td><td>shell / cover</td></tr>
-              <tr><td>열어 보는 단위</td><td>cover (판은 안 빠짐)</td><td>panel 면 (채널은 보이나 판은 안 빠짐)</td><td>한쪽만 또는 둘 다 못 염</td></tr>
-              <tr><td>증설</td><td>pack 교체</td><td>병렬 block</td><td>기기 교체 / 병렬</td></tr>
-              <tr><td>현행 API</td><td>없음 (662 레거시)</td><td>810</td><td>없음 (810 제외)</td></tr>
+              <tr><td>전열면 밀봉 <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope · 3 Terms (fully welded plate pack)|810:1 Scope · 3.30"></button></td><td>모든 판 사이 용접</td><td>모든 판 사이 용접</td><td>모든 판 사이 용접</td></tr>
+              <tr><td>압력 골조 <button type="button" class="cite" aria-label="출처" data-cite="662:3 Terms (frame) · 8.6|810:3.4 · 7.5.2|810:1 Scope (cylindrical shell 제외)"></button></td><td>cover + tie bolt</td><td>4 column + 2 head + 4 panel 볼트</td><td>원통 shell</td></tr>
+              <tr><td>유체–대기 밀봉 <button type="button" class="cite" aria-label="출처" data-cite="662:8.6 covers · tie bolts|810:7.7.1 panel gaskets"></button></td><td>프레임 조인트</td><td>panel gasket 4</td><td>shell / cover</td></tr>
+              <tr><td>열어 보는 단위 <button type="button" class="cite" aria-label="출처" data-cite="662:8.6 covers|810:7.5.2 · 1 Scope"></button></td><td>cover (판은 안 빠짐)</td><td>panel 면 (채널은 보이나 판은 안 빠짐)</td><td>한쪽만 또는 둘 다 못 염</td></tr>
+              <tr><td>증설 <button type="button" class="cite" aria-label="출처" data-cite="662:8.1.1 (gasketed/semi 20% — 용접 pack에 해당 없음)|810:면적 증설 조항 없음"></button></td><td>pack 교체</td><td>병렬 block</td><td>기기 교체 / 병렬</td></tr>
+              <tr><td>현행 API <button type="button" class="cite" aria-label="출처" data-cite="662:1 Scope|810:1 Scope|667:1 Scope"></button></td><td>없음 (662 레거시)</td><td>810</td><td>없음 (810 제외)</td></tr>
             </tbody>
           </table>
         </div>
@@ -1223,6 +1223,7 @@
       <p>
         학습 노트이며 규격·카탈로그·IOM 원문을 대체하지 않습니다. 발주 전 API 662/667/810과
         해당 제작사 IOM, 발주처 DEP를 확인하십시오. 벤더 압력·온도·면적은 모델 세대에 따라 바뀝니다.
+        § 원은 조항 위치만 알려 주며 원문 복제가 아닙니다.
       </p>
       <p>
         추가로 읽은 자료: Alfa Laval Compabloc 세미나·IOM, Kelvion K°Bloc / GEABloc 비교·용접,
@@ -1230,6 +1231,6 @@
         Shell DEP 용접 판형 관련 조항, 2017 HEX 교육. 도면·스캔만 있는 파일은 숫자를 넣지 않았습니다.
       </p>
     </footer>
-    <script src="./app.js?v=16"></script>
+    <script src="./app.js?v=17"></script>
   </body>
 </html>

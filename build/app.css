@@ -138,6 +138,16 @@ h2 {
   font-size: 20px;
 }
 
+.card h3,
+.type h3 {
+  display: inline-block;
+}
+
+h3 + .cite,
+h2 + .cite {
+  margin-bottom: 8px;
+}
+
 h2 {
   margin-top: 28px;
 }
@@ -321,6 +331,92 @@ ol.outside-in {
 
 ol.outside-in li {
   margin: 10px 0;
+}
+
+.cite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 0 0 0 6px;
+  padding: 0;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--brass);
+  font: 10px/1 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  vertical-align: 2px;
+  flex-shrink: 0;
+}
+
+.cite::before {
+  content: "§";
+}
+
+.cite:hover,
+.cite[aria-expanded="true"] {
+  background: var(--brass);
+  color: var(--bg);
+}
+
+.cite-pop {
+  position: fixed;
+  z-index: 80;
+  width: min(360px, calc(100vw - 24px));
+  background: #161b22;
+  color: var(--ink);
+  border: 1px solid var(--brass);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  padding: 12px 14px 10px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.cite-pop[hidden] {
+  display: none;
+}
+
+.cite-pop-kicker {
+  margin: 0 0 8px;
+  color: var(--brass);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.cite-pop ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cite-pop li {
+  margin: 0 0 10px;
+}
+
+.cite-pop li:last-child {
+  margin-bottom: 0;
+}
+
+.cite-pop strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cite-pop .para {
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.cite-pop-note {
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
 }
 
 @media (max-width: 720px) {
