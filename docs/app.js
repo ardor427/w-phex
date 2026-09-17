@@ -74,7 +74,7 @@ function mountBloc3D() {
   const el = document.getElementById("bloc-3d");
   if (!el) return;
   if (!viewerPromise) {
-    viewerPromise = import("./bloc3d.js?v=18")
+    viewerPromise = import("./bloc3d.js?v=19")
       .then((mod) => mod.initBloc3D(el))
       .catch((err) => {
         console.error(err);

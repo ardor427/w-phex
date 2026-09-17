@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>W-PHEX — Welded Plate Heat Exchanger 코드 정리</title>
-    <link rel="stylesheet" href="./app.css?v=18" />
+    <link rel="stylesheet" href="./app.css?v=19" />
     <script type="importmap">
       {
         "imports": {
@@ -885,7 +885,9 @@
         <h2>모서리 그림 — comb / wing / screen</h2>
         <p>
           세 회사 모두 판 pack의 네 모서리를 합금 liner로 닫고, 그 밖에 탄소강 column(Alfa는 girder)을 둡니다.
-          다른 것은 <strong>톱니를 무엇으로 메우느냐</strong>입니다. 아래는 패널을 열고 pack 끝을 정면에서 본 학습용 단면입니다. 벤더 CAD가 아닙니다.
+          Kelvion·LHE는 톱니에 별도 빗을 끼운다고 <strong>자사 자료</strong>에 그립니다.
+          Compabloc IOM은 그 단계를 안 적고 <strong>girder lining</strong>만 말합니다. 판 끝을 접는다는 문장은 Alfa 원문에 없습니다.
+          아래는 패널을 열고 pack 끝을 정면에서 본 학습용 단면입니다. 벤더 CAD가 아닙니다.
         </p>
         <p class="muted">
           색:
@@ -925,7 +927,7 @@
             </defs>
             <text x="420" y="126" fill="#efe8dc" font-family="Arial" font-size="13">여기서부터</text>
             <text x="420" y="144" fill="#efe8dc" font-family="Arial" font-size="13">학교마다 부품이 갈림</text>
-            <text x="420" y="168" fill="#9a927f" font-family="Arial" font-size="12">Alfa: 판을 접음</text>
+            <text x="420" y="168" fill="#9a927f" font-family="Arial" font-size="12">Alfa IOM: girder lining</text>
             <text x="420" y="186" fill="#9a927f" font-family="Arial" font-size="12">Kelvion: comb를 끼움</text>
             <text x="420" y="204" fill="#9a927f" font-family="Arial" font-size="12">LHE: screen을 끼움</text>
           </svg>
@@ -936,10 +938,35 @@
         <div class="corner-trio">
           <article class="corner-card">
             <div class="badge">Alfa Laval Compabloc</div>
-            <h3>판을 접어 wing</h3>
-            <p>별도 comb/screen을 <strong>끼우지 않습니다.</strong> 판 코너를 접은 날개(wing / languette)가 이빨을 메우고, 그걸 얇은 girder lining에 붙입니다.</p>
+            <h3>IOM 이름은 girder lining</h3>
+            <p>
+              Compabloc 영문 IOM은 판 끝을 접는다고 쓰지 않습니다. 모서리 이름은 <strong>longitudinal girder lining</strong>입니다 (삼각 홈 + PTFE cord).
+              “판 코너를 접어 wing을 만든다”는 Alfa 원문이 아니라, GEA 2010 비교메모·Kelvion K°Bloc 2018 슬라이드가 상대(OTHERS)를 그린 그림입니다. 그 슬라이드는 Compabloc이라고 이름을 안 박습니다.
+            </p>
             <figure class="diag">
-              <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" aria-label="Compabloc wing와 girder lining">
+              <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" aria-label="Compabloc girder lining. 접힌 wing은 상대사 비교도">
+                <rect x="24" y="40" width="280" height="18" fill="#6d8ea3"/>
+                <rect x="24" y="62" width="220" height="18" fill="#8fbf9a"/>
+                <rect x="24" y="84" width="280" height="18" fill="#6d8ea3"/>
+                <rect x="24" y="106" width="220" height="18" fill="#8fbf9a"/>
+                <rect x="24" y="128" width="280" height="18" fill="#6d8ea3"/>
+                <rect x="24" y="150" width="220" height="18" fill="#8fbf9a"/>
+                <rect x="302" y="36" width="16" height="136" fill="#d4c9a8"/>
+                <rect x="324" y="30" width="70" height="148" fill="#4a5568"/>
+                <text x="24" y="28" fill="#9a927f" font-family="Arial" font-size="13">pack</text>
+                <text x="300" y="28" fill="#d4c9a8" font-family="Arial" font-size="13">girder lining</text>
+                <text x="410" y="100" fill="#efe8dc" font-family="Arial" font-size="14">탄소강 girder</text>
+                <text x="410" y="122" fill="#9a927f" font-family="Arial" font-size="13">Alfa IOM이 쓰는 이름</text>
+              </svg>
+            </figure>
+            <p class="flow">
+              <span>1 톱니 (공통)</span><span class="arrow">→</span>
+              <span>2 girder lining (IOM)</span><span class="arrow">→</span>
+              <span>3 CS girder</span>
+            </p>
+            <p class="muted">아래 그림은 참고용입니다. Kelvion이 OTHERS를 “0.8–1.2 mm wings from plates + RSEW”로 그린 것. Alfa 제작 공정도 아님.</p>
+            <figure class="diag">
+              <svg viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" aria-label="Kelvion이 그린 상대 wing 스케치">
                 <rect x="24" y="40" width="280" height="18" fill="#6d8ea3"/>
                 <rect x="304" y="40" width="22" height="18" fill="#6d8ea3"/>
                 <rect x="24" y="62" width="220" height="18" fill="#8fbf9a"/>
@@ -955,19 +982,11 @@
                 <rect x="328" y="36" width="14" height="136" fill="#d4c9a8"/>
                 <rect x="348" y="30" width="70" height="148" fill="#4a5568"/>
                 <text x="24" y="28" fill="#9a927f" font-family="Arial" font-size="13">pack</text>
-                <text x="248" y="28" fill="#c4a35a" font-family="Arial" font-size="13">wing</text>
-                <text x="328" y="22" fill="#d4c9a8" font-family="Arial" font-size="12">girder</text>
-                <text x="328" y="36" fill="#d4c9a8" font-family="Arial" font-size="12">lining</text>
-                <text x="430" y="100" fill="#efe8dc" font-family="Arial" font-size="14">탄소강 girder</text>
-                <text x="430" y="122" fill="#9a927f" font-family="Arial" font-size="13">끼우는 comb 없음</text>
+                <text x="248" y="28" fill="#c4a35a" font-family="Arial" font-size="13">wing (상대사 그림)</text>
+                <text x="410" y="100" fill="#efe8dc" font-family="Arial" font-size="14">얇은 liner 2장이라고 그림</text>
+                <text x="410" y="122" fill="#9a927f" font-family="Arial" font-size="13">GEA 2010 · K°Bloc 2018 OTHERS</text>
               </svg>
             </figure>
-            <p class="flow">
-              <span>1 톱니</span><span class="arrow">→</span>
-              <span>2 판 끝을 접음</span><span class="arrow">→</span>
-              <span>3 girder lining에 용접</span><span class="arrow">→</span>
-              <span>4 CS girder</span>
-            </p>
           </article>
 
           <article class="corner-card">
@@ -1046,8 +1065,8 @@
             </thead>
             <tbody>
               <tr><td>pack 끝에 톱니가 생기나</td><td>예 (공통)</td><td>예</td><td>예</td></tr>
-              <tr><td>별도 빗을 톱니에 끼우나</td><td>아니오. 판을 접음</td><td>예, comb</td><td>예, screen lining</td></tr>
-              <tr><td>그걸 무엇에 붙이나</td><td>얇은 girder lining</td><td>column liner</td><td>원형 column lining</td></tr>
+              <tr><td>별도 빗을 톱니에 끼우나</td><td>IOM에 comb/screen 없음. 접는다는 문장도 없음</td><td>예, comb (자사 자료)</td><td>예, screen lining (자사 자료)</td></tr>
+              <tr><td>그걸 무엇에 붙이나</td><td>girder lining (Compabloc IOM)</td><td>column liner</td><td>원형 column lining</td></tr>
               <tr><td>바깥 탄소강</td><td>girder</td><td>column</td><td>column</td></tr>
               <tr><td>810 이름</td><td colspan="3">셋 다 plate pack의 column liner 부착 방법. 코드가 comb/wing/screen을 나누지 않음</td></tr>
             </tbody>
@@ -1055,9 +1074,9 @@
         </div>
         <div class="note">
           <p>
-            Compabloc IOM은 이 모서리를 comb라고 부르지 않고 girder / lining으로 부릅니다.
-            “screen plate를 끼운 뒤 column liner에 연결”은 LHE·Kelvion 쪽 말과 그림입니다.
-            구조 탭의 3D는 학습용으로 comb+liner를 보여 주므로, Compabloc 실기와 한 장으로 같다고 보지 마십시오.
+            Compabloc IOM은 이 모서리를 comb라고 부르지 않고 <strong>girder lining</strong>이라고 부릅니다.
+            “판을 접어 wing”은 Alfa 원문이 아니라 GEA/Kelvion이 상대를 그린 비교 슬라이드입니다.
+            구조 탭 3D의 comb+liner는 Kelvion 자사 그림에 가깝습니다.
           </p>
         </div>
       </section>
@@ -1105,7 +1124,7 @@
           <li><strong>Four panel gaskets.</strong> 기기 전체에서 공정 개스킷은 사실상 이 네 장입니다.</li>
           <li><strong>Baffle cage.</strong> 열린 면에서 보이는 가로막. 패스 수를 만듭니다. 빼도 pack은 남습니다.</li>
           <li><strong>Plate pack.</strong> 전열의 전부. 열 수 없습니다. 채널이 네 면으로 열려 있습니다.</li>
-          <li><strong>Comb / column liner / wings.</strong> Pack 모서리를 column에 밀봉·지지하는 이빨 또는 접힌 날개.</li>
+          <li><strong>Comb / column liner / girder lining.</strong> Pack 모서리를 column에 밀봉·지지하는 합금 이음. “접힌 날개”는 Alfa IOM이 아니라 상대사 비교 그림입니다.</li>
           <li><strong>Four columns (girders).</strong> 수직 네 기둥. 볼트 하중과 압력을 받습니다.</li>
           <li><strong>Top and bottom heads.</strong> 위·아래 두꺼운 판. End plate 및 (Alfa) PTFE sheet와 만납니다.</li>
         </ol>
@@ -1121,7 +1140,7 @@
             <tbody>
               <tr><td>Plate pack</td><td>platepack, cœur d'échange</td><td>plate pack</td><td>heat transfer plate pack</td><td>welded plate pack (판+liner의 용접 조립체)</td></tr>
               <tr><td>Column</td><td>girder, longeron</td><td>column</td><td>column, longeron</td><td>column</td></tr>
-              <tr><td>Comb / liner</td><td>girder lining, languette, wing에 해당하는 모서리</td><td>comb liner + column liner</td><td>column lining, screen lining</td><td>column liner</td></tr>
+              <tr><td>Comb / liner</td><td>girder lining (IOM). languette는 개스킷 C-type 도면 용어</td><td>comb liner + column liner</td><td>column lining, screen lining</td><td>column liner</td></tr>
               <tr><td>Head</td><td>upper / lower head, fond</td><td>top / bottom head</td><td>machined head, fond usiné</td><td>fixed head</td></tr>
               <tr><td>Panel</td><td>panel</td><td>panel</td><td>panel</td><td>removable panel</td></tr>
               <tr><td>Baffle</td><td>baffle, chicane, stamped / reinforced</td><td>baffle plate + bracket</td><td>stamped baffle N passes</td><td>baffle (cage에 일체, panel·pack에 밀봉)</td></tr>
@@ -1137,7 +1156,7 @@
         <p>
           CP50급 용접 plate-block을 실제 기기 비율로 만든 모델입니다. 탄소강 panel·볼트 테두리·WN 플랜지·스테인리스 pack·comb 이빨·column liner를 넣었습니다.
           벤더 CAD가 아니라 학습용 재구성입니다. 드래그로 돌리고, 분해·모서리로 comb와 liner를 보십시오.
-          이 3D의 comb+liner는 Kelvion 쪽에 가깝습니다. Compabloc(wing)과 LHE(screen)는 <a href="#corner" data-tab="corner">모서리</a> 탭의 그림입니다.
+          이 3D의 comb+liner는 Kelvion 쪽에 가깝습니다. Compabloc(girder lining)과 LHE(screen)는 <a href="#corner" data-tab="corner">모서리</a> 탭의 그림입니다.
         </p>
         <div class="viewer3d">
           <div id="bloc-3d" class="viewer3d-stage"></div>
@@ -1185,7 +1204,7 @@
             <tbody>
               <tr><td>Chevron 골</td><td>고 θ. 난류·ΔP·벽면전단이 큼. Hydro-blast로 닦기 쉬움. 성형 깊이 예 5 mm.</td></tr>
               <tr><td>Double dimple / wide gap</td><td>저 θ. 양측 클리어 갭(예 5 mm)으로 고체·짧은 섬유. ΔP 작음.</td></tr>
-              <tr><td>모서리</td><td>용접 및 comb 이빨이 맞물리는 자리. 접어 wing을 만드는 학교와, 자르고 comb를 대는 학교가 갈립니다.</td></tr>
+              <tr><td>모서리</td><td>용접 및 톱니가 맞물리는 자리. Kelvion/LHE는 comb·screen을 끼움. Compabloc IOM은 girder lining이라고만 함. “접어 wing”은 상대사 비교 그림.</td></tr>
               <tr><td>접촉점</td><td>골이 맞닿는 금속 접촉이 판을 압력에서 지탱합니다. 예압이 부족하면 운전 중 판이 떠서 피로합니다.</td></tr>
             </tbody>
           </table>
@@ -1249,12 +1268,11 @@
           <li>이빨이 pack을 예압 상태에서 물면, 운전 중 판이 column에서 떠지 않습니다.</li>
         </ul>
 
-        <h3>2. Wing + 얇은 liner + RSEW (상대를 이렇게 그립니다)</h3>
+        <h3>2. Wing + 얇은 liner + RSEW (GEA/Kelvion이 상대를 이렇게 그림)</h3>
         <ul class="select-list">
-          <li>판 코너를 접어 <strong>wing</strong>을 만듭니다. 접는 순간 잔류응력이 들어갑니다.</li>
-          <li>Wing끼리 맞댄 뒤 저항 심 용접(RSEW)으로 얇은 column liner(0.8–1.2 mm, 종종 2장)에 붙입니다.</li>
-          <li>이미 있는 용접 위에 다시 RSEW가 지나갑니다 (weld-over-weld). Wing과 liner 사이 갭은 틈새부식 후보입니다.</li>
-          <li>접힌 날개가 pack을 압축하는 것을 방해한다는 것이 Kelvion의 공격입니다.</li>
+          <li>근거: GEABloc vs Competitor 내부메모 (2010), K°Bloc Korea KW15 (2018) “OTHERS” 칸. Alfa 로고·Compabloc IOM 문장이 아닙니다.</li>
+          <li>그 슬라이드: 판 코너 <strong>edge folding</strong> → 0.8–1.2 mm wings from plates → 얇은 column liner 2장 + RSEW, overlapping weld, 틈새부식 후보.</li>
+          <li>Compabloc IOM이 실제로 쓰는 말은 girder lining입니다. 접는다/wing이라는 제작 단계는 없습니다.</li>
         </ul>
 
         <h3>3. LHE — 열팽창을 위한 빈 공간</h3>
@@ -1403,6 +1421,6 @@
       </section>
       </section>
     </main>
-    <script src="./app.js?v=18"></script>
+    <script src="./app.js?v=19"></script>
   </body>
 </html>
